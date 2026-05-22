@@ -1,0 +1,1291 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sofia Valperga — PM Portfolio</title>
+<style>
+  /* ── Reset & base ── */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; font-size: 16px; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background: #0F1117;
+    color: #E8EAF0;
+    line-height: 1.6;
+  }
+  a { color: inherit; text-decoration: none; }
+  img { max-width: 100%; }
+
+  /* ── Tokens ── */
+  :root {
+    --accent: #6C63FF;
+    --accent-light: #8B84FF;
+    --accent-dim: rgba(108,99,255,0.12);
+    --accent-dim2: rgba(108,99,255,0.06);
+    --surface: #161B27;
+    --surface2: #1E2434;
+    --surface3: #252D3D;
+    --border: rgba(255,255,255,0.07);
+    --border-accent: rgba(108,99,255,0.35);
+    --text-primary: #F0F2F8;
+    --text-secondary: #9BA3BF;
+    --text-muted: #606880;
+    --green: #34D399;
+    --orange: #FB923C;
+    --red: #F87171;
+    --yellow: #FBBF24;
+    --radius: 12px;
+    --radius-sm: 8px;
+    --radius-lg: 20px;
+    --shadow: 0 4px 24px rgba(0,0,0,0.35);
+    --shadow-lg: 0 12px 48px rgba(0,0,0,0.5);
+  }
+
+  /* ── Nav ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(15,17,23,0.85);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 2rem;
+    height: 60px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .nav-logo {
+    font-size: .85rem; font-weight: 700; letter-spacing: .04em;
+    color: var(--accent-light);
+  }
+  .nav-links { display: flex; gap: 2rem; }
+  .nav-links a {
+    font-size: .85rem; color: var(--text-secondary);
+    transition: color .2s;
+  }
+  .nav-links a:hover { color: var(--text-primary); }
+
+  /* ── Sections ── */
+  section { padding: 6rem 2rem; }
+  .container { max-width: 900px; margin: 0 auto; }
+  .section-label {
+    font-size: .75rem; font-weight: 700; letter-spacing: .12em;
+    text-transform: uppercase; color: var(--accent);
+    margin-bottom: .75rem;
+  }
+  h2.section-title {
+    font-size: clamp(1.6rem, 3vw, 2.2rem); font-weight: 700;
+    color: var(--text-primary); margin-bottom: 1rem;
+    line-height: 1.25;
+  }
+  .section-sub {
+    font-size: 1.05rem; color: var(--text-secondary);
+    max-width: 640px; line-height: 1.7;
+  }
+  .divider {
+    width: 48px; height: 3px;
+    background: linear-gradient(90deg, var(--accent), transparent);
+    margin: 1.25rem 0 2rem;
+    border-radius: 2px;
+  }
+
+  /* ── Intro unificado ── */
+  #about {
+    background:
+      radial-gradient(ellipse 80% 60% at 60% 30%, rgba(108,99,255,0.09) 0%, transparent 70%),
+      #0F1117;
+    padding-top: 100px;
+  }
+  .intro-grid {
+    display: grid; grid-template-columns: 200px 1fr;
+    gap: 3.5rem; align-items: center;
+    margin-bottom: 2.5rem;
+  }
+  .intro-photo-col { display: flex; flex-direction: column; align-items: center; gap: 1rem; }
+  .intro-stats {
+    display: flex; align-items: center; gap: 1rem; flex-wrap: wrap;
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: var(--radius); padding: 1.1rem 1.5rem;
+    margin-bottom: 2.5rem;
+  }
+  .intro-stats .stat-item { flex: 1; min-width: 80px; background: none; border: none; padding: 0; }
+  .intro-stats-divider { width: 1px; height: 36px; background: var(--border); flex-shrink: 0; }
+  .intro-tags { display: flex; flex-wrap: wrap; gap: .45rem; flex: 2; }
+  .about-bio-title {
+    font-size: clamp(1.3rem, 2.5vw, 1.7rem); font-weight: 700;
+    color: var(--text-primary); margin-bottom: .5rem; line-height: 1.3;
+  }
+  .hero-eyebrow {
+    display: inline-flex; align-items: center; gap: .5rem;
+    font-size: .78rem; font-weight: 600; letter-spacing: .1em;
+    text-transform: uppercase; color: var(--accent);
+    background: var(--accent-dim); border: 1px solid var(--border-accent);
+    padding: .3rem .75rem; border-radius: 99px; margin-bottom: 1.25rem;
+    white-space: nowrap;
+  }
+  .hero-eyebrow::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--accent); animation: pulse 2s infinite; }
+  @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.4} }
+  h1 {
+    font-size: clamp(2.2rem, 4.5vw, 3.2rem); font-weight: 800;
+    line-height: 1.1; color: var(--text-primary);
+    margin-bottom: 1rem;
+  }
+  h1 span { color: var(--accent-light); }
+  .hero-desc {
+    font-size: 1rem; color: var(--text-secondary);
+    line-height: 1.75; margin-bottom: 2rem;
+  }
+  .hero-ctas { display: flex; gap: 1rem; flex-wrap: wrap; }
+  .btn {
+    display: inline-flex; align-items: center; gap: .5rem;
+    padding: .65rem 1.4rem; border-radius: var(--radius-sm);
+    font-size: .9rem; font-weight: 600; transition: all .2s; cursor: pointer;
+  }
+  .btn-primary {
+    background: var(--accent); color: #fff;
+    border: 1px solid var(--accent);
+  }
+  .btn-primary:hover { background: var(--accent-light); border-color: var(--accent-light); transform: translateY(-1px); box-shadow: 0 6px 20px rgba(108,99,255,.4); }
+  .btn-ghost {
+    background: transparent; color: var(--text-secondary);
+    border: 1px solid var(--border);
+  }
+  .btn-ghost:hover { border-color: var(--accent); color: var(--accent-light); transform: translateY(-1px); }
+
+  /* Hero right — stats card */
+  .hero-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 2rem;
+    box-shadow: var(--shadow);
+  }
+  .hero-card-title {
+    font-size: .75rem; font-weight: 700; letter-spacing: .1em;
+    text-transform: uppercase; color: var(--text-muted);
+    margin-bottom: 1.25rem;
+  }
+  .stat-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1rem; margin-bottom: 1.5rem; }
+  .stat-item {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 1rem;
+    transition: border-color .2s;
+  }
+  .stat-item:hover { border-color: var(--border-accent); }
+  .stat-value { font-size: 1.6rem; font-weight: 800; color: var(--accent-light); line-height: 1; margin-bottom: .2rem; }
+  .stat-label { font-size: .75rem; color: var(--text-muted); }
+  .tag-list { display: flex; flex-wrap: wrap; gap: .5rem; }
+  .tag {
+    font-size: .72rem; font-weight: 600; letter-spacing: .04em;
+    padding: .25rem .65rem; border-radius: 99px;
+    background: var(--accent-dim); color: var(--accent-light);
+    border: 1px solid var(--border-accent);
+  }
+
+  /* ── About ── */
+  #about { background: var(--surface); }
+  .about-photo-row { display: flex; align-items: center; gap: 1.75rem; margin-bottom: 2.5rem; }
+  .about-avatar {
+    width: 200px; height: 200px; border-radius: 50%; flex-shrink: 0;
+    border: 3px solid var(--border-accent);
+    object-fit: cover; object-position: center top;
+    box-shadow: 0 0 0 6px var(--accent-dim), var(--shadow);
+  }
+  .about-avatar-fallback {
+    width: 200px; height: 200px; border-radius: 50%; flex-shrink: 0;
+    border: 3px solid var(--border-accent);
+    background: var(--accent-dim);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 2.5rem; font-weight: 800; color: var(--accent-light);
+    box-shadow: 0 0 0 6px var(--accent-dim), var(--shadow);
+    letter-spacing: .04em;
+  }
+  .about-intro-text { font-size: 1rem; color: var(--text-secondary); line-height: 1.7; }
+  .about-intro-text strong { color: var(--text-primary); }
+  .about-grid { display: grid; grid-template-columns: 1.1fr .9fr; gap: 4rem; align-items: start; }
+  .about-text p { color: var(--text-secondary); line-height: 1.8; margin-bottom: 1rem; font-size: .97rem; }
+  .about-text p strong { color: var(--text-primary); }
+  .pillars { display: grid; grid-template-columns: 1fr 1fr; gap: .75rem; }
+  .pillar {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--accent);
+    border-radius: var(--radius-sm);
+    padding: .85rem 1rem;
+    transition: background .2s, border-color .2s;
+  }
+  .pillar:hover { background: var(--surface3); border-left-color: var(--accent-light); }
+  .pillar-icon { font-size: 1.1rem; margin-bottom: .3rem; }
+  .pillar-title { font-size: .82rem; font-weight: 700; color: var(--text-primary); margin-bottom: .15rem; }
+  .pillar-desc { font-size: .75rem; color: var(--text-muted); line-height: 1.4; }
+
+  .skills-section { margin-top: 2rem; }
+  .skills-title { font-size: .8rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 1rem; }
+  .skills-chips { display: flex; flex-wrap: wrap; gap: .55rem; }
+  .skill-chip {
+    font-size: .8rem; font-weight: 600;
+    padding: .45rem 1rem; border-radius: 99px;
+    background: var(--surface3);
+    border: 1px solid var(--border);
+    color: var(--text-secondary);
+    transition: background .2s, border-color .2s, color .2s;
+    cursor: default;
+  }
+  .skill-chip:hover {
+    background: var(--accent-dim);
+    border-color: var(--border-accent);
+    color: var(--accent-light);
+  }
+
+  /* ── Cases ── */
+  #cases { background: #0F1117; }
+  .cases-intro { margin-bottom: 3.5rem; }
+  .case-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+  }
+  .case-header {
+    background: linear-gradient(135deg, #1a1040 0%, #14203a 100%);
+    border-bottom: 1px solid var(--border);
+    padding: 2.5rem 2.5rem 2rem;
+    position: relative; overflow: hidden;
+  }
+  .case-header::before {
+    content: "";
+    position: absolute; top: -40px; right: -40px;
+    width: 220px; height: 220px;
+    background: radial-gradient(circle, rgba(108,99,255,0.18) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+  .case-badge {
+    display: inline-flex; align-items: center; gap: .4rem;
+    font-size: .72rem; font-weight: 700; letter-spacing: .1em;
+    text-transform: uppercase; color: var(--accent);
+    background: var(--accent-dim); border: 1px solid var(--border-accent);
+    padding: .25rem .7rem; border-radius: 99px; margin-bottom: 1rem;
+  }
+  .case-title { font-size: 1.7rem; font-weight: 800; color: var(--text-primary); margin-bottom: .5rem; }
+  .case-subtitle { font-size: 1rem; color: var(--text-secondary); margin-bottom: 1.5rem; }
+  .case-meta { display: flex; flex-wrap: wrap; gap: .75rem; }
+  .meta-pill {
+    font-size: .75rem; color: var(--text-muted);
+    background: rgba(255,255,255,0.05);
+    border: 1px solid var(--border);
+    padding: .25rem .65rem; border-radius: 99px;
+    display: flex; align-items: center; gap: .35rem;
+  }
+  .meta-pill span { color: var(--text-secondary); }
+
+  /* KPI strip */
+  .kpi-strip {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    border-bottom: 1px solid var(--border);
+  }
+  .kpi-item {
+    padding: 1.5rem 2rem;
+    border-right: 1px solid var(--border);
+    text-align: center;
+    transition: background .2s;
+  }
+  .kpi-item:last-child { border-right: none; }
+  .kpi-item:hover { background: var(--accent-dim2); }
+  .kpi-val { font-size: 2rem; font-weight: 800; color: var(--accent-light); line-height: 1; }
+  .kpi-label { font-size: .75rem; color: var(--text-muted); margin-top: .3rem; }
+  .kpi-sub { font-size: .7rem; color: var(--text-muted); margin-top: .15rem; font-style: italic; }
+
+  /* Case body */
+  .case-body { padding: 2.5rem; }
+  .case-section { margin-bottom: 2.5rem; }
+  .case-section:last-child { margin-bottom: 0; }
+  .case-h3 {
+    font-size: 1rem; font-weight: 700; color: var(--text-primary);
+    margin-bottom: .75rem; display: flex; align-items: center; gap: .5rem;
+  }
+  .case-h3::before { content: ""; width: 3px; height: 1em; background: var(--accent); border-radius: 2px; display: inline-block; }
+  .case-p { font-size: .92rem; color: var(--text-secondary); line-height: 1.75; margin-bottom: .5rem; }
+  .case-p strong { color: var(--text-primary); }
+
+  /* Problem grid */
+  .problem-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 1rem; }
+  .problem-card {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 1.1rem 1.25rem;
+    transition: border-color .2s;
+  }
+  .problem-card:hover { border-color: var(--border-accent); }
+  .problem-icon { font-size: 1.2rem; margin-bottom: .4rem; }
+  .problem-title { font-size: .82rem; font-weight: 700; color: var(--text-primary); margin-bottom: .35rem; }
+  .problem-desc { font-size: .78rem; color: var(--text-muted); line-height: 1.5; }
+
+  /* Discovery tracks */
+  .discovery-tracks { display: flex; flex-direction: column; gap: .75rem; margin-top: 1rem; }
+  .track {
+    display: grid; grid-template-columns: auto 1fr;
+    gap: 1rem; align-items: start;
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 1.1rem 1.25rem;
+    position: relative;
+    transition: border-color .2s, background .2s;
+  }
+  .track:hover { border-color: var(--border-accent); background: var(--surface3); }
+  .track-badge {
+    width: 28px; height: 28px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: .7rem; font-weight: 800; flex-shrink: 0;
+    margin-top: .1rem;
+  }
+  .track-a .track-badge { background: rgba(52,211,153,.15); color: var(--green); border: 1px solid rgba(52,211,153,.3); }
+  .track-b .track-badge { background: rgba(251,146,60,.15); color: var(--orange); border: 1px solid rgba(251,146,60,.3); }
+  .track-c .track-badge { background: rgba(108,99,255,.15); color: var(--accent-light); border: 1px solid rgba(108,99,255,.3); }
+  .track-title { font-size: .85rem; font-weight: 700; color: var(--text-primary); margin-bottom: .25rem; }
+  .track-desc { font-size: .79rem; color: var(--text-muted); line-height: 1.5; }
+  .track-insight {
+    margin-top: .5rem; font-size: .78rem; font-style: italic;
+    padding: .4rem .7rem; border-radius: var(--radius-sm);
+    border-left: 2px solid;
+  }
+  .track-a .track-insight { color: var(--green); background: rgba(52,211,153,.07); border-color: var(--green); }
+  .track-b .track-insight { color: var(--orange); background: rgba(251,146,60,.07); border-color: var(--orange); }
+  .track-c .track-insight { color: var(--accent-light); background: rgba(108,99,255,.07); border-color: var(--accent); }
+
+  /* Insight spotlight */
+  .insight-spotlight {
+    background: linear-gradient(135deg, rgba(108,99,255,0.08), rgba(108,99,255,0.04));
+    border: 1px solid var(--border-accent);
+    border-radius: var(--radius);
+    padding: 1.4rem 1.6rem;
+    margin-top: 1rem; margin-bottom: 1rem;
+    position: relative; overflow: hidden;
+  }
+  .insight-spotlight::before {
+    content: "";
+    position: absolute; top: 0; left: 0; right: 0; height: 2px;
+    background: linear-gradient(90deg, var(--accent), var(--accent-light), transparent);
+  }
+  .insight-label { font-size: .72rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--accent); margin-bottom: .5rem; }
+  .insight-text { font-size: .9rem; color: var(--text-secondary); line-height: 1.7; }
+  .insight-text strong { color: var(--text-primary); }
+
+  /* Solutions */
+  .solutions-list { display: flex; flex-direction: column; gap: .75rem; margin-top: 1rem; }
+  .solution {
+    display: grid; grid-template-columns: auto 1fr;
+    gap: 1rem; align-items: start;
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 1.1rem 1.25rem;
+    transition: border-color .2s;
+  }
+  .solution:hover { border-color: var(--border-accent); }
+  .sol-num {
+    width: 28px; height: 28px; border-radius: 50%;
+    background: var(--accent-dim); border: 1px solid var(--border-accent);
+    display: flex; align-items: center; justify-content: center;
+    font-size: .72rem; font-weight: 800; color: var(--accent-light);
+    flex-shrink: 0;
+  }
+  .sol-title { font-size: .85rem; font-weight: 700; color: var(--text-primary); margin-bottom: .25rem; }
+  .sol-desc { font-size: .79rem; color: var(--text-muted); line-height: 1.55; }
+
+  /* Fraud scoring visual */
+  .scoring-wrapper { margin-top: .75rem; }
+  .scoring-spectrum {
+    height: 6px; border-radius: 99px;
+    background: linear-gradient(to right, var(--green), var(--yellow), var(--red));
+    margin-bottom: 1rem; position: relative;
+  }
+  .scoring-spectrum-labels {
+    display: flex; justify-content: space-between;
+    font-size: .65rem; font-weight: 700; letter-spacing: .08em;
+    text-transform: uppercase; margin-top: -.1rem; margin-bottom: .85rem;
+  }
+  .scoring-spectrum-labels span:nth-child(1) { color: var(--green); }
+  .scoring-spectrum-labels span:nth-child(2) { color: var(--yellow); }
+  .scoring-spectrum-labels span:nth-child(3) { color: var(--red); }
+  .fraud-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: .75rem; }
+  .fraud-card {
+    border-radius: var(--radius-sm);
+    padding: 1.1rem 1rem;
+    text-align: center;
+    border: 1px solid;
+    display: flex; flex-direction: column; align-items: center; gap: .5rem;
+  }
+  .fraud-card.good { background: rgba(52,211,153,.06); border-color: rgba(52,211,153,.3); }
+  .fraud-card.mid  { background: rgba(251,191,36,.06);  border-color: rgba(251,191,36,.3); }
+  .fraud-card.bad  { background: rgba(248,113,113,.06); border-color: rgba(248,113,113,.3); }
+  .fraud-icon {
+    width: 44px; height: 44px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.3rem;
+  }
+  .fraud-card.good .fraud-icon { background: rgba(52,211,153,.15); }
+  .fraud-card.mid  .fraud-icon { background: rgba(251,191,36,.15); }
+  .fraud-card.bad  .fraud-icon { background: rgba(248,113,113,.15); }
+  .fraud-label { font-size: .78rem; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; }
+  .fraud-card.good .fraud-label { color: var(--green); }
+  .fraud-card.mid  .fraud-label { color: var(--yellow); }
+  .fraud-card.bad  .fraud-label { color: var(--red); }
+  .fraud-desc { font-size: .72rem; color: var(--text-muted); line-height: 1.45; }
+  .fraud-divider { width: 100%; height: 1px; background: var(--border); }
+  .fraud-result { font-size: .7rem; font-style: italic; line-height: 1.4; }
+  .fraud-card.good .fraud-result { color: var(--green); }
+  .fraud-card.mid  .fraud-result { color: var(--yellow); }
+  .fraud-card.bad  .fraud-result { color: var(--red); }
+
+  /* Results */
+  .results-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-top: 1rem; }
+  .result-card {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 1.25rem;
+    transition: border-color .2s, transform .2s;
+  }
+  .result-card:hover { border-color: var(--border-accent); transform: translateY(-2px); }
+  .result-val { font-size: 2rem; font-weight: 800; line-height: 1; margin-bottom: .3rem; }
+  .result-val.up { color: var(--green); }
+  .result-val.mid { color: var(--yellow); }
+  .result-label { font-size: .8rem; font-weight: 600; color: var(--text-primary); margin-bottom: .2rem; }
+  .result-sub { font-size: .72rem; color: var(--text-muted); line-height: 1.4; }
+  .result-delta {
+    display: inline-flex; align-items: center; gap: .25rem;
+    font-size: .7rem; font-weight: 600; color: var(--green);
+    background: rgba(52,211,153,.1); border-radius: 99px;
+    padding: .15rem .5rem; margin-top: .4rem;
+  }
+
+  /* Learnings */
+  .learnings-grid { display: grid; grid-template-columns: 1fr 1fr; gap: .75rem; margin-top: 1rem; }
+  .learning {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 1rem 1.1rem;
+    font-size: .82rem; color: var(--text-muted); line-height: 1.55;
+    transition: border-color .2s;
+  }
+  .learning:hover { border-color: var(--border-accent); color: var(--text-secondary); }
+  .learning strong { color: var(--accent-light); display: block; margin-bottom: .25rem; font-size: .8rem; }
+
+
+  /* Placeholder case */
+  .case-placeholder {
+    background: var(--surface);
+    border: 1px dashed var(--border);
+    border-radius: var(--radius-lg);
+    padding: 3rem 2rem;
+    text-align: center;
+    margin-top: 2rem;
+    transition: border-color .2s;
+  }
+  .case-placeholder:hover { border-color: var(--border-accent); }
+  .placeholder-icon { font-size: 2rem; margin-bottom: .75rem; opacity: .4; }
+  .placeholder-text { font-size: .9rem; color: var(--text-muted); }
+
+  /* ── Contact ── */
+  #contact { background: var(--surface); }
+  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+  .contact-text p { color: var(--text-secondary); line-height: 1.75; font-size: .97rem; margin-bottom: 1.5rem; }
+  .contact-links { display: flex; flex-direction: column; gap: .75rem; }
+  .contact-link {
+    display: flex; align-items: center; gap: .85rem;
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 1rem 1.25rem;
+    transition: border-color .2s, background .2s;
+  }
+  .contact-link:hover { border-color: var(--border-accent); background: var(--surface3); }
+  .contact-link-icon {
+    width: 36px; height: 36px; border-radius: var(--radius-sm);
+    background: var(--accent-dim);
+    display: flex; align-items: center; justify-content: center;
+    font-size: .95rem; flex-shrink: 0;
+  }
+  .contact-link-info {}
+  .contact-link-label { font-size: .72rem; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: var(--text-muted); }
+  .contact-link-value { font-size: .88rem; font-weight: 500; color: var(--text-primary); }
+
+  /* ── Footer ── */
+  footer {
+    background: #0A0C12;
+    border-top: 1px solid var(--border);
+    padding: 2rem;
+    text-align: center;
+    font-size: .78rem; color: var(--text-muted);
+  }
+  footer span { color: var(--accent); }
+
+  /* ── Responsive ── */
+  /* ── Responsive: tablet ── */
+  @media (max-width: 720px) {
+    nav { padding: 0 1rem; }
+    .nav-links { gap: 1.25rem; }
+    .nav-links a { font-size: .8rem; }
+
+    section { padding: 4rem 1.25rem; }
+    #about { padding-top: 80px; }
+
+    /* Intro unificado */
+    .intro-grid { grid-template-columns: 1fr; gap: 2rem; text-align: center; }
+    .intro-photo-col { align-items: center; }
+    .about-avatar, .about-avatar-fallback { width: 140px; height: 140px; }
+    .hero-eyebrow { justify-content: center; }
+    .hero-ctas { justify-content: center; }
+    h1 { font-size: clamp(2rem, 6vw, 2.8rem); }
+
+    /* Stats strip */
+    .intro-stats { gap: .75rem; }
+    .intro-stats-divider { display: none; }
+    .intro-tags { justify-content: center; }
+
+    /* Career timeline */
+    [style*="display:flex; gap:0"] { flex-direction: column; border-radius: var(--radius-sm); }
+    [style*="display:flex; gap:0"] > div {
+      border-right: 1px solid var(--border) !important;
+      border-bottom: none !important;
+      border-radius: 0 !important;
+    }
+    [style*="display:flex; gap:0"] > div:first-child { border-radius: var(--radius-sm) var(--radius-sm) 0 0 !important; }
+    [style*="display:flex; gap:0"] > div:last-child { border-radius: 0 0 var(--radius-sm) var(--radius-sm) !important; }
+
+    /* About grid */
+    .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+    .pillars { grid-template-columns: 1fr 1fr; }
+
+    /* Cases */
+    .contact-grid { grid-template-columns: 1fr; gap: 2rem; }
+    .kpi-strip { grid-template-columns: 1fr 1fr; }
+    .kpi-item { border-right: none; border-bottom: 1px solid var(--border); }
+    .kpi-item:last-child { border-bottom: none; }
+    .problem-grid, .results-grid, .learnings-grid { grid-template-columns: 1fr; }
+    .fraud-grid { grid-template-columns: 1fr; }
+    .case-body { padding: 1.25rem; }
+    .case-header { padding: 1.75rem 1.25rem 1.25rem; }
+    .discovery-tracks { gap: .75rem; }
+    .solutions-list { gap: .75rem; }
+  }
+
+  /* ── Responsive: mobile ── */
+  @media (max-width: 480px) {
+    .nav-links { gap: .9rem; }
+    .nav-links a { font-size: .75rem; }
+    section { padding: 3rem 1rem; }
+
+    h1 { font-size: 2rem; }
+    .hero-desc { font-size: .92rem; }
+    .hero-eyebrow { font-size: .7rem; white-space: normal; text-align: center; }
+
+    .about-avatar, .about-avatar-fallback { width: 110px; height: 110px; }
+
+    .intro-stats { flex-direction: column; align-items: flex-start; gap: .5rem; }
+    .stat-grid { grid-template-columns: 1fr 1fr; }
+
+    .kpi-strip { grid-template-columns: 1fr; }
+    .kpi-item { border-right: none; border-bottom: 1px solid var(--border); }
+    .kpi-item:last-child { border-bottom: none; }
+
+    .pillars { grid-template-columns: 1fr; }
+    .fraud-grid { grid-template-columns: 1fr; }
+
+    .case-body { padding: 1rem; }
+    .case-header { padding: 1.25rem 1rem 1rem; }
+    .case-title { font-size: 1.2rem; }
+    .case-subtitle { font-size: .85rem; }
+
+    .carousel-slide img { max-height: 260px; }
+    .contact-links { gap: .75rem; }
+  }
+
+  /* ── Carousel ── */
+  .carousel-section { margin-top: 1.5rem; }
+  .carousel-label {
+    font-size: .7rem; font-weight: 700; letter-spacing: .1em;
+    text-transform: uppercase; color: var(--text-muted); margin-bottom: .75rem;
+  }
+  .carousel {
+    position: relative;
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+  }
+  .carousel-track {
+    display: flex;
+    transition: transform .35s cubic-bezier(.4,0,.2,1);
+  }
+  .carousel-slide {
+    min-width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .carousel-slide img {
+    width: 100%;
+    max-height: 420px;
+    object-fit: contain;
+    background: var(--surface);
+    display: block;
+  }
+  .carousel-caption {
+    width: 100%;
+    padding: .6rem 1rem;
+    font-size: .8rem;
+    color: var(--text-secondary);
+    background: var(--surface2);
+    border-top: 1px solid var(--border);
+    text-align: center;
+  }
+  .carousel-btn {
+    position: absolute; top: 50%; transform: translateY(-50%);
+    background: rgba(15,17,23,.75); border: 1px solid var(--border);
+    color: var(--text-primary); width: 36px; height: 36px;
+    border-radius: 50%; cursor: pointer; font-size: 1rem;
+    display: flex; align-items: center; justify-content: center;
+    transition: background .2s; z-index: 2;
+  }
+  .carousel-btn:hover { background: var(--accent-dim); border-color: var(--border-accent); }
+  .carousel-btn.prev { left: .75rem; }
+  .carousel-btn.next { right: .75rem; }
+  .carousel-dots {
+    display: flex; justify-content: center; gap: .4rem;
+    padding: .6rem 0 .9rem;
+    background: var(--surface2);
+  }
+  .carousel-dot {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: var(--border); cursor: pointer;
+    transition: background .2s, transform .2s;
+  }
+  .carousel-dot.active { background: var(--accent); transform: scale(1.3); }
+</style>
+</head>
+<body>
+
+<!-- ═══ NAV ═══ -->
+<nav>
+  <div class="nav-logo">Sofia Valperga · PM Portfolio</div>
+  <div class="nav-links">
+    <a href="#about">Sobre mí</a>
+    <a href="#cases">Casos</a>
+    <a href="#contact">Contacto</a>
+  </div>
+</nav>
+
+<!-- ═══ INTRO (unificado) ═══ -->
+<section id="about">
+  <div class="container">
+
+    <!-- Fila 1: foto + identidad + descripción -->
+    <div class="intro-grid">
+      <div class="intro-photo-col">
+        <img src="foto_sofia_400x400.jpg" alt="Sofia Valperga" class="about-avatar" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="about-avatar-fallback" style="display:none">SV</div>
+      </div>
+      <div>
+        <div class="hero-eyebrow">Product Manager · Payments · Fintech · B2B · LatAm</div>
+        <h1>Sofia<br><span>Valperga</span></h1>
+        <p class="hero-desc">
+          5 años liderando equipos de alto impacto en productos digitales en <strong style="color:var(--text-primary)">payments y e-commerce</strong>.
+          Combino liderazgo, pensamiento estratégico y ejecución para transformar problemas en soluciones.
+        </p>
+        <div class="hero-ctas">
+          <a href="#cases" class="btn btn-primary">Ver casos →</a>
+          <a href="#contact" class="btn btn-ghost">Contacto</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Fila 2: stats + tags en una tira horizontal -->
+    <div class="intro-stats">
+      <div class="stat-item">
+        <div class="stat-value">5+</div>
+        <div class="stat-label">años en producto</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-value">+50pp</div>
+        <div class="stat-label">NPS mejorado</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-value">B2C+B2B</div>
+        <div class="stat-label">productos liderados</div>
+      </div>
+      <div class="intro-stats-divider"></div>
+      <div class="intro-tags">
+        <span class="tag">Payments</span>
+        <span class="tag">POS / Readers</span>
+        <span class="tag">E-commerce</span>
+        <span class="tag">Fintech</span>
+        <span class="tag">Data-driven</span>
+        <span class="tag">User Centric</span>
+      </div>
+    </div>
+
+    <!-- Fila 3: línea de carrera -->
+    <div style="display:flex; gap:0; margin-bottom:2.5rem; overflow:hidden; border-radius:var(--radius-sm);">
+      <div style="flex:1; background:var(--surface2); border:1px solid var(--border); border-right:none; padding:.75rem 1rem; border-radius:var(--radius-sm) 0 0 var(--radius-sm);">
+        <div style="font-size:.68rem; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--text-muted); margin-bottom:.2rem;">Naranja X</div>
+        <div style="font-size:.78rem; color:var(--text-secondary); font-weight:600;">Senior PO · Medios de Cobro</div>
+        <div style="font-size:.7rem; color:var(--text-muted); margin-top:.15rem;">Abr 2022 – Jul 2024</div>
+      </div>
+      <div style="flex:1; background:var(--surface2); border:1px solid var(--border); border-right:none; padding:.75rem 1rem; border-left:2px solid var(--accent);">
+        <div style="font-size:.68rem; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--text-muted); margin-bottom:.2rem;">GetNet Argentina</div>
+        <div style="font-size:.78rem; color:var(--text-secondary); font-weight:600;">Senior PO · Adquirencia</div>
+        <div style="font-size:.7rem; color:var(--text-muted); margin-top:.15rem;">Jul 2024 – Mar 2025</div>
+      </div>
+      <div style="flex:1; background:var(--accent-dim); border:1px solid var(--border-accent); padding:.75rem 1rem; border-radius:0 var(--radius-sm) var(--radius-sm) 0; border-left:2px solid var(--accent);">
+        <div style="font-size:.68rem; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--accent); margin-bottom:.2rem;">Mercado Libre ✦ Actual</div>
+        <div style="font-size:.78rem; color:var(--text-primary); font-weight:600;">Product Specialist · CBT B2B</div>
+        <div style="font-size:.7rem; color:var(--accent); margin-top:.15rem;">Mar 2025 – Presente</div>
+      </div>
+    </div>
+
+    <!-- Fila 4: bio + pilares -->
+    <div class="divider"></div>
+    <div class="about-grid">
+      <div class="about-text">
+        <p>Hace 5 años lidero el desarrollo de productos digitales con diseño centrado en el usuario, para <strong>payments y e-commerce</strong>. Empodero y construyo equipos de alto rendimiento, conectando estrategia con ejecución en contextos complejos.</p>
+        <p>Con experiencia en la industria financiera, diseñé soluciones de cobros y pagos. Impulsé el lanzamiento y escalado de productos end-to-end — lectores de tarjetas (POS), integración de cobros con <strong>PIX</strong> y soluciones de pago inmediato — siempre con foco en impacto de negocio.</p>
+        <p>Combino liderazgo, pensamiento estratégico y ejecución para transformar la visión en resultados concretos.</p>
+        <div class="skills-section">
+          <div class="skills-title">Competencias clave</div>
+          <div class="skills-chips">
+            <span class="skill-chip">Liderazgo de equipos</span>
+            <span class="skill-chip">Resolución de problemas</span>
+            <span class="skill-chip">Desarrollo de productos</span>
+            <span class="skill-chip">Análisis estratégico de datos</span>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="pillars">
+          <div class="pillar">
+            <div class="pillar-icon">🎯</div>
+            <div class="pillar-title">Estrategia de producto</div>
+            <div class="pillar-desc">Alineada a objetivos de negocio y métricas clave</div>
+          </div>
+          <div class="pillar">
+            <div class="pillar-icon">📊</div>
+            <div class="pillar-title">Priorización con foco</div>
+            <div class="pillar-desc">Impacto medible, sin distracciones</div>
+          </div>
+          <div class="pillar">
+            <div class="pillar-icon">⚡</div>
+            <div class="pillar-title">Ejecución ágil</div>
+            <div class="pillar-desc">Equipos orientados a resultados concretos</div>
+          </div>
+          <div class="pillar">
+            <div class="pillar-icon">💡</div>
+            <div class="pillar-title">Problem-first</div>
+            <div class="pillar-desc">¿Qué problema? ¿Qué métrica? ¿Qué valor?</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══ CASES ═══ -->
+<section id="cases">
+  <div class="container">
+    <div class="cases-intro">
+      <div class="section-label">Casos de producto</div>
+      <h2 class="section-title">Continuo discovery del problema</h2>
+      <div class="divider"></div>
+      <p class="section-sub">Cada caso refleja cómo navego la ambigüedad, priorizo bajo incertidumbre y decido con criterio.</p>
+    </div>
+
+    <!-- ── CASO: TOQUE ── -->
+    <div class="case-card">
+      <div class="case-header">
+        <div class="case-badge">📱 Caso 01 · Naranja X · Fintech</div>
+        <div class="case-title">Toque — Lector de Pagos</div>
+        <div class="case-subtitle">De NPS -10 a +40 pp: cómo rediseñamos la tasa de aceptación desde sus causas raíz</div>
+        <div class="case-meta">
+          <div class="meta-pill">📅 <span>Sep 2022 – Sep 2023</span></div>
+          <div class="meta-pill">🏢 <span>Naranja X</span></div>
+          <div class="meta-pill">👤 <span>Senior PO end-to-end</span></div>
+          <div class="meta-pill">💳 <span>Pagos presenciales · B2C</span></div>
+        </div>
+      </div>
+
+      <!-- KPI strip -->
+      <div class="kpi-strip">
+        <div class="kpi-item">
+          <div class="kpi-val" style="color:var(--green)">-10 → +40pp</div>
+          <div class="kpi-label">NPS en 6 meses</div>
+          <div class="kpi-sub">2.º mejor del mercado</div>
+        </div>
+        <div class="kpi-item">
+          <div class="kpi-val" style="color:var(--yellow)">30% → 75%</div>
+          <div class="kpi-label">Tasa de aceptación</div>
+          <div class="kpi-sub">vs. OKR ajustado 80%</div>
+        </div>
+        <div class="kpi-item">
+          <div class="kpi-val" style="color:var(--green)">+5%</div>
+          <div class="kpi-label">Pagos en campañas</div>
+          <div class="kpi-sub">heavy users segmentados</div>
+        </div>
+      </div>
+
+      <div class="case-body">
+
+        <!-- CONTEXTO -->
+        <div class="case-section">
+          <div class="case-h3">Contexto del producto</div>
+          <p class="case-p">Toque es el lector de pagos físico de Naranja X. Se conecta vía Bluetooth al celular del merchant y acepta pagos con cualquier tarjeta mediante contactless, chip o banda magnética. El dinero de cada venta se acredita directamente en la cuenta Naranja X del comerciante.</p>
+        </div>
+
+        <!-- PROBLEMA -->
+        <div class="case-section">
+          <div class="case-h3">El problema</div>
+          <p class="case-p">Al tomar el producto, el diagnóstico inicial reveló dos problemas críticos interrelacionados:</p>
+          <div class="problem-grid">
+            <div class="problem-card">
+              <div class="problem-icon">📉</div>
+              <div class="problem-title">Tasa de aceptación: 30%</div>
+              <div class="problem-desc">El 70% de los intentos de pago terminaban en rechazo. Los motivos no estaban bien catalogados ni entendidos.</div>
+            </div>
+            <div class="problem-card">
+              <div class="problem-icon">😤</div>
+              <div class="problem-title">NPS: -10</div>
+              <div class="problem-desc">Top detractores: "Problemas de conectividad", "Pago rechazado", "Demora más de lo esperado".</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- DISCOVERY -->
+        <div class="case-section">
+          <div class="case-h3">Discovery: tres frentes en paralelo</div>
+          <p class="case-p">El proceso no fue lineal. Trabajamos simultáneamente en tres frentes que se retroalimentaban. Los frentes A y B eran <strong>quick wins</strong> de impacto rápido mientras investigábamos la causa raíz (Frente C).</p>
+          <div class="discovery-tracks">
+            <div class="track track-a">
+              <div class="track-badge">A</div>
+              <div>
+                <div class="track-title">Conectividad y latencia — Análisis técnico con IT</div>
+                <div class="track-desc"><ul style="margin:.2rem 0 0 1rem;padding:0;list-style:disc;line-height:1.75;">
+                  <li>Revisé logs BLE y analicé timeouts con el equipo de IT</li>
+                  <li>El timeout se activaba demasiado rápido — antes de completar la transacción</li>
+                  <li>El walkthrough no comunicaba la distancia óptima entre celular y lector</li>
+                </ul></div>
+                <div class="track-insight">→ Parte del problema era evitable con mejor comunicación al usuario en el onboarding.</div>
+              </div>
+            </div>
+            <div class="track track-b">
+              <div class="track-badge">B</div>
+              <div>
+                <div class="track-title">UX de pantallas de rechazo — Rediseño de mensajes</div>
+                <div class="track-desc"><ul style="margin:.2rem 0 0 1rem;padding:0;list-style:disc;line-height:1.75;">
+                  <li>Analicé todas las pantallas de error post-rechazo</li>
+                  <li>No existía diferenciación entre rechazos definitivos y recuperables</li>
+                  <li>Los rechazos definitivos ofrecían CTA de reintento — multiplicando la frustración del merchant</li>
+                </ul></div>
+                <div class="track-insight">→ Los rechazos definitivos no tenían CTA de "no reintentar", multiplicando la frustración.</div>
+              </div>
+            </div>
+            <div class="track track-c">
+              <div class="track-badge">C</div>
+              <div>
+                <div class="track-title">Análisis de tasa de aceptación por MCC — El hallazgo central</div>
+                <div class="track-desc"><ul style="margin:.2rem 0 0 1rem;padding:0;list-style:disc;line-height:1.75;">
+                  <li>Abrí la tasa de aceptación por establecimiento y MCC</li>
+                  <li>Los peores performers: motos, alquiler de salones, servicios de ticket alto</li>
+                  <li>Todos concentraban el mismo código: "Denegada 05" — un genérico que escondía múltiples reglas de fraude</li>
+                  <li>Convoqué una mesa técnica con Visa para decodificarlo</li>
+                </ul></div>
+                <div class="track-insight">→ Los establecimientos fraudulentos dentro del mismo agrupador contaminaban la tasa de merchants legítimos.</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="insight-spotlight">
+            <div class="insight-label">💡 Insight transformador</div>
+            <div class="insight-text">El problema no era tecnológico ni de UX — era <strong>estructural y de riesgo</strong>. Los vectores de fraude detectados por Visa estaban penalizando a toda la red de merchants del mismo agrupador, incluyendo comerciantes completamente honestos. Resolver la tasa de aceptación requería rediseñar cómo se asignaban los establecimientos.</div>
+          </div>
+        </div>
+
+        <!-- SOLUCIONES -->
+        <div class="case-section">
+          <div class="case-h3">Las soluciones</div>
+          <div class="solutions-list">
+            <div class="solution">
+              <div class="sol-num">1</div>
+              <div>
+                <div class="sol-title">Mejoras técnicas + rediseño del onboarding de conexión</div>
+                <div class="sol-desc">Corregimos bugs BLE, optimizamos timeouts y rediseñamos el walkthrough de emparejamiento con indicaciones visuales claras sobre la distancia requerida durante toda la transacción. Agregamos mensajes de error de conectividad con instrucciones accionables.</div>
+              </div>
+            </div>
+            <div class="solution">
+              <div class="sol-num">2</div>
+              <div>
+                <div class="sol-title">Clasificación de rechazos con experiencias diferenciadas</div>
+                <div class="sol-desc">
+                  <strong style="color:var(--text-primary)">Rechazos definitivos</strong> (fondos, fraude, tarjeta bloqueada): mensaje explícito de no reintentar, sin CTA de reintento.<br>
+                  <strong style="color:var(--text-primary)">Rechazos recuperables</strong> (error, timeout): CTA de reintento disponible, mensaje empático orientado a resolver.
+                </div>
+              </div>
+            </div>
+            <div class="solution">
+              <div class="sol-num">3</div>
+              <div>
+                <div class="sol-title">Sistema de scoring de merchants (Anti-fraude)</div>
+                <div class="sol-desc">Junto al equipo de Onboarding, diseñé un sistema de puntuación para clasificar a cada merchant y asignarle el establecimiento correspondiente según su perfil de riesgo:</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="scoring-wrapper">
+            <div class="scoring-spectrum"></div>
+            <div class="scoring-spectrum-labels">
+              <span>Saludable</span>
+              <span>Indefinido</span>
+              <span>Peligroso</span>
+            </div>
+            <div class="fraud-grid">
+              <div class="fraud-card good">
+                <div class="fraud-icon">✅</div>
+                <div class="fraud-label">Saludable</div>
+                <div class="fraud-desc">Validaciones completas, bajo riesgo</div>
+                <div class="fraud-divider"></div>
+                <div class="fraud-result">Establecimiento con alta tasa de aceptación y reglas flexibles</div>
+              </div>
+              <div class="fraud-card mid">
+                <div class="fraud-icon">⚠️</div>
+                <div class="fraud-label">Indefinido</div>
+                <div class="fraud-desc">Información incompleta o señales ambiguas</div>
+                <div class="fraud-divider"></div>
+                <div class="fraud-result">Establecimiento intermedio con monitoreo activo</div>
+              </div>
+              <div class="fraud-card bad">
+                <div class="fraud-icon">🚨</div>
+                <div class="fraud-label">Peligroso</div>
+                <div class="fraud-desc">Señales de alerta en validación</div>
+                <div class="fraud-divider"></div>
+                <div class="fraud-result">Establecimiento con reglas de fraude más duras</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- DECISIÓN CLAVE -->
+        <div class="case-section">
+          <div class="case-h3">Decisión clave</div>
+          <div class="insight-spotlight">
+            <div class="insight-label">📌 Renegociar el OKR</div>
+            <div class="insight-text">El OKR original del 90% era matemáticamente inalcanzable sin comprometer el sistema antifraude. Justificar ese límite ante los stakeholders con datos — y renegociar a un objetivo más realista y sostenible — fue tan importante como las soluciones técnicas.</div>
+          </div>
+        </div>
+
+        <!-- IMPACTO DE NEGOCIO -->
+        <div class="case-section">
+          <div class="case-h3">Impacto en el negocio</div>
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:.75rem; margin-bottom:.75rem;">
+            <div style="background:var(--surface2); border:1px solid rgba(52,211,153,.25); border-left:3px solid var(--green); border-radius:var(--radius-sm); padding:1rem 1.1rem;">
+              <div style="font-size:1.4rem; font-weight:800; color:var(--green); line-height:1; margin-bottom:.3rem;">30% → 25%</div>
+              <div style="font-size:.8rem; font-weight:600; color:var(--text-primary); margin-bottom:.15rem;">Churn en heavy users</div>
+              <div style="font-size:.72rem; color:var(--text-muted);">Reducción de 5pp en el segmento de mayor valor</div>
+            </div>
+            <div style="background:var(--surface2); border:1px solid rgba(52,211,153,.25); border-left:3px solid var(--green); border-radius:var(--radius-sm); padding:1rem 1.1rem;">
+              <div style="font-size:1.4rem; font-weight:800; color:var(--green); line-height:1; margin-bottom:.3rem;">↑ LTV</div>
+              <div style="font-size:.8rem; font-weight:600; color:var(--text-primary); margin-bottom:.15rem;">Lifetime Value por usuario</div>
+              <div style="font-size:.72rem; color:var(--text-muted);">Usuarios activos por más tiempo, con más transacciones — impacto directo en el P&L</div>
+            </div>
+          </div>
+          <div class="insight-spotlight" style="margin-top:0">
+            <div class="insight-label">📈 Conexión con el negocio</div>
+            <div class="insight-text">El perfilado de merchants no solo mejoró la experiencia — redujo el churn de heavy users y alargó su LTV al generar mayor volumen de transacciones. Ese incremento tuvo impacto directo y medible en el P&L de la empresa.</div>
+          </div>
+        </div>
+
+        <!-- APRENDIZAJES -->
+        <div class="case-section">
+          <div class="case-h3">Aprendizajes</div>
+          <div class="learnings-grid">
+            <div class="learning">
+              <strong>No resolver síntomas</strong>
+              La UX de rechazo era un síntoma. El fraude sistémico era la causa raíz. Hubiera sido fácil quedarse en la superficie.
+            </div>
+            <div class="learning">
+              <strong>Aliados externos como desbloqueadores</strong>
+              La mesa con Visa fue el punto de inflexión. El equipo interno no podía obtener ese insight solo.
+            </div>
+            <div class="learning">
+              <strong>Gestionar la incertidumbre</strong>
+              Semanas trabajando en hipótesis sin certeza de la causa raíz. Mantener al equipo enfocado y a los stakeholders informados sin prometer resultados prematuros.
+            </div>
+            <div class="learning">
+              <strong>Renegociar con datos</strong>
+              Saber cuándo un OKR es una barrera para el negocio real — y tener el coraje y los datos para cambiarlo.
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /case-body -->
+    </div><!-- /case-card -->
+
+    <!-- ── CASO 2: GETNET ── -->
+    <div class="case-card" style="margin-top:2rem">
+      <div class="case-header">
+        <div class="case-badge">⚙️ Caso 02 · GetNet · Fintech</div>
+        <div class="case-title">Capability de Carga de Promociones</div>
+        <div class="case-subtitle">De un proceso manual de 48hs a una herramienta self-service con lógica de priorización automática</div>
+        <div class="case-meta">
+          <div class="meta-pill">📅 <span>1 trimestre · 2024–2025</span></div>
+          <div class="meta-pill">🏢 <span>GetNet Argentina</span></div>
+          <div class="meta-pill">👤 <span>Senior PO end-to-end</span></div>
+          <div class="meta-pill">🤝 <span>4 equipos · B2B</span></div>
+        </div>
+      </div>
+
+      <div class="kpi-strip">
+        <div class="kpi-item">
+          <div class="kpi-val" style="color:var(--green)">-70%</div>
+          <div class="kpi-label">Carga operativa</div>
+          <div class="kpi-sub">en equipos involucrados</div>
+        </div>
+        <div class="kpi-item">
+          <div class="kpi-val" style="color:var(--green)">48hs → ½hs</div>
+          <div class="kpi-label">Tiempo de carga</div>
+          <div class="kpi-sub">+ 1 jornada máx. de validación</div>
+        </div>
+        <div class="kpi-item">
+          <div class="kpi-val" style="color:var(--green)">-90%</div>
+          <div class="kpi-label">Errores de carga manual</div>
+          <div class="kpi-sub">cashback, días, condiciones</div>
+        </div>
+      </div>
+
+      <div class="case-body">
+
+        <div class="case-section">
+          <div class="case-h3">Contexto y problema</div>
+          <p class="case-p">GetNet cerraba contratos de promociones (cuotas sin interés, cashback, etc.) con distintas marcas y procesadores. El problema: muchas promociones se superponían y no existía una lógica sistematizada para priorizarlas. El flujo era completamente manual — negocio definía las reglas en un Excel, operaciones generaba un ticket y el equipo de IT las cargaba directamente en el código del procesamiento de cobros.</p>
+          <div class="insight-spotlight" style="margin-top:.75rem">
+            <div class="insight-label">⚠️ El costo real del proceso</div>
+            <div class="insight-text">Promociones que se cerraban el mismo día obligaban al equipo de IT a intervenir fuera de horario para hacerlas efectivas. Cualquier error en el Excel — porcentaje de cashback incorrecto, días de aplicación equivocados — se traducía directamente en fallas en el procesamiento.</div>
+          </div>
+        </div>
+
+        <div class="case-section">
+          <div class="case-h3">Discovery: dos frentes, una causa raíz</div>
+          <p class="case-p">Lideré un proceso de discovery con research, benchmark y entrevistas a los dos equipos que vivían el problema: Operaciones y Negocio. Lo que encontré en cada uno cambió la dirección del diseño.</p>
+          <div class="discovery-tracks">
+            <div class="track track-a">
+              <div class="track-badge">A</div>
+              <div>
+                <div class="track-title">Mapeo del proceso con Operaciones</div>
+                <div class="track-desc"><ul style="margin:.2rem 0 0 1rem;padding:0;list-style:disc;line-height:1.75;">
+                  <li>Entrevisté al equipo que traducía los Excel en tickets para IT</li>
+                  <li>Cada promoción: recibir Excel → interpretarlo → ticket → esperar a IT</li>
+                  <li>Las de último momento obligaban a intervenir fuera de horario</li>
+                  <li>Cualquier ambigüedad en el Excel = una vuelta más de consultas</li>
+                </ul></div>
+                <div class="track-insight">→ Operaciones era el cuello de botella visible — pero era un síntoma, no la causa.</div>
+              </div>
+            </div>
+            <div class="track track-b">
+              <div class="track-badge">B</div>
+              <div>
+                <div class="track-title">Entrevistas con Negocio: la voz que faltaba en el sistema</div>
+                <div class="track-desc"><ul style="margin:.2rem 0 0 1rem;padding:0;list-style:disc;line-height:1.75;">
+                  <li>Entrevisté al equipo que cerraba contratos de promociones</li>
+                  <li>No tenían canal directo al sistema — todo pasaba por 2 equipos intermedios</li>
+                  <li>La priorización entre promociones superpuestas se definía de forma informal</li>
+                  <li>Resultado: inconsistencias frecuentes y dependencia total de IT para cualquier cambio</li>
+                </ul></div>
+                <div class="track-insight">→ El cuello de botella real era de acceso, no de capacidad. Negocio no tenía voz en el sistema.</div>
+              </div>
+            </div>
+          </div>
+          <div class="insight-spotlight">
+            <div class="insight-label">💡 Insight transformador</div>
+            <div class="insight-text">El problema no era que Operaciones fuera lento — era que <strong>Negocio no tenía forma de expresar sus reglas sin pasar por dos equipos intermedios</strong>. Eso cambió el punto de partida del diseño: la solución tenía que empezar desde Negocio, no desde Operaciones.</div>
+          </div>
+        </div>
+
+        <div class="case-section">
+          <div class="case-h3">Solución</div>
+          <div class="solutions-list">
+            <div class="solution">
+              <div class="sol-num">1</div>
+              <div>
+                <div class="sol-title">Interfaz self-service para negocio</div>
+                <div class="sol-desc">Desarrollé una capability de carga diseñada como walkthrough guiado para el equipo de negocio, eliminando la necesidad de intermediarios para definir y cargar una promoción.</div>
+              </div>
+            </div>
+            <div class="solution">
+              <div class="sol-num">2</div>
+              <div>
+                <div class="sol-title">Flujo de validación para operaciones</div>
+                <div class="sol-desc">La carga de negocio llega como ticket de validación al equipo de operaciones, quienes aprueban antes de que la lógica se aplique — con un tope máximo de una jornada laboral.</div>
+              </div>
+            </div>
+            <div class="solution">
+              <div class="sol-num">3</div>
+              <div>
+                <div class="sol-title">Motor de priorización automática</div>
+                <div class="sol-desc">Detrás de la interfaz se construyó la lógica de priorización según las reglas de negocio: qué promoción aplica según día, marca y procesador cuando hay superposición, sin intervención manual de IT.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Carrusel de pantallas -->
+        <div class="case-section carousel-section">
+          <div class="carousel-label">Pantallas del producto</div>
+          <div class="carousel" id="getnet-carousel">
+            <div class="carousel-track" id="getnet-track">
+              <div class="carousel-slide">
+                <img src="GETNET/paso uno.png" alt="Paso 1">
+                <div class="carousel-caption">Paso 1 — inicio del flujo de carga</div>
+              </div>
+              <div class="carousel-slide">
+                <img src="GETNET/paso 2.png" alt="Paso 2">
+                <div class="carousel-caption">Paso 2</div>
+              </div>
+              <div class="carousel-slide">
+                <img src="GETNET/paso 3.png" alt="Paso 3">
+                <div class="carousel-caption">Paso 3</div>
+              </div>
+              <div class="carousel-slide">
+                <img src="GETNET/paso 4.png" alt="Paso 4">
+                <div class="carousel-caption">Paso 4</div>
+              </div>
+              <div class="carousel-slide">
+                <img src="GETNET/Configuracion financiera (1).png" alt="Configuración financiera">
+                <div class="carousel-caption">Configuración financiera — condiciones de la promo</div>
+              </div>
+              <div class="carousel-slide">
+                <img src="GETNET/Gestor de campanas.png" alt="Gestor de campañas">
+                <div class="carousel-caption">Gestor de campañas — vista general de promociones activas</div>
+              </div>
+            </div>
+            <button class="carousel-btn prev" onclick="moveCarousel('getnet', -1)">‹</button>
+            <button class="carousel-btn next" onclick="moveCarousel('getnet', 1)">›</button>
+            <div class="carousel-dots" id="getnet-dots"></div>
+          </div>
+        </div>
+
+        <div class="case-section">
+          <div class="case-h3">Decisión clave</div>
+          <div class="insight-spotlight">
+            <div class="insight-label">📌 Diseñar para el usuario real, no para el técnico</div>
+            <div class="insight-text">La tentación era construir una herramienta para operaciones. Las entrevistas revelaron que el cuello de botella real estaba antes: negocio no tenía forma de expresar sus reglas sin pasar por dos equipos intermedios. Empezar el walkthrough desde negocio fue la decisión que desbloqueó todo el flujo.</div>
+          </div>
+        </div>
+
+        <!-- IMPACTO DE NEGOCIO -->
+        <div class="case-section">
+          <div class="case-h3">Impacto en el negocio</div>
+          <p class="case-p">La capability habilitó que negocio pueda cerrar y activar promociones en tiempo real — sin fricción operativa ni dependencia de IT. Esto desbloqueó el cierre de nuevas promociones que de otro modo no hubieran podido implementarse por restricciones del proceso anterior.</p>
+          <div class="insight-spotlight" style="margin-top:.75rem">
+            <div class="insight-label">🔗 Input directo para "Pago Inmediato"</div>
+            <div class="insight-text">El volumen de transacciones generado por los merchants a partir de las nuevas promociones activadas fue input directo para escalar y darle push a la feature de <strong>Pago Inmediato</strong> — conectando el impacto operativo con una iniciativa estratégica de producto de mayor escala.</div>
+          </div>
+        </div>
+
+        <!-- APRENDIZAJES -->
+        <div class="case-section">
+          <div class="case-h3">Aprendizajes</div>
+          <div class="learnings-grid">
+            <div class="learning">
+              <strong>El proceso más lento siempre tiene un dueño</strong>
+              Antes de diseñar la solución, el discovery reveló que el problema no era técnico — era de acceso. Negocio no tenía voz en el sistema. Encontrar ese cuello de botella humano fue más valioso que cualquier mejora técnica.
+            </div>
+            <div class="learning">
+              <strong>La eficiencia operativa tiene impacto estratégico</strong>
+              Reducir la fricción interna no es solo una mejora de procesos — en este caso habilitó una velocidad de go-to-market que se tradujo en nuevas promociones, más transacciones y un producto nuevo. El impacto de una herramienta interna puede ser mucho más grande que lo que aparece en el ticket.
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══ CONTACT ═══ -->
+<section id="contact">
+  <div class="container">
+    <div class="contact-grid">
+      <div class="contact-text">
+        <div class="section-label">Contacto</div>
+        <h2 class="section-title">Hablemos</h2>
+        <div class="divider"></div>
+        <p>Si estás buscando una PM apasionada por el desarrollo de producto desde el problema, con experiencia end-to-end en pagos, fintech y construcción de estrategia de producto.</p>
+      </div>
+      <div class="contact-links">
+        <a href="mailto:asvalperga@gmail.com" class="contact-link">
+          <div class="contact-link-icon">✉️</div>
+          <div class="contact-link-info">
+            <div class="contact-link-label">Email</div>
+            <div class="contact-link-value">asvalperga@gmail.com</div>
+          </div>
+        </a>
+        <a href="https://www.linkedin.com/in/sofiavalperga/" target="_blank" class="contact-link">
+          <div class="contact-link-icon">🔗</div>
+          <div class="contact-link-info">
+            <div class="contact-link-label">LinkedIn</div>
+            <div class="contact-link-value">/in/sofiavalperga</div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FOOTER ═══ -->
+<footer>
+  <span>Sofia Valperga</span> · Product Manager · 2026
+</footer>
+
+<script>
+  const carousels = {};
+
+  function initCarousel(id) {
+    const track = document.getElementById(id + '-track');
+    const dotsContainer = document.getElementById(id + '-dots');
+    const slides = track.querySelectorAll('.carousel-slide');
+    const total = slides.length;
+    let current = 0;
+
+    carousels[id] = { current, total, track, dotsContainer };
+
+    // Crear dots
+    for (let i = 0; i < total; i++) {
+      const dot = document.createElement('div');
+      dot.className = 'carousel-dot' + (i === 0 ? ' active' : '');
+      dot.addEventListener('click', () => goTo(id, i));
+      dotsContainer.appendChild(dot);
+    }
+  }
+
+  function goTo(id, index) {
+    const c = carousels[id];
+    c.current = (index + c.total) % c.total;
+    c.track.style.transform = `translateX(-${c.current * 100}%)`;
+    c.dotsContainer.querySelectorAll('.carousel-dot').forEach((d, i) => {
+      d.classList.toggle('active', i === c.current);
+    });
+  }
+
+  function moveCarousel(id, dir) {
+    goTo(id, carousels[id].current + dir);
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    initCarousel('getnet');
+  });
+</script>
+</body>
+</html>
