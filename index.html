@@ -39,7 +39,6 @@
     --radius-sm: 8px;
     --radius-lg: 20px;
     --shadow: 0 4px 24px rgba(0,0,0,0.35);
-    --shadow-lg: 0 12px 48px rgba(0,0,0,0.5);
   }
 
   /* ── Nav ── */
@@ -65,7 +64,7 @@
 
   /* ── Sections ── */
   section { padding: 6rem 2rem; }
-  .container { max-width: 900px; margin: 0 auto; }
+  .container { max-width: 1100px; margin: 0 auto; }
   .section-label {
     font-size: .75rem; font-weight: 700; letter-spacing: .12em;
     text-transform: uppercase; color: var(--accent);
@@ -88,12 +87,6 @@
   }
 
   /* ── Intro unificado ── */
-  #about {
-    background:
-      radial-gradient(ellipse 80% 60% at 60% 30%, rgba(108,99,255,0.09) 0%, transparent 70%),
-      #0F1117;
-    padding-top: 100px;
-  }
   .intro-grid {
     display: grid; grid-template-columns: 200px 1fr;
     gap: 3.5rem; align-items: center;
@@ -109,10 +102,6 @@
   .intro-stats .stat-item { flex: 1; min-width: 80px; background: none; border: none; padding: 0; }
   .intro-stats-divider { width: 1px; height: 36px; background: var(--border); flex-shrink: 0; }
   .intro-tags { display: flex; flex-wrap: wrap; gap: .45rem; flex: 2; }
-  .about-bio-title {
-    font-size: clamp(1.3rem, 2.5vw, 1.7rem); font-weight: 700;
-    color: var(--text-primary); margin-bottom: .5rem; line-height: 1.3;
-  }
   .hero-eyebrow {
     display: inline-flex; align-items: center; gap: .5rem;
     font-size: .78rem; font-weight: 600; letter-spacing: .1em;
@@ -140,41 +129,27 @@
     font-size: .9rem; font-weight: 600; transition: all .2s; cursor: pointer;
   }
   .btn-primary {
-    background: var(--accent); color: #fff;
-    border: 1px solid var(--accent);
+    background: linear-gradient(135deg, var(--accent) 0%, #a78bfa 100%); color: #fff;
+    border: 1px solid transparent;
   }
-  .btn-primary:hover { background: var(--accent-light); border-color: var(--accent-light); transform: translateY(-1px); box-shadow: 0 6px 20px rgba(108,99,255,.4); }
+  .btn-primary:hover { background: linear-gradient(135deg, var(--accent-light) 0%, #c4b5fd 100%); transform: translateY(-1px); box-shadow: 0 6px 20px rgba(108,99,255,.4); }
   .btn-ghost {
-    background: transparent; color: var(--text-secondary);
-    border: 1px solid var(--border);
+    background:
+      linear-gradient(#161B27, #161B27) padding-box,
+      linear-gradient(135deg, var(--accent) 0%, #a78bfa 100%) border-box;
+    color: #fff;
+    border: 2px solid transparent;
   }
-  .btn-ghost:hover { border-color: var(--accent); color: var(--accent-light); transform: translateY(-1px); }
+  .btn-ghost:hover {
+    background:
+      linear-gradient(#1E2434, #1E2434) padding-box,
+      linear-gradient(135deg, var(--accent) 0%, #a78bfa 100%) border-box;
+    color: #fff; transform: translateY(-1px);
+  }
 
-  /* Hero right — stats card */
-  .hero-card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: var(--radius-lg);
-    padding: 2rem;
-    box-shadow: var(--shadow);
-  }
-  .hero-card-title {
-    font-size: .75rem; font-weight: 700; letter-spacing: .1em;
-    text-transform: uppercase; color: var(--text-muted);
-    margin-bottom: 1.25rem;
-  }
-  .stat-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1rem; margin-bottom: 1.5rem; }
-  .stat-item {
-    background: var(--surface2);
-    border: 1px solid var(--border);
-    border-radius: var(--radius-sm);
-    padding: 1rem;
-    transition: border-color .2s;
-  }
-  .stat-item:hover { border-color: var(--border-accent); }
-  .stat-value { font-size: 1.6rem; font-weight: 800; color: var(--accent-light); line-height: 1; margin-bottom: .2rem; }
-  .stat-label { font-size: .75rem; color: var(--text-muted); }
-  .tag-list { display: flex; flex-wrap: wrap; gap: .5rem; }
+  .stat-item { display: flex; flex-direction: column; align-items: center; justify-content: center; }
+  .stat-value { font-size: 1.6rem; font-weight: 800; color: var(--accent-light); line-height: 1; margin-bottom: .2rem; text-align: center; }
+  .stat-label { font-size: .75rem; color: var(--text-muted); text-align: center; }
   .tag {
     font-size: .72rem; font-weight: 600; letter-spacing: .04em;
     padding: .25rem .65rem; border-radius: 99px;
@@ -183,8 +158,7 @@
   }
 
   /* ── About ── */
-  #about { background: var(--surface); }
-  .about-photo-row { display: flex; align-items: center; gap: 1.75rem; margin-bottom: 2.5rem; }
+  #about { background: var(--surface); padding-top: 100px; }
   .about-avatar {
     width: 200px; height: 200px; border-radius: 50%; flex-shrink: 0;
     border: 3px solid var(--border-accent);
@@ -200,25 +174,22 @@
     box-shadow: 0 0 0 6px var(--accent-dim), var(--shadow);
     letter-spacing: .04em;
   }
-  .about-intro-text { font-size: 1rem; color: var(--text-secondary); line-height: 1.7; }
-  .about-intro-text strong { color: var(--text-primary); }
-  .about-grid { display: grid; grid-template-columns: 1.1fr .9fr; gap: 4rem; align-items: start; }
+  .about-grid { display: grid; grid-template-columns: 1.1fr .9fr; gap: 4rem; align-items: stretch; }
   .about-text p { color: var(--text-secondary); line-height: 1.8; margin-bottom: 1rem; font-size: .97rem; }
   .about-text p strong { color: var(--text-primary); }
-  .pillars { display: grid; grid-template-columns: 1fr 1fr; gap: .75rem; }
+  .pillars-col { display: flex; flex-direction: column; }
+  .pillars { display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: auto auto; gap: .75rem; align-content: end; }
   .pillar {
     background: var(--surface2);
     border: 1px solid var(--border);
     border-left: 3px solid var(--accent);
     border-radius: var(--radius-sm);
-    padding: .85rem 1rem;
+    padding: 1.25rem 1.25rem;
     transition: background .2s, border-color .2s;
   }
   .pillar:hover { background: var(--surface3); border-left-color: var(--accent-light); }
-  .pillar-icon { font-size: 1.1rem; margin-bottom: .3rem; }
-  .pillar-title { font-size: .82rem; font-weight: 700; color: var(--text-primary); margin-bottom: .15rem; }
-  .pillar-desc { font-size: .75rem; color: var(--text-muted); line-height: 1.4; }
-
+  .pillar-icon { font-size: 1.6rem; margin-bottom: .55rem; }
+  .pillar-title { font-size: 1.1rem; font-weight: 700; color: var(--text-primary); margin-bottom: .35rem; }
   .skills-section { margin-top: 2rem; }
   .skills-title { font-size: .8rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 1rem; }
   .skills-chips { display: flex; flex-wrap: wrap; gap: .55rem; }
@@ -240,6 +211,7 @@
   /* ── Cases ── */
   #cases { background: #0F1117; }
   .cases-intro { margin-bottom: 3.5rem; }
+  .case-card + .case-card { margin-top: 2rem; }
   .case-card {
     background: var(--surface);
     border: 1px solid var(--border);
@@ -346,6 +318,7 @@
   .track-c .track-badge { background: rgba(108,99,255,.15); color: var(--accent-light); border: 1px solid rgba(108,99,255,.3); }
   .track-title { font-size: .85rem; font-weight: 700; color: var(--text-primary); margin-bottom: .25rem; }
   .track-desc { font-size: .79rem; color: var(--text-muted); line-height: 1.5; }
+  .track-desc ul { margin: .2rem 0 0 1rem; padding: 0; list-style: disc; line-height: 1.75; }
   .track-insight {
     margin-top: .5rem; font-size: .78rem; font-style: italic;
     padding: .4rem .7rem; border-radius: var(--radius-sm);
@@ -440,28 +413,6 @@
   .fraud-card.mid  .fraud-result { color: var(--yellow); }
   .fraud-card.bad  .fraud-result { color: var(--red); }
 
-  /* Results */
-  .results-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-top: 1rem; }
-  .result-card {
-    background: var(--surface2);
-    border: 1px solid var(--border);
-    border-radius: var(--radius-sm);
-    padding: 1.25rem;
-    transition: border-color .2s, transform .2s;
-  }
-  .result-card:hover { border-color: var(--border-accent); transform: translateY(-2px); }
-  .result-val { font-size: 2rem; font-weight: 800; line-height: 1; margin-bottom: .3rem; }
-  .result-val.up { color: var(--green); }
-  .result-val.mid { color: var(--yellow); }
-  .result-label { font-size: .8rem; font-weight: 600; color: var(--text-primary); margin-bottom: .2rem; }
-  .result-sub { font-size: .72rem; color: var(--text-muted); line-height: 1.4; }
-  .result-delta {
-    display: inline-flex; align-items: center; gap: .25rem;
-    font-size: .7rem; font-weight: 600; color: var(--green);
-    background: rgba(52,211,153,.1); border-radius: 99px;
-    padding: .15rem .5rem; margin-top: .4rem;
-  }
-
   /* Learnings */
   .learnings-grid { display: grid; grid-template-columns: 1fr 1fr; gap: .75rem; margin-top: 1rem; }
   .learning {
@@ -475,45 +426,60 @@
   .learning:hover { border-color: var(--border-accent); color: var(--text-secondary); }
   .learning strong { color: var(--accent-light); display: block; margin-bottom: .25rem; font-size: .8rem; }
 
-
-  /* Placeholder case */
-  .case-placeholder {
-    background: var(--surface);
-    border: 1px dashed var(--border);
-    border-radius: var(--radius-lg);
-    padding: 3rem 2rem;
-    text-align: center;
-    margin-top: 2rem;
-    transition: border-color .2s;
+  /* ── Inside ── */
+  #inside { background: var(--surface); }
+  .inside-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.25rem;
+    margin-top: 2.5rem;
   }
-  .case-placeholder:hover { border-color: var(--border-accent); }
-  .placeholder-icon { font-size: 2rem; margin-bottom: .75rem; opacity: .4; }
-  .placeholder-text { font-size: .9rem; color: var(--text-muted); }
-
-  /* ── Contact ── */
-  #contact { background: var(--surface); }
-  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
-  .contact-text p { color: var(--text-secondary); line-height: 1.75; font-size: .97rem; margin-bottom: 1.5rem; }
-  .contact-links { display: flex; flex-direction: column; gap: .75rem; }
-  .contact-link {
-    display: flex; align-items: center; gap: .85rem;
+  .post-card {
     background: var(--surface2);
     border: 1px solid var(--border);
-    border-radius: var(--radius-sm);
-    padding: 1rem 1.25rem;
+    border-radius: var(--radius);
+    padding: 1.75rem;
+    display: flex; flex-direction: column; gap: .75rem;
     transition: border-color .2s, background .2s;
+    cursor: default;
   }
-  .contact-link:hover { border-color: var(--border-accent); background: var(--surface3); }
-  .contact-link-icon {
-    width: 36px; height: 36px; border-radius: var(--radius-sm);
-    background: var(--accent-dim);
-    display: flex; align-items: center; justify-content: center;
-    font-size: .95rem; flex-shrink: 0;
+  .post-card:hover { border-color: var(--border-accent); background: var(--surface3); }
+  .post-tag {
+    display: inline-flex; align-items: center;
+    font-size: .72rem; font-weight: 700; letter-spacing: .09em;
+    text-transform: uppercase; color: var(--accent);
+    background: var(--accent-dim); border: 1px solid var(--border-accent);
+    padding: .2rem .65rem; border-radius: 99px;
+    width: fit-content;
   }
-  .contact-link-info {}
-  .contact-link-label { font-size: .72rem; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: var(--text-muted); }
-  .contact-link-value { font-size: .88rem; font-weight: 500; color: var(--text-primary); }
-
+  .post-title {
+    font-size: 1.05rem; font-weight: 700;
+    color: var(--text-primary); line-height: 1.35;
+  }
+  .post-excerpt {
+    font-size: .875rem; color: var(--text-secondary);
+    line-height: 1.7; flex: 1;
+  }
+  .post-footer {
+    display: flex; align-items: center; justify-content: space-between;
+    padding-top: .75rem;
+    border-top: 1px solid var(--border);
+    font-size: .75rem; color: var(--text-muted);
+  }
+  .post-date { font-variant-numeric: tabular-nums; }
+  .post-excerpt p { margin-bottom: .9rem; }
+  .post-excerpt p:last-child { margin-bottom: 0; }
+  .post-empty {
+    grid-column: 1 / -1;
+    background: var(--surface2);
+    border: 1px dashed var(--border);
+    border-radius: var(--radius);
+    padding: 3rem 2rem;
+    text-align: center;
+    color: var(--text-muted);
+    font-size: .9rem; line-height: 1.7;
+  }
+  .post-empty span { display: block; font-size: 1.75rem; margin-bottom: .75rem; }
   /* ── Footer ── */
   footer {
     background: #0A0C12;
@@ -524,7 +490,6 @@
   }
   footer span { color: var(--accent); }
 
-  /* ── Responsive ── */
   /* ── Responsive: tablet ── */
   @media (max-width: 720px) {
     nav { padding: 0 1rem; }
@@ -547,31 +512,22 @@
     .intro-stats-divider { display: none; }
     .intro-tags { justify-content: center; }
 
-    /* Career timeline */
-    [style*="display:flex; gap:0"] { flex-direction: column; border-radius: var(--radius-sm); }
-    [style*="display:flex; gap:0"] > div {
-      border-right: 1px solid var(--border) !important;
-      border-bottom: none !important;
-      border-radius: 0 !important;
-    }
-    [style*="display:flex; gap:0"] > div:first-child { border-radius: var(--radius-sm) var(--radius-sm) 0 0 !important; }
-    [style*="display:flex; gap:0"] > div:last-child { border-radius: 0 0 var(--radius-sm) var(--radius-sm) !important; }
-
     /* About grid */
     .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
     .pillars { grid-template-columns: 1fr 1fr; }
 
     /* Cases */
-    .contact-grid { grid-template-columns: 1fr; gap: 2rem; }
     .kpi-strip { grid-template-columns: 1fr 1fr; }
     .kpi-item { border-right: none; border-bottom: 1px solid var(--border); }
     .kpi-item:last-child { border-bottom: none; }
-    .problem-grid, .results-grid, .learnings-grid { grid-template-columns: 1fr; }
+    .problem-grid, .learnings-grid { grid-template-columns: 1fr; }
     .fraud-grid { grid-template-columns: 1fr; }
     .case-body { padding: 1.25rem; }
     .case-header { padding: 1.75rem 1.25rem 1.25rem; }
+    .case-carousel-fullbleed { margin: 1rem -1.25rem 0; }
     .discovery-tracks { gap: .75rem; }
     .solutions-list { gap: .75rem; }
+    .inside-grid { grid-template-columns: 1fr; }
   }
 
   /* ── Responsive: mobile ── */
@@ -587,7 +543,8 @@
     .about-avatar, .about-avatar-fallback { width: 110px; height: 110px; }
 
     .intro-stats { flex-direction: column; align-items: flex-start; gap: .5rem; }
-    .stat-grid { grid-template-columns: 1fr 1fr; }
+    .intro-stats .stat-value,
+    .intro-stats .stat-label { text-align: left; }
 
     .kpi-strip { grid-template-columns: 1fr; }
     .kpi-item { border-right: none; border-bottom: 1px solid var(--border); }
@@ -598,19 +555,40 @@
 
     .case-body { padding: 1rem; }
     .case-header { padding: 1.25rem 1rem 1rem; }
+    .case-carousel-fullbleed { margin: 1rem -1rem 0; }
     .case-title { font-size: 1.2rem; }
     .case-subtitle { font-size: .85rem; }
 
     .carousel-slide img { max-height: 260px; }
-    .contact-links { gap: .75rem; }
+  }
+
+  /* ── Carousel full-bleed ── */
+  .case-carousel-fullbleed {
+    margin: 1rem -2.5rem 0;
+    overflow: hidden;
+  }
+  .case-carousel-fullbleed .carousel {
+    border-radius: 0;
+    border-left: none;
+    border-right: none;
+  }
+
+  /* ── Imagen por solución ── */
+  .case-img-block {
+    margin-top: .75rem;
+    border-radius: var(--radius-sm);
+    overflow: hidden;
+    border: 1px solid var(--border);
+  }
+  .case-img-block img {
+    width: 100%;
+    max-height: 420px;
+    object-fit: contain;
+    background: var(--surface2);
+    display: block;
   }
 
   /* ── Carousel ── */
-  .carousel-section { margin-top: 1.5rem; }
-  .carousel-label {
-    font-size: .7rem; font-weight: 700; letter-spacing: .1em;
-    text-transform: uppercase; color: var(--text-muted); margin-bottom: .75rem;
-  }
   .carousel {
     position: relative;
     background: var(--surface2);
@@ -676,7 +654,7 @@
   <div class="nav-links">
     <a href="#about">Sobre mí</a>
     <a href="#cases">Casos</a>
-    <a href="#contact">Contacto</a>
+    <a href="#inside">Inside</a>
   </div>
 </nav>
 
@@ -684,7 +662,7 @@
 <section id="about">
   <div class="container">
 
-    <!-- Fila 1: foto + identidad + descripción -->
+    <!-- Foto + identidad -->
     <div class="intro-grid">
       <div class="intro-photo-col">
         <img src="foto_sofia_400x400.jpg" alt="Sofia Valperga" class="about-avatar" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
@@ -694,20 +672,20 @@
         <div class="hero-eyebrow">Product Manager · Payments · Fintech · B2B · LatAm</div>
         <h1>Sofia<br><span>Valperga</span></h1>
         <p class="hero-desc">
-          5 años liderando equipos de alto impacto en productos digitales en <strong style="color:var(--text-primary)">payments y e-commerce</strong>.
+          5 años liderando equipos de alto impacto en productos digitales en <strong style="color:var(--text-primary)">payments y <span style="white-space:nowrap">e-commerce</span></strong>.
           Combino liderazgo, pensamiento estratégico y ejecución para transformar problemas en soluciones.
         </p>
         <div class="hero-ctas">
-          <a href="#cases" class="btn btn-primary">Ver casos →</a>
-          <a href="#contact" class="btn btn-ghost">Contacto</a>
+          <a href="#cases" class="btn btn-primary">Ver casos</a>
+          <a href="https://www.linkedin.com/in/sofiavalperga/" target="_blank" class="btn btn-ghost">LinkedIn</a>
         </div>
       </div>
     </div>
 
-    <!-- Fila 2: stats + tags en una tira horizontal -->
+    <!-- Stats + tags -->
     <div class="intro-stats">
       <div class="stat-item">
-        <div class="stat-value">5+</div>
+        <div class="stat-value">+5</div>
         <div class="stat-label">años en producto</div>
       </div>
       <div class="stat-item">
@@ -729,26 +707,6 @@
       </div>
     </div>
 
-    <!-- Fila 3: línea de carrera -->
-    <div style="display:flex; gap:0; margin-bottom:2.5rem; overflow:hidden; border-radius:var(--radius-sm);">
-      <div style="flex:1; background:var(--surface2); border:1px solid var(--border); border-right:none; padding:.75rem 1rem; border-radius:var(--radius-sm) 0 0 var(--radius-sm);">
-        <div style="font-size:.68rem; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--text-muted); margin-bottom:.2rem;">Naranja X</div>
-        <div style="font-size:.78rem; color:var(--text-secondary); font-weight:600;">Senior PO · Medios de Cobro</div>
-        <div style="font-size:.7rem; color:var(--text-muted); margin-top:.15rem;">Abr 2022 – Jul 2024</div>
-      </div>
-      <div style="flex:1; background:var(--surface2); border:1px solid var(--border); border-right:none; padding:.75rem 1rem; border-left:2px solid var(--accent);">
-        <div style="font-size:.68rem; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--text-muted); margin-bottom:.2rem;">GetNet Argentina</div>
-        <div style="font-size:.78rem; color:var(--text-secondary); font-weight:600;">Senior PO · Adquirencia</div>
-        <div style="font-size:.7rem; color:var(--text-muted); margin-top:.15rem;">Jul 2024 – Mar 2025</div>
-      </div>
-      <div style="flex:1; background:var(--accent-dim); border:1px solid var(--border-accent); padding:.75rem 1rem; border-radius:0 var(--radius-sm) var(--radius-sm) 0; border-left:2px solid var(--accent);">
-        <div style="font-size:.68rem; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--accent); margin-bottom:.2rem;">Mercado Libre ✦ Actual</div>
-        <div style="font-size:.78rem; color:var(--text-primary); font-weight:600;">Product Specialist · CBT B2B</div>
-        <div style="font-size:.7rem; color:var(--accent); margin-top:.15rem;">Mar 2025 – Presente</div>
-      </div>
-    </div>
-
-    <!-- Fila 4: bio + pilares -->
     <div class="divider"></div>
     <div class="about-grid">
       <div class="about-text">
@@ -765,27 +723,23 @@
           </div>
         </div>
       </div>
-      <div>
+      <div class="pillars-col">
         <div class="pillars">
           <div class="pillar">
             <div class="pillar-icon">🎯</div>
-            <div class="pillar-title">Estrategia de producto</div>
-            <div class="pillar-desc">Alineada a objetivos de negocio y métricas clave</div>
+            <div class="pillar-title">Estrategia<br>de producto</div>
           </div>
           <div class="pillar">
             <div class="pillar-icon">📊</div>
-            <div class="pillar-title">Priorización con foco</div>
-            <div class="pillar-desc">Impacto medible, sin distracciones</div>
+            <div class="pillar-title">Priorización<br>con foco</div>
           </div>
           <div class="pillar">
             <div class="pillar-icon">⚡</div>
-            <div class="pillar-title">Ejecución ágil</div>
-            <div class="pillar-desc">Equipos orientados a resultados concretos</div>
+            <div class="pillar-title">Ejecución<br>ágil</div>
           </div>
           <div class="pillar">
             <div class="pillar-icon">💡</div>
-            <div class="pillar-title">Problem-first</div>
-            <div class="pillar-desc">¿Qué problema? ¿Qué métrica? ¿Qué valor?</div>
+            <div class="pillar-title">Problem-<br>first</div>
           </div>
         </div>
       </div>
@@ -799,21 +753,20 @@
   <div class="container">
     <div class="cases-intro">
       <div class="section-label">Casos de producto</div>
-      <h2 class="section-title">Continuo discovery del problema</h2>
+      <h2 class="section-title">Discovery continuo</h2>
       <div class="divider"></div>
       <p class="section-sub">Cada caso refleja cómo navego la ambigüedad, priorizo bajo incertidumbre y decido con criterio.</p>
     </div>
 
-    <!-- ── CASO: TOQUE ── -->
+    <!-- ── CASO: mPOS ── -->
     <div class="case-card">
       <div class="case-header">
-        <div class="case-badge">📱 Caso 01 · Naranja X · Fintech</div>
-        <div class="case-title">Toque — Lector de Pagos</div>
+        <div class="case-badge">📱 Caso 01 · Fintech</div>
+        <div class="case-title">mPOS — Lector de Pagos</div>
         <div class="case-subtitle">De NPS -10 a +40 pp: cómo rediseñamos la tasa de aceptación desde sus causas raíz</div>
         <div class="case-meta">
-          <div class="meta-pill">📅 <span>Sep 2022 – Sep 2023</span></div>
-          <div class="meta-pill">🏢 <span>Naranja X</span></div>
-          <div class="meta-pill">👤 <span>Senior PO end-to-end</span></div>
+          <div class="meta-pill">🎯 <span>Líder de equipo de producto · Triada: UX · IT</span></div>
+          <div class="meta-pill">🤝 <span>Fraude · Legales · Negocio · Data</span></div>
           <div class="meta-pill">💳 <span>Pagos presenciales · B2C</span></div>
         </div>
       </div>
@@ -842,7 +795,7 @@
         <!-- CONTEXTO -->
         <div class="case-section">
           <div class="case-h3">Contexto del producto</div>
-          <p class="case-p">Toque es el lector de pagos físico de Naranja X. Se conecta vía Bluetooth al celular del merchant y acepta pagos con cualquier tarjeta mediante contactless, chip o banda magnética. El dinero de cada venta se acredita directamente en la cuenta Naranja X del comerciante.</p>
+          <p class="case-p">mPOS es el lector de pagos físico. Se conecta vía Bluetooth al celular del merchant y acepta pagos con cualquier tarjeta mediante contactless, chip o banda magnética. El dinero de cada venta se acredita directamente en la cuenta del comerciante.</p>
         </div>
 
         <!-- PROBLEMA -->
@@ -872,7 +825,7 @@
               <div class="track-badge">A</div>
               <div>
                 <div class="track-title">Conectividad y latencia — Análisis técnico con IT</div>
-                <div class="track-desc"><ul style="margin:.2rem 0 0 1rem;padding:0;list-style:disc;line-height:1.75;">
+                <div class="track-desc"><ul>
                   <li>Revisé logs BLE y analicé timeouts con el equipo de IT</li>
                   <li>El timeout se activaba demasiado rápido — antes de completar la transacción</li>
                   <li>El walkthrough no comunicaba la distancia óptima entre celular y lector</li>
@@ -884,7 +837,7 @@
               <div class="track-badge">B</div>
               <div>
                 <div class="track-title">UX de pantallas de rechazo — Rediseño de mensajes</div>
-                <div class="track-desc"><ul style="margin:.2rem 0 0 1rem;padding:0;list-style:disc;line-height:1.75;">
+                <div class="track-desc"><ul>
                   <li>Analicé todas las pantallas de error post-rechazo</li>
                   <li>No existía diferenciación entre rechazos definitivos y recuperables</li>
                   <li>Los rechazos definitivos ofrecían CTA de reintento — multiplicando la frustración del merchant</li>
@@ -896,7 +849,7 @@
               <div class="track-badge">C</div>
               <div>
                 <div class="track-title">Análisis de tasa de aceptación por MCC — El hallazgo central</div>
-                <div class="track-desc"><ul style="margin:.2rem 0 0 1rem;padding:0;list-style:disc;line-height:1.75;">
+                <div class="track-desc"><ul>
                   <li>Abrí la tasa de aceptación por establecimiento y MCC</li>
                   <li>Los peores performers: motos, alquiler de salones, servicios de ticket alto</li>
                   <li>Todos concentraban el mismo código: "Denegada 05" — un genérico que escondía múltiples reglas de fraude</li>
@@ -1033,16 +986,15 @@
     </div><!-- /case-card -->
 
     <!-- ── CASO 2: GETNET ── -->
-    <div class="case-card" style="margin-top:2rem">
+    <div class="case-card">
       <div class="case-header">
-        <div class="case-badge">⚙️ Caso 02 · GetNet · Fintech</div>
+        <div class="case-badge">⚙️ Caso 02 · Fintech</div>
         <div class="case-title">Capability de Carga de Promociones</div>
         <div class="case-subtitle">De un proceso manual de 48hs a una herramienta self-service con lógica de priorización automática</div>
         <div class="case-meta">
-          <div class="meta-pill">📅 <span>1 trimestre · 2024–2025</span></div>
-          <div class="meta-pill">🏢 <span>GetNet Argentina</span></div>
-          <div class="meta-pill">👤 <span>Senior PO end-to-end</span></div>
-          <div class="meta-pill">🤝 <span>4 equipos · B2B</span></div>
+          <div class="meta-pill">🎯 <span>Líder de equipo de producto · Triada: UX · IT</span></div>
+          <div class="meta-pill">🤝 <span>Operaciones · Negocio · Legales · Data</span></div>
+          <div class="meta-pill">🏗️ <span>B2B</span></div>
         </div>
       </div>
 
@@ -1068,7 +1020,7 @@
 
         <div class="case-section">
           <div class="case-h3">Contexto y problema</div>
-          <p class="case-p">GetNet cerraba contratos de promociones (cuotas sin interés, cashback, etc.) con distintas marcas y procesadores. El problema: muchas promociones se superponían y no existía una lógica sistematizada para priorizarlas. El flujo era completamente manual — negocio definía las reglas en un Excel, operaciones generaba un ticket y el equipo de IT las cargaba directamente en el código del procesamiento de cobros.</p>
+          <p class="case-p">La empresa cerraba contratos de promociones (cuotas sin interés, cashback, etc.) con distintas marcas y procesadores. El problema: muchas promociones se superponían y no existía una lógica sistematizada para priorizarlas. El flujo era completamente manual — negocio definía las reglas en un Excel, operaciones generaba un ticket y el equipo de IT las cargaba directamente en el código del procesamiento de cobros.</p>
           <div class="insight-spotlight" style="margin-top:.75rem">
             <div class="insight-label">⚠️ El costo real del proceso</div>
             <div class="insight-text">Promociones que se cerraban el mismo día obligaban al equipo de IT a intervenir fuera de horario para hacerlas efectivas. Cualquier error en el Excel — porcentaje de cashback incorrecto, días de aplicación equivocados — se traducía directamente en fallas en el procesamiento.</div>
@@ -1083,7 +1035,7 @@
               <div class="track-badge">A</div>
               <div>
                 <div class="track-title">Mapeo del proceso con Operaciones</div>
-                <div class="track-desc"><ul style="margin:.2rem 0 0 1rem;padding:0;list-style:disc;line-height:1.75;">
+                <div class="track-desc"><ul>
                   <li>Entrevisté al equipo que traducía los Excel en tickets para IT</li>
                   <li>Cada promoción: recibir Excel → interpretarlo → ticket → esperar a IT</li>
                   <li>Las de último momento obligaban a intervenir fuera de horario</li>
@@ -1096,7 +1048,7 @@
               <div class="track-badge">B</div>
               <div>
                 <div class="track-title">Entrevistas con Negocio: la voz que faltaba en el sistema</div>
-                <div class="track-desc"><ul style="margin:.2rem 0 0 1rem;padding:0;list-style:disc;line-height:1.75;">
+                <div class="track-desc"><ul>
                   <li>Entrevisté al equipo que cerraba contratos de promociones</li>
                   <li>No tenían canal directo al sistema — todo pasaba por 2 equipos intermedios</li>
                   <li>La priorización entre promociones superpuestas se definía de forma informal</li>
@@ -1114,6 +1066,8 @@
 
         <div class="case-section">
           <div class="case-h3">Solución</div>
+
+          <!-- Solución 1 -->
           <div class="solutions-list">
             <div class="solution">
               <div class="sol-num">1</div>
@@ -1122,56 +1076,63 @@
                 <div class="sol-desc">Desarrollé una capability de carga diseñada como walkthrough guiado para el equipo de negocio, eliminando la necesidad de intermediarios para definir y cargar una promoción.</div>
               </div>
             </div>
+          </div>
+
+          <!-- Carrusel full-bleed solución 1 -->
+          <div class="case-carousel-fullbleed">
+            <div class="carousel" id="getnet-carousel">
+              <div class="carousel-track" id="getnet-track">
+                <div class="carousel-slide">
+                  <img src="GETNET/paso uno.png" alt="Paso 1">
+                  <div class="carousel-caption">Paso 1 — inicio del flujo de carga</div>
+                </div>
+                <div class="carousel-slide">
+                  <img src="GETNET/paso 2.png" alt="Paso 2">
+                  <div class="carousel-caption">Paso 2</div>
+                </div>
+                <div class="carousel-slide">
+                  <img src="GETNET/paso 3.png" alt="Paso 3">
+                  <div class="carousel-caption">Paso 3</div>
+                </div>
+                <div class="carousel-slide">
+                  <img src="GETNET/paso 4.png" alt="Paso 4">
+                  <div class="carousel-caption">Paso 4</div>
+                </div>
+                <div class="carousel-slide">
+                  <img src="GETNET/Configuracion financiera (1).png" alt="Configuración financiera">
+                  <div class="carousel-caption">Configuración financiera — condiciones de la promo</div>
+                </div>
+              </div>
+              <button class="carousel-btn prev" onclick="moveCarousel('getnet', -1)" aria-label="Anterior">‹</button>
+              <button class="carousel-btn next" onclick="moveCarousel('getnet', 1)" aria-label="Siguiente">›</button>
+              <div class="carousel-dots" id="getnet-dots"></div>
+            </div>
+          </div>
+
+          <!-- Solución 2 -->
+          <div class="solutions-list" style="margin-top:1rem">
             <div class="solution">
               <div class="sol-num">2</div>
               <div>
                 <div class="sol-title">Flujo de validación para operaciones</div>
                 <div class="sol-desc">La carga de negocio llega como ticket de validación al equipo de operaciones, quienes aprueban antes de que la lógica se aplique — con un tope máximo de una jornada laboral.</div>
+                <div class="case-img-block">
+                  <img src="GETNET/Validar promociones.png" alt="Validar promociones">
+                </div>
               </div>
             </div>
+
+            <!-- Solución 3 -->
             <div class="solution">
               <div class="sol-num">3</div>
               <div>
                 <div class="sol-title">Motor de priorización automática</div>
                 <div class="sol-desc">Detrás de la interfaz se construyó la lógica de priorización según las reglas de negocio: qué promoción aplica según día, marca y procesador cuando hay superposición, sin intervención manual de IT.</div>
+                <div class="case-img-block">
+                  <img src="GETNET/Gestor de campanas.png" alt="Gestor de campañas">
+                </div>
               </div>
             </div>
-          </div>
-        </div>
-
-        <!-- Carrusel de pantallas -->
-        <div class="case-section carousel-section">
-          <div class="carousel-label">Pantallas del producto</div>
-          <div class="carousel" id="getnet-carousel">
-            <div class="carousel-track" id="getnet-track">
-              <div class="carousel-slide">
-                <img src="GETNET/paso uno.png" alt="Paso 1">
-                <div class="carousel-caption">Paso 1 — inicio del flujo de carga</div>
-              </div>
-              <div class="carousel-slide">
-                <img src="GETNET/paso 2.png" alt="Paso 2">
-                <div class="carousel-caption">Paso 2</div>
-              </div>
-              <div class="carousel-slide">
-                <img src="GETNET/paso 3.png" alt="Paso 3">
-                <div class="carousel-caption">Paso 3</div>
-              </div>
-              <div class="carousel-slide">
-                <img src="GETNET/paso 4.png" alt="Paso 4">
-                <div class="carousel-caption">Paso 4</div>
-              </div>
-              <div class="carousel-slide">
-                <img src="GETNET/Configuracion financiera (1).png" alt="Configuración financiera">
-                <div class="carousel-caption">Configuración financiera — condiciones de la promo</div>
-              </div>
-              <div class="carousel-slide">
-                <img src="GETNET/Gestor de campanas.png" alt="Gestor de campañas">
-                <div class="carousel-caption">Gestor de campañas — vista general de promociones activas</div>
-              </div>
-            </div>
-            <button class="carousel-btn prev" onclick="moveCarousel('getnet', -1)">‹</button>
-            <button class="carousel-btn next" onclick="moveCarousel('getnet', 1)">›</button>
-            <div class="carousel-dots" id="getnet-dots"></div>
           </div>
         </div>
 
@@ -1214,32 +1175,52 @@
   </div>
 </section>
 
-<!-- ═══ CONTACT ═══ -->
-<section id="contact">
+
+<!-- ═══ INSIDE ═══ -->
+<section id="inside">
   <div class="container">
-    <div class="contact-grid">
-      <div class="contact-text">
-        <div class="section-label">Contacto</div>
-        <h2 class="section-title">Hablemos</h2>
-        <div class="divider"></div>
-        <p>Si estás buscando una PM apasionada por el desarrollo de producto desde el problema, con experiencia end-to-end en pagos, fintech y construcción de estrategia de producto.</p>
+    <div class="section-label">Inside</div>
+    <h2 class="section-title">Lo que pienso mientras hago</h2>
+    <div class="divider"></div>
+    <p class="section-sub">Reflexiones, aprendizajes y perspectivas del día a día en producto.</p>
+
+    <div class="inside-grid">
+
+      <div class="post-card" style="grid-column: 1 / -1">
+        <div class="post-tag">Producto</div>
+        <div class="post-title">Mi roadmap voló por los aires a los 32 🤯</div>
+        <div class="post-excerpt">
+          <p>La pandemia fue lo mejor que me pasó.</p>
+          <p>Era 2020, y los chinos hacían sopa de murciélago, el mundo se detenía en una enfermedad mortífera, y LATAM Airlines no tuvo mejor idea que irse de Argentina. Yo me quedaba sin trabajo.</p>
+          <p>En ese caos, una amiga me dijo: "tenés re buen perfil para ser Business Analyst". Ni idea qué es eso respondí, entonces describió algo que se me metió al cuerpo y me cambió la vida: bajar problemas complejos a una manera simple y transformarlos en soluciones.</p>
+          <p>Cuando las personas en general ven caos, yo veo la oportunidad de ordenar para que las cosas pasen. Sí, soy de Virgo.</p>
+          <p>Entre scrum, SQL y design thinking, descubrí que me gusta trabajar donde el problema no está definido. Donde hay ambigüedad. Donde puedo hacer preguntas incómodas que cuestionen lo obvio para alguien más.</p>
+          <p>Un mundo maravilloso donde todo se tiene que descubrir.</p>
+          <p>Arranqué como BA — o quizás era traductora, de necesidades de negocio a soluciones técnicas. Al poco tiempo supe que quería decidir qué valía la pena construir y por qué.</p>
+          <p>2 años después salimos campeones, y yo me animé de nuevo: vi un aviso, le escribí al Head de Producto de NX. Logramos dar vuelta el NPS de Toque: de -10pp a 40pp. Pusimos foco en entender al usuario con fricciones reales y la decisión consciente de dejar de hacer cosas que no movían la aguja. Integré medios de pago internacionales: PIX, conectando experiencia local con expansión regional.</p>
+          <p>Llegué a Getnet de la mano de dos ex líderes. Acompañé el go-to-market de soluciones de pago y diseñé una herramienta para promociones que redujo la carga operativa. Menos esfuerzo interno, más velocidad para el negocio.</p>
+          <p>El 2025 me llevó a MELI, donde defino la facturación B2B pensando en el accountability del usuario, uniendo experiencia, compliance y escalabilidad operativa para la expansión internacional (CBT).</p>
+          <p>Podría haber dicho que no — muchas veces — a la incertidumbre de cambiar de carrera a los 30. Pero sigo decidiendo salir al mundo e ir por lo que creo. Eso no es un acto heroico de una sola vez. Es una práctica constante. Es animarme a no tener todas las respuestas y quedarme en la incomodidad el tiempo suficiente para aprender a decidir mejor.</p>
+          <p>Vivo todos los días la decisión de seguir incomodándome.</p>
+        </div>
+        <div class="post-footer">
+          <span class="post-date">Marzo 2024</span>
+        </div>
       </div>
-      <div class="contact-links">
-        <a href="mailto:asvalperga@gmail.com" class="contact-link">
-          <div class="contact-link-icon">✉️</div>
-          <div class="contact-link-info">
-            <div class="contact-link-label">Email</div>
-            <div class="contact-link-value">asvalperga@gmail.com</div>
-          </div>
-        </a>
-        <a href="https://www.linkedin.com/in/sofiavalperga/" target="_blank" class="contact-link">
-          <div class="contact-link-icon">🔗</div>
-          <div class="contact-link-info">
-            <div class="contact-link-label">LinkedIn</div>
-            <div class="contact-link-value">/in/sofiavalperga</div>
-          </div>
-        </a>
+
+      <!-- Ejemplo de cómo agregar una publicación:
+
+      <div class="post-card">
+        <div class="post-tag">Producto</div>
+        <div class="post-title">Título de la publicación</div>
+        <div class="post-excerpt">Texto de introducción o extracto de la publicación. Puede ser una o dos oraciones que enganchen al lector.</div>
+        <div class="post-footer">
+          <span class="post-date">May 2026</span>
+        </div>
       </div>
+
+      -->
+
     </div>
   </div>
 </section>

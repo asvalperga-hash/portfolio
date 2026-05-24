@@ -1,2 +1,21 @@
+# macOS
 .DS_Store
-**/.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+
+# Editor / IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# System
+Thumbs.db
+ehthumbs.db
+
+# Temporary / build artifacts
+*.tmp
+*.log
