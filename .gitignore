@@ -19,3 +19,7 @@ ehthumbs.db
 # Temporary / build artifacts
 *.tmp
 *.log
+
+# Portfolio: archivos internos (no subir al repo público)
+INSTRUCCIONES_PORTFOLIO.md
+check_visitas.sh

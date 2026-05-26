@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Sofia Valperga — Product Manager con 5 años liderando productos en payments, fintech y e-commerce en LatAm. Casos de producto: mPOS, Getnet. B2C y B2B.">
 <title>Sofia Valperga — PM Portfolio</title>
 <style>
   /* ── Reset & base ── */
@@ -46,6 +47,7 @@
     position: fixed; top: 0; left: 0; right: 0; z-index: 100;
     background: rgba(15,17,23,0.85);
     backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
     border-bottom: 1px solid var(--border);
     padding: 0 2rem;
     height: 60px;
@@ -86,22 +88,13 @@
     border-radius: 2px;
   }
 
-  /* ── Intro unificado ── */
+  /* ── Hero ── */
   .intro-grid {
     display: grid; grid-template-columns: 200px 1fr;
     gap: 3.5rem; align-items: center;
     margin-bottom: 2.5rem;
   }
   .intro-photo-col { display: flex; flex-direction: column; align-items: center; gap: 1rem; }
-  .intro-stats {
-    display: flex; align-items: center; gap: 1rem; flex-wrap: wrap;
-    background: var(--surface); border: 1px solid var(--border);
-    border-radius: var(--radius); padding: 1.1rem 1.5rem;
-    margin-bottom: 2.5rem;
-  }
-  .intro-stats .stat-item { flex: 1; min-width: 80px; background: none; border: none; padding: 0; }
-  .intro-stats-divider { width: 1px; height: 36px; background: var(--border); flex-shrink: 0; }
-  .intro-tags { display: flex; flex-wrap: wrap; gap: .45rem; flex: 2; }
   .hero-eyebrow {
     display: inline-flex; align-items: center; gap: .5rem;
     font-size: .78rem; font-weight: 600; letter-spacing: .1em;
@@ -137,8 +130,7 @@
     background:
       linear-gradient(#161B27, #161B27) padding-box,
       linear-gradient(135deg, var(--accent) 0%, #a78bfa 100%) border-box;
-    color: #fff;
-    border: 2px solid transparent;
+    color: #fff; border: 2px solid transparent;
   }
   .btn-ghost:hover {
     background:
@@ -147,6 +139,16 @@
     color: #fff; transform: translateY(-1px);
   }
 
+  /* ── Stats bar ── */
+  .intro-stats {
+    display: flex; align-items: center; gap: 1rem; flex-wrap: wrap;
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: var(--radius); padding: 1.1rem 1.5rem;
+    margin-bottom: 2rem;
+  }
+  .intro-stats .stat-item { flex: 1; min-width: 80px; background: none; border: none; padding: 0; }
+  .intro-stats-divider { width: 1px; height: 36px; background: var(--border); flex-shrink: 0; }
+  .intro-tags { display: flex; flex-wrap: wrap; gap: .45rem; flex: 2; }
   .stat-item { display: flex; flex-direction: column; align-items: center; justify-content: center; }
   .stat-value { font-size: 1.6rem; font-weight: 800; color: var(--accent-light); line-height: 1; margin-bottom: .2rem; text-align: center; }
   .stat-label { font-size: .75rem; color: var(--text-muted); text-align: center; }
@@ -157,8 +159,7 @@
     border: 1px solid var(--border-accent);
   }
 
-  /* ── About ── */
-  #about { background: var(--surface); padding-top: 100px; }
+  /* ── About avatar ── */
   .about-avatar {
     width: 200px; height: 200px; border-radius: 50%; flex-shrink: 0;
     border: 3px solid var(--border-accent);
@@ -172,46 +173,99 @@
     display: flex; align-items: center; justify-content: center;
     font-size: 2.5rem; font-weight: 800; color: var(--accent-light);
     box-shadow: 0 0 0 6px var(--accent-dim), var(--shadow);
-    letter-spacing: .04em;
   }
-  .about-grid { display: grid; grid-template-columns: 1.1fr .9fr; gap: 4rem; align-items: stretch; }
-  .about-text p { color: var(--text-secondary); line-height: 1.8; margin-bottom: 1rem; font-size: .97rem; }
-  .about-text p strong { color: var(--text-primary); }
-  .pillars-col { display: flex; flex-direction: column; }
-  .pillars { display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: auto auto; gap: .75rem; align-content: end; }
+
+  /* ── Pillars row ── */
+  .pillars-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: .75rem;
+    margin-bottom: 2rem;
+  }
   .pillar {
     background: var(--surface2);
     border: 1px solid var(--border);
     border-left: 3px solid var(--accent);
     border-radius: var(--radius-sm);
-    padding: 1.25rem 1.25rem;
+    padding: 1.1rem 1.1rem;
     transition: background .2s, border-color .2s;
   }
   .pillar:hover { background: var(--surface3); border-left-color: var(--accent-light); }
-  .pillar-icon { font-size: 1.6rem; margin-bottom: .55rem; }
-  .pillar-title { font-size: 1.1rem; font-weight: 700; color: var(--text-primary); margin-bottom: .35rem; }
-  .skills-section { margin-top: 2rem; }
-  .skills-title { font-size: .8rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 1rem; }
+  .pillar-icon { font-size: 1.4rem; margin-bottom: .5rem; }
+  .pillar-title { font-size: .95rem; font-weight: 700; color: var(--text-primary); }
+
+  /* ── Skills chips ── */
+  .skills-section { margin-bottom: 1.5rem; }
+  .skills-title { font-size: .8rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--text-muted); margin-bottom: .75rem; }
   .skills-chips { display: flex; flex-wrap: wrap; gap: .55rem; }
   .skill-chip {
     font-size: .8rem; font-weight: 600;
     padding: .45rem 1rem; border-radius: 99px;
-    background: var(--surface3);
-    border: 1px solid var(--border);
+    background: var(--surface3); border: 1px solid var(--border);
     color: var(--text-secondary);
     transition: background .2s, border-color .2s, color .2s;
     cursor: default;
   }
-  .skill-chip:hover {
-    background: var(--accent-dim);
-    border-color: var(--border-accent);
-    color: var(--accent-light);
-  }
+  .skill-chip:hover { background: var(--accent-dim); border-color: var(--border-accent); color: var(--accent-light); }
 
-  /* ── Cases ── */
+  /* ── Bio toggle ── */
+  .bio-toggle-btn {
+    display: inline-flex; align-items: center; gap: .45rem;
+    font-size: .82rem; font-weight: 600; cursor: pointer;
+    color: var(--accent-light);
+    background: var(--accent-dim); border: 1px solid var(--border-accent);
+    padding: .4rem 1rem; border-radius: 99px;
+    transition: background .2s;
+    margin-top: .25rem;
+  }
+  .bio-toggle-btn:hover { background: rgba(108,99,255,.22); }
+  .bio-toggle-content {
+    display: none; margin-top: 1.25rem;
+    padding: 1.5rem;
+    background: var(--surface2); border: 1px solid var(--border);
+    border-radius: var(--radius);
+    animation: fadeIn .25s ease;
+  }
+  .bio-toggle-content.open { display: block; }
+  .bio-toggle-content p { color: var(--text-secondary); line-height: 1.8; margin-bottom: .9rem; font-size: .97rem; }
+  .bio-toggle-content p:last-child { margin-bottom: 0; }
+  .bio-toggle-content p strong { color: var(--text-primary); }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(-6px); } to { opacity: 1; transform: none; } }
+
+  /* ── Case tabs ── */
   #cases { background: #0F1117; }
-  .cases-intro { margin-bottom: 3.5rem; }
-  .case-card + .case-card { margin-top: 2rem; }
+  .cases-intro { margin-bottom: 2.5rem; }
+  .case-tabs {
+    display: flex; gap: 0;
+    border-bottom: 2px solid var(--border);
+    margin-bottom: 2rem;
+    overflow-x: auto;
+  }
+  .case-tab {
+    display: flex; align-items: center; gap: .65rem;
+    padding: .9rem 1.75rem;
+    font-size: .9rem; font-weight: 600;
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    margin-bottom: -2px;
+    transition: all .2s;
+    color: var(--text-secondary);
+    white-space: nowrap;
+    background: none; border-top: none; border-left: none; border-right: none;
+  }
+  .case-tab:hover { color: var(--text-primary); background: var(--accent-dim2); }
+  .case-tab.active { color: var(--accent-light); border-bottom-color: var(--accent); background: var(--accent-dim2); }
+  .tab-num {
+    font-size: .7rem; font-weight: 800; letter-spacing: .1em;
+    color: var(--accent); background: var(--accent-dim);
+    border: 1px solid var(--border-accent);
+    padding: .15rem .55rem; border-radius: 99px;
+  }
+  .case-tab.active .tab-num { background: var(--accent); color: #fff; border-color: var(--accent); }
+  .case-panel { display: none; }
+  .case-panel.active { display: block; animation: fadeIn .2s ease; }
+
+  /* ── Case card ── */
   .case-card {
     background: var(--surface);
     border: 1px solid var(--border);
@@ -244,14 +298,13 @@
   .case-meta { display: flex; flex-wrap: wrap; gap: .75rem; }
   .meta-pill {
     font-size: .75rem; color: var(--text-muted);
-    background: rgba(255,255,255,0.05);
-    border: 1px solid var(--border);
+    background: rgba(255,255,255,0.05); border: 1px solid var(--border);
     padding: .25rem .65rem; border-radius: 99px;
     display: flex; align-items: center; gap: .35rem;
   }
   .meta-pill span { color: var(--text-secondary); }
 
-  /* KPI strip */
+  /* ── KPI strip ── */
   .kpi-strip {
     display: grid; grid-template-columns: repeat(3, 1fr);
     border-bottom: 1px solid var(--border);
@@ -259,8 +312,7 @@
   .kpi-item {
     padding: 1.5rem 2rem;
     border-right: 1px solid var(--border);
-    text-align: center;
-    transition: background .2s;
+    text-align: center; transition: background .2s;
   }
   .kpi-item:last-child { border-right: none; }
   .kpi-item:hover { background: var(--accent-dim2); }
@@ -268,9 +320,55 @@
   .kpi-label { font-size: .75rem; color: var(--text-muted); margin-top: .3rem; }
   .kpi-sub { font-size: .7rem; color: var(--text-muted); margin-top: .15rem; font-style: italic; }
 
-  /* Case body */
-  .case-body { padding: 2.5rem; }
-  .case-section { margin-bottom: 2.5rem; }
+  /* ── Section toggles (collapsible) ── */
+  .case-body-sections { padding: 1.5rem 2rem; }
+  .section-toggle {
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    overflow: hidden;
+    margin-bottom: .6rem;
+    transition: border-color .2s;
+  }
+  .section-toggle:hover { border-color: rgba(108,99,255,.2); }
+  .section-toggle.open { border-color: var(--border-accent); }
+  .section-toggle-header {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1rem 1.25rem;
+    cursor: pointer;
+    background: var(--surface2);
+    user-select: none;
+    transition: background .2s;
+  }
+  .section-toggle-header:hover { background: var(--surface3); }
+  .section-toggle.open .section-toggle-header { background: var(--surface3); }
+  .section-toggle-title {
+    display: flex; align-items: center; gap: .6rem;
+    font-size: 1rem; font-weight: 700; color: var(--text-primary);
+  }
+  .toggle-emoji { font-size: .95rem; }
+  .section-toggle-meta {
+    font-size: .75rem; font-weight: 400;
+    color: var(--text-muted); margin-left: .25rem;
+  }
+  .section-toggle-chevron {
+    font-size: .75rem; color: var(--text-muted);
+    transition: transform .25s; flex-shrink: 0; margin-left: 1rem;
+    width: 20px; height: 20px;
+    display: flex; align-items: center; justify-content: center;
+    border-radius: 50%; background: var(--surface3);
+  }
+  .section-toggle.open .section-toggle-chevron { transform: rotate(180deg); background: var(--accent-dim); color: var(--accent-light); }
+  .section-toggle-body {
+    display: none;
+    padding: 1.5rem 1.25rem;
+    background: var(--surface);
+    border-top: 1px solid var(--border);
+    animation: fadeIn .2s ease;
+  }
+  .section-toggle.open .section-toggle-body { display: block; }
+
+  /* ── Case body inner ── */
+  .case-section { margin-bottom: 2.25rem; }
   .case-section:last-child { margin-bottom: 0; }
   .case-h3 {
     font-size: 1rem; font-weight: 700; color: var(--text-primary);
@@ -280,13 +378,11 @@
   .case-p { font-size: .92rem; color: var(--text-secondary); line-height: 1.75; margin-bottom: .5rem; }
   .case-p strong { color: var(--text-primary); }
 
-  /* Problem grid */
+  /* ── Problem grid ── */
   .problem-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 1rem; }
   .problem-card {
-    background: var(--surface2);
-    border: 1px solid var(--border);
-    border-radius: var(--radius-sm);
-    padding: 1.1rem 1.25rem;
+    background: var(--surface2); border: 1px solid var(--border);
+    border-radius: var(--radius-sm); padding: 1.1rem 1.25rem;
     transition: border-color .2s;
   }
   .problem-card:hover { border-color: var(--border-accent); }
@@ -294,24 +390,20 @@
   .problem-title { font-size: .82rem; font-weight: 700; color: var(--text-primary); margin-bottom: .35rem; }
   .problem-desc { font-size: .78rem; color: var(--text-muted); line-height: 1.5; }
 
-  /* Discovery tracks */
+  /* ── Discovery tracks ── */
   .discovery-tracks { display: flex; flex-direction: column; gap: .75rem; margin-top: 1rem; }
   .track {
     display: grid; grid-template-columns: auto 1fr;
     gap: 1rem; align-items: start;
-    background: var(--surface2);
-    border: 1px solid var(--border);
-    border-radius: var(--radius-sm);
-    padding: 1.1rem 1.25rem;
-    position: relative;
+    background: var(--surface2); border: 1px solid var(--border);
+    border-radius: var(--radius-sm); padding: 1.1rem 1.25rem;
     transition: border-color .2s, background .2s;
   }
   .track:hover { border-color: var(--border-accent); background: var(--surface3); }
   .track-badge {
     width: 28px; height: 28px; border-radius: 50%;
     display: flex; align-items: center; justify-content: center;
-    font-size: .7rem; font-weight: 800; flex-shrink: 0;
-    margin-top: .1rem;
+    font-size: .7rem; font-weight: 800; flex-shrink: 0; margin-top: .1rem;
   }
   .track-a .track-badge { background: rgba(52,211,153,.15); color: var(--green); border: 1px solid rgba(52,211,153,.3); }
   .track-b .track-badge { background: rgba(251,146,60,.15); color: var(--orange); border: 1px solid rgba(251,146,60,.3); }
@@ -321,14 +413,13 @@
   .track-desc ul { margin: .2rem 0 0 1rem; padding: 0; list-style: disc; line-height: 1.75; }
   .track-insight {
     margin-top: .5rem; font-size: .78rem; font-style: italic;
-    padding: .4rem .7rem; border-radius: var(--radius-sm);
-    border-left: 2px solid;
+    padding: .4rem .7rem; border-radius: var(--radius-sm); border-left: 2px solid;
   }
   .track-a .track-insight { color: var(--green); background: rgba(52,211,153,.07); border-color: var(--green); }
   .track-b .track-insight { color: var(--orange); background: rgba(251,146,60,.07); border-color: var(--orange); }
   .track-c .track-insight { color: var(--accent-light); background: rgba(108,99,255,.07); border-color: var(--accent); }
 
-  /* Insight spotlight */
+  /* ── Insight spotlight ── */
   .insight-spotlight {
     background: linear-gradient(135deg, rgba(108,99,255,0.08), rgba(108,99,255,0.04));
     border: 1px solid var(--border-accent);
@@ -346,15 +437,13 @@
   .insight-text { font-size: .9rem; color: var(--text-secondary); line-height: 1.7; }
   .insight-text strong { color: var(--text-primary); }
 
-  /* Solutions */
+  /* ── Solutions ── */
   .solutions-list { display: flex; flex-direction: column; gap: .75rem; margin-top: 1rem; }
   .solution {
     display: grid; grid-template-columns: auto 1fr;
     gap: 1rem; align-items: start;
-    background: var(--surface2);
-    border: 1px solid var(--border);
-    border-radius: var(--radius-sm);
-    padding: 1.1rem 1.25rem;
+    background: var(--surface2); border: 1px solid var(--border);
+    border-radius: var(--radius-sm); padding: 1.1rem 1.25rem;
     transition: border-color .2s;
   }
   .solution:hover { border-color: var(--border-accent); }
@@ -362,18 +451,17 @@
     width: 28px; height: 28px; border-radius: 50%;
     background: var(--accent-dim); border: 1px solid var(--border-accent);
     display: flex; align-items: center; justify-content: center;
-    font-size: .72rem; font-weight: 800; color: var(--accent-light);
-    flex-shrink: 0;
+    font-size: .72rem; font-weight: 800; color: var(--accent-light); flex-shrink: 0;
   }
   .sol-title { font-size: .85rem; font-weight: 700; color: var(--text-primary); margin-bottom: .25rem; }
   .sol-desc { font-size: .79rem; color: var(--text-muted); line-height: 1.55; }
 
-  /* Fraud scoring visual */
+  /* ── Fraud scoring ── */
   .scoring-wrapper { margin-top: .75rem; }
   .scoring-spectrum {
     height: 6px; border-radius: 99px;
     background: linear-gradient(to right, var(--green), var(--yellow), var(--red));
-    margin-bottom: 1rem; position: relative;
+    margin-bottom: 1rem;
   }
   .scoring-spectrum-labels {
     display: flex; justify-content: space-between;
@@ -385,20 +473,14 @@
   .scoring-spectrum-labels span:nth-child(3) { color: var(--red); }
   .fraud-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: .75rem; }
   .fraud-card {
-    border-radius: var(--radius-sm);
-    padding: 1.1rem 1rem;
-    text-align: center;
-    border: 1px solid;
+    border-radius: var(--radius-sm); padding: 1.1rem 1rem;
+    text-align: center; border: 1px solid;
     display: flex; flex-direction: column; align-items: center; gap: .5rem;
   }
   .fraud-card.good { background: rgba(52,211,153,.06); border-color: rgba(52,211,153,.3); }
   .fraud-card.mid  { background: rgba(251,191,36,.06);  border-color: rgba(251,191,36,.3); }
   .fraud-card.bad  { background: rgba(248,113,113,.06); border-color: rgba(248,113,113,.3); }
-  .fraud-icon {
-    width: 44px; height: 44px; border-radius: 50%;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 1.3rem;
-  }
+  .fraud-icon { width: 44px; height: 44px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.3rem; }
   .fraud-card.good .fraud-icon { background: rgba(52,211,153,.15); }
   .fraud-card.mid  .fraud-icon { background: rgba(251,191,36,.15); }
   .fraud-card.bad  .fraud-icon { background: rgba(248,113,113,.15); }
@@ -413,13 +495,11 @@
   .fraud-card.mid  .fraud-result { color: var(--yellow); }
   .fraud-card.bad  .fraud-result { color: var(--red); }
 
-  /* Learnings */
+  /* ── Learnings ── */
   .learnings-grid { display: grid; grid-template-columns: 1fr 1fr; gap: .75rem; margin-top: 1rem; }
   .learning {
-    background: var(--surface2);
-    border: 1px solid var(--border);
-    border-radius: var(--radius-sm);
-    padding: 1rem 1.1rem;
+    background: var(--surface2); border: 1px solid var(--border);
+    border-radius: var(--radius-sm); padding: 1rem 1.1rem;
     font-size: .82rem; color: var(--text-muted); line-height: 1.55;
     transition: border-color .2s;
   }
@@ -428,20 +508,12 @@
 
   /* ── Inside ── */
   #inside { background: var(--surface); }
-  .inside-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1.25rem;
-    margin-top: 2.5rem;
-  }
+  .inside-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.25rem; margin-top: 2.5rem; }
   .post-card {
-    background: var(--surface2);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    padding: 1.75rem;
+    background: var(--surface2); border: 1px solid var(--border);
+    border-radius: var(--radius); padding: 1.75rem;
     display: flex; flex-direction: column; gap: .75rem;
-    transition: border-color .2s, background .2s;
-    cursor: default;
+    transition: border-color .2s, background .2s; cursor: default;
   }
   .post-card:hover { border-color: var(--border-accent); background: var(--surface3); }
   .post-tag {
@@ -449,179 +521,37 @@
     font-size: .72rem; font-weight: 700; letter-spacing: .09em;
     text-transform: uppercase; color: var(--accent);
     background: var(--accent-dim); border: 1px solid var(--border-accent);
-    padding: .2rem .65rem; border-radius: 99px;
-    width: fit-content;
+    padding: .2rem .65rem; border-radius: 99px; width: fit-content;
   }
-  .post-title {
-    font-size: 1.05rem; font-weight: 700;
-    color: var(--text-primary); line-height: 1.35;
-  }
-  .post-excerpt {
-    font-size: .875rem; color: var(--text-secondary);
-    line-height: 1.7; flex: 1;
-  }
+  .post-title { font-size: 1.05rem; font-weight: 700; color: var(--text-primary); line-height: 1.35; }
+  .post-excerpt { font-size: .875rem; color: var(--text-secondary); line-height: 1.7; flex: 1; }
   .post-footer {
     display: flex; align-items: center; justify-content: space-between;
-    padding-top: .75rem;
-    border-top: 1px solid var(--border);
+    padding-top: .75rem; border-top: 1px solid var(--border);
     font-size: .75rem; color: var(--text-muted);
   }
   .post-date { font-variant-numeric: tabular-nums; }
   .post-excerpt p { margin-bottom: .9rem; }
   .post-excerpt p:last-child { margin-bottom: 0; }
-  .post-empty {
-    grid-column: 1 / -1;
-    background: var(--surface2);
-    border: 1px dashed var(--border);
-    border-radius: var(--radius);
-    padding: 3rem 2rem;
-    text-align: center;
-    color: var(--text-muted);
-    font-size: .9rem; line-height: 1.7;
-  }
-  .post-empty span { display: block; font-size: 1.75rem; margin-bottom: .75rem; }
+
   /* ── Footer ── */
   footer {
-    background: #0A0C12;
-    border-top: 1px solid var(--border);
-    padding: 2rem;
-    text-align: center;
+    background: #0A0C12; border-top: 1px solid var(--border);
+    padding: 2rem; text-align: center;
     font-size: .78rem; color: var(--text-muted);
   }
   footer span { color: var(--accent); }
 
-  /* ── Responsive: tablet ── */
-  @media (max-width: 720px) {
-    nav { padding: 0 1rem; }
-    .nav-links { gap: 1.25rem; }
-    .nav-links a { font-size: .8rem; }
-
-    section { padding: 4rem 1.25rem; }
-    #about { padding-top: 80px; }
-
-    /* Intro unificado */
-    .intro-grid { grid-template-columns: 1fr; gap: 2rem; text-align: center; }
-    .intro-photo-col { align-items: center; }
-    .about-avatar, .about-avatar-fallback { width: 140px; height: 140px; }
-    .hero-eyebrow { justify-content: center; }
-    .hero-ctas { justify-content: center; }
-    h1 { font-size: clamp(2rem, 6vw, 2.8rem); }
-
-    /* Stats strip */
-    .intro-stats { gap: .75rem; }
-    .intro-stats-divider { display: none; }
-    .intro-tags { justify-content: center; }
-
-    /* About grid */
-    .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
-    .pillars { grid-template-columns: 1fr 1fr; }
-
-    /* Cases */
-    .kpi-strip { grid-template-columns: 1fr 1fr; }
-    .kpi-item { border-right: none; border-bottom: 1px solid var(--border); }
-    .kpi-item:last-child { border-bottom: none; }
-    .problem-grid, .learnings-grid { grid-template-columns: 1fr; }
-    .fraud-grid { grid-template-columns: 1fr; }
-    .case-body { padding: 1.25rem; }
-    .case-header { padding: 1.75rem 1.25rem 1.25rem; }
-    .case-carousel-fullbleed { margin: 1rem -1.25rem 0; }
-    .discovery-tracks { gap: .75rem; }
-    .solutions-list { gap: .75rem; }
-    .inside-grid { grid-template-columns: 1fr; }
-  }
-
-  /* ── Responsive: mobile ── */
-  @media (max-width: 480px) {
-    .nav-links { gap: .9rem; }
-    .nav-links a { font-size: .75rem; }
-    section { padding: 3rem 1rem; }
-
-    h1 { font-size: 2rem; }
-    .hero-desc { font-size: .92rem; }
-    .hero-eyebrow { font-size: .7rem; white-space: normal; text-align: center; }
-
-    .about-avatar, .about-avatar-fallback { width: 110px; height: 110px; }
-
-    .intro-stats { flex-direction: column; align-items: flex-start; gap: .5rem; }
-    .intro-stats .stat-value,
-    .intro-stats .stat-label { text-align: left; }
-
-    .kpi-strip { grid-template-columns: 1fr; }
-    .kpi-item { border-right: none; border-bottom: 1px solid var(--border); }
-    .kpi-item:last-child { border-bottom: none; }
-
-    .pillars { grid-template-columns: 1fr; }
-    .fraud-grid { grid-template-columns: 1fr; }
-
-    .case-body { padding: 1rem; }
-    .case-header { padding: 1.25rem 1rem 1rem; }
-    .case-carousel-fullbleed { margin: 1rem -1rem 0; }
-    .case-title { font-size: 1.2rem; }
-    .case-subtitle { font-size: .85rem; }
-
-    .carousel-slide img { max-height: 260px; }
-  }
-
-  /* ── Carousel full-bleed ── */
-  .case-carousel-fullbleed {
-    margin: 1rem -2.5rem 0;
-    overflow: hidden;
-  }
-  .case-carousel-fullbleed .carousel {
-    border-radius: 0;
-    border-left: none;
-    border-right: none;
-  }
-
-  /* ── Imagen por solución ── */
-  .case-img-block {
-    margin-top: .75rem;
-    border-radius: var(--radius-sm);
-    overflow: hidden;
-    border: 1px solid var(--border);
-  }
-  .case-img-block img {
-    width: 100%;
-    max-height: 420px;
-    object-fit: contain;
-    background: var(--surface2);
-    display: block;
-  }
-
   /* ── Carousel ── */
-  .carousel {
-    position: relative;
-    background: var(--surface2);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    overflow: hidden;
-  }
-  .carousel-track {
-    display: flex;
-    transition: transform .35s cubic-bezier(.4,0,.2,1);
-  }
-  .carousel-slide {
-    min-width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  .carousel-slide img {
-    width: 100%;
-    max-height: 420px;
-    object-fit: contain;
-    background: var(--surface);
-    display: block;
-  }
-  .carousel-caption {
-    width: 100%;
-    padding: .6rem 1rem;
-    font-size: .8rem;
-    color: var(--text-secondary);
-    background: var(--surface2);
-    border-top: 1px solid var(--border);
-    text-align: center;
-  }
+  .case-carousel-fullbleed { margin: 1rem -1.25rem 0; overflow: hidden; }
+  .case-carousel-fullbleed .carousel { border-radius: 0; border-left: none; border-right: none; }
+  .case-img-block { margin-top: .75rem; border-radius: var(--radius-sm); overflow: hidden; border: 1px solid var(--border); }
+  .case-img-block img { width: 100%; max-height: 420px; object-fit: contain; background: var(--surface2); display: block; }
+  .carousel { position: relative; background: var(--surface2); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; }
+  .carousel-track { display: flex; transition: transform .35s cubic-bezier(.4,0,.2,1); }
+  .carousel-slide { min-width: 100%; display: flex; flex-direction: column; align-items: center; }
+  .carousel-slide img { width: 100%; max-height: 420px; object-fit: contain; background: var(--surface); display: block; }
+  .carousel-caption { width: 100%; padding: .6rem 1rem; font-size: .8rem; color: var(--text-secondary); background: var(--surface2); border-top: 1px solid var(--border); text-align: center; }
   .carousel-btn {
     position: absolute; top: 50%; transform: translateY(-50%);
     background: rgba(15,17,23,.75); border: 1px solid var(--border);
@@ -633,17 +563,52 @@
   .carousel-btn:hover { background: var(--accent-dim); border-color: var(--border-accent); }
   .carousel-btn.prev { left: .75rem; }
   .carousel-btn.next { right: .75rem; }
-  .carousel-dots {
-    display: flex; justify-content: center; gap: .4rem;
-    padding: .6rem 0 .9rem;
-    background: var(--surface2);
-  }
-  .carousel-dot {
-    width: 6px; height: 6px; border-radius: 50%;
-    background: var(--border); cursor: pointer;
-    transition: background .2s, transform .2s;
-  }
+  .carousel-dots { display: flex; justify-content: center; gap: .4rem; padding: .6rem 0 .9rem; background: var(--surface2); }
+  .carousel-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--border); cursor: pointer; transition: background .2s, transform .2s; }
   .carousel-dot.active { background: var(--accent); transform: scale(1.3); }
+
+  /* ── Responsive ── */
+  @media (max-width: 720px) {
+    nav { padding: 0 1rem; }
+    .nav-links { gap: 1.25rem; }
+    section { padding: 4rem 1.25rem; }
+    #about { padding-top: 80px; }
+    .intro-grid { grid-template-columns: 1fr; gap: 2rem; text-align: center; }
+    .intro-photo-col { align-items: center; }
+    .about-avatar, .about-avatar-fallback { width: 140px; height: 140px; }
+    .hero-eyebrow { justify-content: center; }
+    .hero-ctas { justify-content: center; }
+    h1 { font-size: clamp(2rem, 6vw, 2.8rem); }
+    .intro-stats { gap: .75rem; }
+    .intro-stats-divider { display: none; }
+    .intro-tags { justify-content: center; }
+    .pillars-row { grid-template-columns: 1fr 1fr; }
+    .kpi-strip { grid-template-columns: 1fr 1fr; }
+    .kpi-item { border-right: none; border-bottom: 1px solid var(--border); }
+    .kpi-item:last-child { border-bottom: none; }
+    .problem-grid, .learnings-grid { grid-template-columns: 1fr; }
+    .fraud-grid { grid-template-columns: 1fr; }
+    .case-body-sections { padding: 1.25rem; }
+    .case-header { padding: 1.75rem 1.25rem 1.25rem; }
+    .case-carousel-fullbleed { margin: 1rem -1.25rem 0; }
+    .inside-grid { grid-template-columns: 1fr; }
+    .case-tabs { gap: 0; }
+    .case-tab { padding: .75rem 1rem; font-size: .82rem; }
+  }
+  @media (max-width: 480px) {
+    .nav-links { gap: .9rem; }
+    section { padding: 3rem 1rem; }
+    h1 { font-size: 2rem; }
+    .about-avatar, .about-avatar-fallback { width: 110px; height: 110px; }
+    .intro-stats { flex-direction: column; align-items: flex-start; gap: .5rem; }
+    .pillars-row { grid-template-columns: 1fr 1fr; }
+    .kpi-strip { grid-template-columns: 1fr; }
+    .fraud-grid { grid-template-columns: 1fr; }
+    .case-body-sections { padding: 1rem; }
+    .case-header { padding: 1.25rem 1rem 1rem; }
+    .case-title { font-size: 1.2rem; }
+    .case-subtitle { font-size: .85rem; }
+  }
 </style>
 </head>
 <body>
@@ -658,26 +623,29 @@
   </div>
 </nav>
 
-<!-- ═══ INTRO (unificado) ═══ -->
-<section id="about">
+<!-- ═══ ABOUT / HERO ═══ -->
+<section id="about" style="background: var(--surface); padding-top: 100px;">
   <div class="container">
 
     <!-- Foto + identidad -->
     <div class="intro-grid">
       <div class="intro-photo-col">
-        <img src="foto_sofia_400x400.jpg" alt="Sofia Valperga" class="about-avatar" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <img src="foto_sofia_400x400.jpg" alt="Sofia Valperga" class="about-avatar"
+          onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
         <div class="about-avatar-fallback" style="display:none">SV</div>
       </div>
       <div>
         <div class="hero-eyebrow">Product Manager · Payments · Fintech · B2B · LatAm</div>
         <h1>Sofia<br><span>Valperga</span></h1>
         <p class="hero-desc">
-          5 años liderando equipos de alto impacto en productos digitales en <strong style="color:var(--text-primary)">payments y <span style="white-space:nowrap">e-commerce</span></strong>.
+          5 años liderando equipos de alto impacto en productos digitales en
+          <strong style="color:var(--text-primary)">payments y <span style="white-space:nowrap">e-commerce</span></strong>.
           Combino liderazgo, pensamiento estratégico y ejecución para transformar problemas en soluciones.
         </p>
         <div class="hero-ctas">
-          <a href="#cases" class="btn btn-primary">Ver casos</a>
+          <a href="#cases" class="btn btn-primary">Ver casos →</a>
           <a href="https://www.linkedin.com/in/sofiavalperga/" target="_blank" class="btn btn-ghost">LinkedIn</a>
+          <a href="CV_Sofia_Valperga.pdf" target="_blank" class="btn btn-ghost">CV PDF</a>
         </div>
       </div>
     </div>
@@ -688,10 +656,12 @@
         <div class="stat-value">+5</div>
         <div class="stat-label">años en producto</div>
       </div>
+      <div class="intro-stats-divider"></div>
       <div class="stat-item">
         <div class="stat-value">+50pp</div>
         <div class="stat-label">NPS mejorado</div>
       </div>
+      <div class="intro-stats-divider"></div>
       <div class="stat-item">
         <div class="stat-value">B2C+B2B</div>
         <div class="stat-label">productos liderados</div>
@@ -707,42 +677,45 @@
       </div>
     </div>
 
-    <div class="divider"></div>
-    <div class="about-grid">
-      <div class="about-text">
-        <p>Hace 5 años lidero el desarrollo de productos digitales con diseño centrado en el usuario, para <strong>payments y e-commerce</strong>. Empodero y construyo equipos de alto rendimiento, conectando estrategia con ejecución en contextos complejos.</p>
-        <p>Con experiencia en la industria financiera, diseñé soluciones de cobros y pagos. Impulsé el lanzamiento y escalado de productos end-to-end — lectores de tarjetas (POS), integración de cobros con <strong>PIX</strong> y soluciones de pago inmediato — siempre con foco en impacto de negocio.</p>
-        <p>Logrando confluir lo que amo hacer con lo que sé hacer.</p>
-        <div class="skills-section">
-          <div class="skills-title">Competencias clave</div>
-          <div class="skills-chips">
-            <span class="skill-chip">Liderazgo de equipos</span>
-            <span class="skill-chip">Resolución de problemas</span>
-            <span class="skill-chip">Desarrollo de productos</span>
-            <span class="skill-chip">Análisis estratégico de datos</span>
-          </div>
-        </div>
+    <!-- Pillars: siempre visibles, scanneable -->
+    <div class="pillars-row">
+      <div class="pillar">
+        <div class="pillar-icon">🎯</div>
+        <div class="pillar-title">Estrategia de producto</div>
       </div>
-      <div class="pillars-col">
-        <div class="pillars">
-          <div class="pillar">
-            <div class="pillar-icon">🎯</div>
-            <div class="pillar-title">Estrategia<br>de producto</div>
-          </div>
-          <div class="pillar">
-            <div class="pillar-icon">📊</div>
-            <div class="pillar-title">Priorización<br>con foco</div>
-          </div>
-          <div class="pillar">
-            <div class="pillar-icon">⚡</div>
-            <div class="pillar-title">Ejecución<br>ágil</div>
-          </div>
-          <div class="pillar">
-            <div class="pillar-icon">💡</div>
-            <div class="pillar-title">Problem-<br>first</div>
-          </div>
-        </div>
+      <div class="pillar">
+        <div class="pillar-icon">📊</div>
+        <div class="pillar-title">Priorización con foco</div>
       </div>
+      <div class="pillar">
+        <div class="pillar-icon">⚡</div>
+        <div class="pillar-title">Ejecución ágil</div>
+      </div>
+      <div class="pillar">
+        <div class="pillar-icon">💡</div>
+        <div class="pillar-title">Problem-first</div>
+      </div>
+    </div>
+
+    <!-- Skills chips -->
+    <div class="skills-section">
+      <div class="skills-title">Competencias clave</div>
+      <div class="skills-chips">
+        <span class="skill-chip">Liderazgo de equipos</span>
+        <span class="skill-chip">Resolución de problemas</span>
+        <span class="skill-chip">Desarrollo de productos</span>
+        <span class="skill-chip">Análisis estratégico de datos</span>
+      </div>
+    </div>
+
+    <!-- Bio: colapsable -->
+    <button class="bio-toggle-btn" id="bio-btn" onclick="toggleBio()">
+      ↓ Leer más sobre mí
+    </button>
+    <div class="bio-toggle-content" id="bio-content">
+      <p>Hace 5 años lidero el desarrollo de productos digitales con diseño centrado en el usuario, para <strong>payments y e-commerce</strong>. Empodero y construyo equipos de alto rendimiento, conectando estrategia con ejecución en contextos complejos.</p>
+      <p>Con experiencia en la industria financiera, diseñé soluciones de cobros y pagos. Impulsé el lanzamiento y escalado de productos end-to-end — lectores de tarjetas (POS), integración de cobros con <strong>PIX</strong> y soluciones de pago inmediato — siempre con foco en impacto de negocio.</p>
+      <p>Logrando confluir lo que amo hacer con lo que sé hacer.</p>
     </div>
 
   </div>
@@ -751,426 +724,517 @@
 <!-- ═══ CASES ═══ -->
 <section id="cases">
   <div class="container">
+
     <div class="cases-intro">
       <div class="section-label">Casos de producto</div>
-      <h2 class="section-title">Discovery continuo</h2>
+      <h2 class="section-title">Mindset: discovery continuo</h2>
       <div class="divider"></div>
-      <p class="section-sub">Cada caso refleja cómo navego la ambigüedad, priorizo bajo incertidumbre y decido con criterio.</p>
     </div>
 
-    <!-- ── CASO: mPOS ── -->
-    <div class="case-card">
-      <div class="case-header">
-        <div class="case-badge">📱 Caso 01 · Fintech</div>
-        <div class="case-title">mPOS — Lector de Pagos</div>
-        <div class="case-subtitle">De NPS -10 a +40 pp: cómo rediseñamos la tasa de aceptación desde sus causas raíz</div>
-        <div class="case-meta">
-          <div class="meta-pill">🎯 <span>Líder de equipo de producto · Triada: UX · IT</span></div>
-          <div class="meta-pill">🤝 <span>Fraude · Legales · Negocio · Data</span></div>
-          <div class="meta-pill">💳 <span>Pagos presenciales · B2C</span></div>
-        </div>
+    <!-- Tabs de casos -->
+    <div class="case-tabs">
+      <div class="case-tab active" data-case="mpos" onclick="switchCase('mpos')">
+        <span class="tab-num">01</span> mPOS — Lector de Pagos
       </div>
-
-      <!-- KPI strip -->
-      <div class="kpi-strip">
-        <div class="kpi-item">
-          <div class="kpi-val" style="color:var(--green)">-10 → +40pp</div>
-          <div class="kpi-label">NPS en 6 meses</div>
-          <div class="kpi-sub">2.º mejor del mercado</div>
-        </div>
-        <div class="kpi-item">
-          <div class="kpi-val" style="color:var(--yellow)">30% → 75%</div>
-          <div class="kpi-label">Tasa de aceptación</div>
-          <div class="kpi-sub">vs. OKR ajustado 80%</div>
-        </div>
-        <div class="kpi-item">
-          <div class="kpi-val" style="color:var(--green)">+5%</div>
-          <div class="kpi-label">Pagos en campañas</div>
-          <div class="kpi-sub">heavy users segmentados</div>
-        </div>
-      </div>
-
-      <div class="case-body">
-
-        <!-- CONTEXTO -->
-        <div class="case-section">
-          <div class="case-h3">Contexto del producto</div>
-          <p class="case-p">mPOS es el lector de pagos físico. Se conecta vía Bluetooth al celular del merchant y acepta pagos con cualquier tarjeta mediante contactless, chip o banda magnética. El dinero de cada venta se acredita directamente en la cuenta del comerciante.</p>
-        </div>
-
-        <!-- PROBLEMA -->
-        <div class="case-section">
-          <div class="case-h3">El problema</div>
-          <p class="case-p">Al tomar el producto, el diagnóstico inicial reveló dos problemas críticos interrelacionados:</p>
-          <div class="problem-grid">
-            <div class="problem-card">
-              <div class="problem-icon">📉</div>
-              <div class="problem-title">Tasa de aceptación: 30%</div>
-              <div class="problem-desc">El 70% de los intentos de pago terminaban en rechazo. Los motivos no estaban bien catalogados ni entendidos.</div>
-            </div>
-            <div class="problem-card">
-              <div class="problem-icon">😤</div>
-              <div class="problem-title">NPS: -10</div>
-              <div class="problem-desc">Top detractores: "Problemas de conectividad", "Pago rechazado", "Demora más de lo esperado".</div>
-            </div>
-          </div>
-        </div>
-
-        <!-- DISCOVERY -->
-        <div class="case-section">
-          <div class="case-h3">Discovery: tres frentes en paralelo</div>
-          <p class="case-p">El proceso no fue lineal. Trabajamos simultáneamente en tres frentes que se retroalimentaban. Los frentes A y B eran <strong>quick wins</strong> de impacto rápido mientras investigábamos la causa raíz (Frente C).</p>
-          <div class="discovery-tracks">
-            <div class="track track-a">
-              <div class="track-badge">A</div>
-              <div>
-                <div class="track-title">Conectividad y latencia — Análisis técnico con IT</div>
-                <div class="track-desc"><ul>
-                  <li>Revisé logs BLE y analicé timeouts con el equipo de IT</li>
-                  <li>El timeout se activaba demasiado rápido — antes de completar la transacción</li>
-                  <li>El walkthrough no comunicaba la distancia óptima entre celular y lector</li>
-                </ul></div>
-                <div class="track-insight">→ Parte del problema era evitable con mejor comunicación al usuario en el onboarding.</div>
-              </div>
-            </div>
-            <div class="track track-b">
-              <div class="track-badge">B</div>
-              <div>
-                <div class="track-title">UX de pantallas de rechazo — Rediseño de mensajes</div>
-                <div class="track-desc"><ul>
-                  <li>Analicé todas las pantallas de error post-rechazo</li>
-                  <li>No existía diferenciación entre rechazos definitivos y recuperables</li>
-                  <li>Los rechazos definitivos ofrecían CTA de reintento — multiplicando la frustración del merchant</li>
-                </ul></div>
-                <div class="track-insight">→ Los rechazos definitivos no tenían CTA de "no reintentar", multiplicando la frustración.</div>
-              </div>
-            </div>
-            <div class="track track-c">
-              <div class="track-badge">C</div>
-              <div>
-                <div class="track-title">Análisis de tasa de aceptación por MCC — El hallazgo central</div>
-                <div class="track-desc"><ul>
-                  <li>Abrí la tasa de aceptación por establecimiento y MCC</li>
-                  <li>Los peores performers: motos, alquiler de salones, servicios de ticket alto</li>
-                  <li>Todos concentraban el mismo código: "Denegada 05" — un genérico que escondía múltiples reglas de fraude</li>
-                  <li>Convoqué una mesa técnica con Visa para decodificarlo</li>
-                </ul></div>
-                <div class="track-insight">→ Los establecimientos fraudulentos dentro del mismo agrupador contaminaban la tasa de merchants legítimos.</div>
-              </div>
-            </div>
-          </div>
-
-          <div class="insight-spotlight">
-            <div class="insight-label">💡 Insight transformador</div>
-            <div class="insight-text">El problema no era tecnológico ni de UX — era <strong>estructural y de riesgo</strong>. Los vectores de fraude detectados por Visa estaban penalizando a toda la red de merchants del mismo agrupador, incluyendo comerciantes completamente honestos. Resolver la tasa de aceptación requería rediseñar cómo se asignaban los establecimientos.</div>
-          </div>
-        </div>
-
-        <!-- SOLUCIONES -->
-        <div class="case-section">
-          <div class="case-h3">Las soluciones</div>
-          <div class="solutions-list">
-            <div class="solution">
-              <div class="sol-num">1</div>
-              <div>
-                <div class="sol-title">Mejoras técnicas + rediseño del onboarding de conexión</div>
-                <div class="sol-desc">Corregimos bugs BLE, optimizamos timeouts y rediseñamos el walkthrough de emparejamiento con indicaciones visuales claras sobre la distancia requerida durante toda la transacción. Agregamos mensajes de error de conectividad con instrucciones accionables.</div>
-              </div>
-            </div>
-            <div class="solution">
-              <div class="sol-num">2</div>
-              <div>
-                <div class="sol-title">Clasificación de rechazos con experiencias diferenciadas</div>
-                <div class="sol-desc">
-                  <strong style="color:var(--text-primary)">Rechazos definitivos</strong> (fondos, fraude, tarjeta bloqueada): mensaje explícito de no reintentar, sin CTA de reintento.<br>
-                  <strong style="color:var(--text-primary)">Rechazos recuperables</strong> (error, timeout): CTA de reintento disponible, mensaje empático orientado a resolver.
-                </div>
-              </div>
-            </div>
-            <div class="solution">
-              <div class="sol-num">3</div>
-              <div>
-                <div class="sol-title">Sistema de scoring de merchants (Anti-fraude)</div>
-                <div class="sol-desc">Junto al equipo de Onboarding, diseñé un sistema de puntuación para clasificar a cada merchant y asignarle el establecimiento correspondiente según su perfil de riesgo:</div>
-              </div>
-            </div>
-          </div>
-
-          <div class="scoring-wrapper">
-            <div class="scoring-spectrum"></div>
-            <div class="scoring-spectrum-labels">
-              <span>Saludable</span>
-              <span>Indefinido</span>
-              <span>Peligroso</span>
-            </div>
-            <div class="fraud-grid">
-              <div class="fraud-card good">
-                <div class="fraud-icon">✅</div>
-                <div class="fraud-label">Saludable</div>
-                <div class="fraud-desc">Validaciones completas, bajo riesgo</div>
-                <div class="fraud-divider"></div>
-                <div class="fraud-result">Establecimiento con alta tasa de aceptación y reglas flexibles</div>
-              </div>
-              <div class="fraud-card mid">
-                <div class="fraud-icon">⚠️</div>
-                <div class="fraud-label">Indefinido</div>
-                <div class="fraud-desc">Información incompleta o señales ambiguas</div>
-                <div class="fraud-divider"></div>
-                <div class="fraud-result">Establecimiento intermedio con monitoreo activo</div>
-              </div>
-              <div class="fraud-card bad">
-                <div class="fraud-icon">🚨</div>
-                <div class="fraud-label">Peligroso</div>
-                <div class="fraud-desc">Señales de alerta en validación</div>
-                <div class="fraud-divider"></div>
-                <div class="fraud-result">Establecimiento con reglas de fraude más duras</div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- DECISIÓN CLAVE -->
-        <div class="case-section">
-          <div class="case-h3">Decisión clave</div>
-          <div class="insight-spotlight">
-            <div class="insight-label">📌 Renegociar el OKR</div>
-            <div class="insight-text">El OKR original del 90% era matemáticamente inalcanzable sin comprometer el sistema antifraude. Justificar ese límite ante los stakeholders con datos — y renegociar a un objetivo más realista y sostenible — fue tan importante como las soluciones técnicas.</div>
-          </div>
-        </div>
-
-        <!-- IMPACTO DE NEGOCIO -->
-        <div class="case-section">
-          <div class="case-h3">Impacto en el negocio</div>
-          <div style="display:grid; grid-template-columns:1fr 1fr; gap:.75rem; margin-bottom:.75rem;">
-            <div style="background:var(--surface2); border:1px solid rgba(52,211,153,.25); border-left:3px solid var(--green); border-radius:var(--radius-sm); padding:1rem 1.1rem;">
-              <div style="font-size:1.4rem; font-weight:800; color:var(--green); line-height:1; margin-bottom:.3rem;">30% → 25%</div>
-              <div style="font-size:.8rem; font-weight:600; color:var(--text-primary); margin-bottom:.15rem;">Churn en heavy users</div>
-              <div style="font-size:.72rem; color:var(--text-muted);">Reducción de 5pp en el segmento de mayor valor</div>
-            </div>
-            <div style="background:var(--surface2); border:1px solid rgba(52,211,153,.25); border-left:3px solid var(--green); border-radius:var(--radius-sm); padding:1rem 1.1rem;">
-              <div style="font-size:1.4rem; font-weight:800; color:var(--green); line-height:1; margin-bottom:.3rem;">↑ LTV</div>
-              <div style="font-size:.8rem; font-weight:600; color:var(--text-primary); margin-bottom:.15rem;">Lifetime Value por usuario</div>
-              <div style="font-size:.72rem; color:var(--text-muted);">Usuarios activos por más tiempo, con más transacciones — impacto directo en el P&L</div>
-            </div>
-          </div>
-          <div class="insight-spotlight" style="margin-top:0">
-            <div class="insight-label">📈 Conexión con el negocio</div>
-            <div class="insight-text">El perfilado de merchants no solo mejoró la experiencia — redujo el churn de heavy users y alargó su LTV al generar mayor volumen de transacciones. Ese incremento tuvo impacto directo y medible en el P&L de la empresa.</div>
-          </div>
-        </div>
-
-        <!-- APRENDIZAJES -->
-        <div class="case-section">
-          <div class="case-h3">Aprendizajes</div>
-          <div class="learnings-grid">
-            <div class="learning">
-              <strong>No resolver síntomas</strong>
-              La UX de rechazo era un síntoma. El fraude sistémico era la causa raíz. Hubiera sido fácil quedarse en la superficie.
-            </div>
-            <div class="learning">
-              <strong>Aliados externos como desbloqueadores</strong>
-              La mesa con Visa fue el punto de inflexión. El equipo interno no podía obtener ese insight solo.
-            </div>
-            <div class="learning">
-              <strong>Gestionar la incertidumbre</strong>
-              Semanas trabajando en hipótesis sin certeza de la causa raíz. Mantener al equipo enfocado y a los stakeholders informados sin prometer resultados prematuros.
-            </div>
-            <div class="learning">
-              <strong>Renegociar con datos</strong>
-              Saber cuándo un OKR es una barrera para el negocio real — y tener el coraje y los datos para cambiarlo.
-            </div>
-          </div>
-        </div>
-
-      </div><!-- /case-body -->
-    </div><!-- /case-card -->
-
-    <!-- ── CASO 2: GETNET ── -->
-    <div class="case-card">
-      <div class="case-header">
-        <div class="case-badge">⚙️ Caso 02 · Fintech</div>
-        <div class="case-title">Capability de Carga de Promociones</div>
-        <div class="case-subtitle">De un proceso manual de 48hs a una herramienta self-service con lógica de priorización automática</div>
-        <div class="case-meta">
-          <div class="meta-pill">🎯 <span>Líder de equipo de producto · Triada: UX · IT</span></div>
-          <div class="meta-pill">🤝 <span>Operaciones · Negocio · Legales · Data</span></div>
-          <div class="meta-pill">🏗️ <span>B2B</span></div>
-        </div>
-      </div>
-
-      <div class="kpi-strip">
-        <div class="kpi-item">
-          <div class="kpi-val" style="color:var(--green)">-70%</div>
-          <div class="kpi-label">Carga operativa</div>
-          <div class="kpi-sub">en equipos involucrados</div>
-        </div>
-        <div class="kpi-item">
-          <div class="kpi-val" style="color:var(--green)">48hs → ½hs</div>
-          <div class="kpi-label">Tiempo de carga</div>
-          <div class="kpi-sub">+ 1 jornada máx. de validación</div>
-        </div>
-        <div class="kpi-item">
-          <div class="kpi-val" style="color:var(--green)">-90%</div>
-          <div class="kpi-label">Errores de carga manual</div>
-          <div class="kpi-sub">cashback, días, condiciones</div>
-        </div>
-      </div>
-
-      <div class="case-body">
-
-        <div class="case-section">
-          <div class="case-h3">Contexto y problema</div>
-          <p class="case-p">La empresa cerraba contratos de promociones (cuotas sin interés, cashback, etc.) con distintas marcas y procesadores. El problema: muchas promociones se superponían y no existía una lógica sistematizada para priorizarlas. El flujo era completamente manual — negocio definía las reglas en un Excel, operaciones generaba un ticket y el equipo de IT las cargaba directamente en el código del procesamiento de cobros.</p>
-          <div class="insight-spotlight" style="margin-top:.75rem">
-            <div class="insight-label">⚠️ El costo real del proceso</div>
-            <div class="insight-text">Promociones que se cerraban el mismo día obligaban al equipo de IT a intervenir fuera de horario para hacerlas efectivas. Cualquier error en el Excel — porcentaje de cashback incorrecto, días de aplicación equivocados — se traducía directamente en fallas en el procesamiento.</div>
-          </div>
-        </div>
-
-        <div class="case-section">
-          <div class="case-h3">Discovery: dos frentes, una causa raíz</div>
-          <p class="case-p">Lideré un proceso de discovery con research, benchmark y entrevistas a los dos equipos que vivían el problema: Operaciones y Negocio. Lo que encontré en cada uno cambió la dirección del diseño.</p>
-          <div class="discovery-tracks">
-            <div class="track track-a">
-              <div class="track-badge">A</div>
-              <div>
-                <div class="track-title">Mapeo del proceso con Operaciones</div>
-                <div class="track-desc"><ul>
-                  <li>Entrevisté al equipo que traducía los Excel en tickets para IT</li>
-                  <li>Cada promoción: recibir Excel → interpretarlo → ticket → esperar a IT</li>
-                  <li>Las de último momento obligaban a intervenir fuera de horario</li>
-                  <li>Cualquier ambigüedad en el Excel = una vuelta más de consultas</li>
-                </ul></div>
-                <div class="track-insight">→ Operaciones era el cuello de botella visible — pero era un síntoma, no la causa.</div>
-              </div>
-            </div>
-            <div class="track track-b">
-              <div class="track-badge">B</div>
-              <div>
-                <div class="track-title">Entrevistas con Negocio: la voz que faltaba en el sistema</div>
-                <div class="track-desc"><ul>
-                  <li>Entrevisté al equipo que cerraba contratos de promociones</li>
-                  <li>No tenían canal directo al sistema — todo pasaba por 2 equipos intermedios</li>
-                  <li>La priorización entre promociones superpuestas se definía de forma informal</li>
-                  <li>Resultado: inconsistencias frecuentes y dependencia total de IT para cualquier cambio</li>
-                </ul></div>
-                <div class="track-insight">→ El cuello de botella real era de acceso, no de capacidad. Negocio no tenía voz en el sistema.</div>
-              </div>
-            </div>
-          </div>
-          <div class="insight-spotlight">
-            <div class="insight-label">💡 Insight transformador</div>
-            <div class="insight-text">El problema no era que Operaciones fuera lento — era que <strong>Negocio no tenía forma de expresar sus reglas sin pasar por dos equipos intermedios</strong>. Eso cambió el punto de partida del diseño: la solución tenía que empezar desde Negocio, no desde Operaciones.</div>
-          </div>
-        </div>
-
-        <div class="case-section">
-          <div class="case-h3">Solución</div>
-
-          <!-- Solución 1 -->
-          <div class="solutions-list">
-            <div class="solution">
-              <div class="sol-num">1</div>
-              <div>
-                <div class="sol-title">Interfaz self-service para negocio</div>
-                <div class="sol-desc">Desarrollé una capability de carga diseñada como walkthrough guiado para el equipo de negocio, eliminando la necesidad de intermediarios para definir y cargar una promoción.</div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Carrusel full-bleed solución 1 -->
-          <div class="case-carousel-fullbleed">
-            <div class="carousel" id="getnet-carousel">
-              <div class="carousel-track" id="getnet-track">
-                <div class="carousel-slide">
-                  <img src="GETNET/paso uno.png" alt="Paso 1">
-                  <div class="carousel-caption">Paso 1 — inicio del flujo de carga</div>
-                </div>
-                <div class="carousel-slide">
-                  <img src="GETNET/paso 2.png" alt="Paso 2">
-                  <div class="carousel-caption">Paso 2</div>
-                </div>
-                <div class="carousel-slide">
-                  <img src="GETNET/paso 3.png" alt="Paso 3">
-                  <div class="carousel-caption">Paso 3</div>
-                </div>
-                <div class="carousel-slide">
-                  <img src="GETNET/paso 4.png" alt="Paso 4">
-                  <div class="carousel-caption">Paso 4</div>
-                </div>
-                <div class="carousel-slide">
-                  <img src="GETNET/Configuracion financiera (1).png" alt="Configuración financiera">
-                  <div class="carousel-caption">Configuración financiera — condiciones de la promo</div>
-                </div>
-              </div>
-              <button class="carousel-btn prev" onclick="moveCarousel('getnet', -1)" aria-label="Anterior">‹</button>
-              <button class="carousel-btn next" onclick="moveCarousel('getnet', 1)" aria-label="Siguiente">›</button>
-              <div class="carousel-dots" id="getnet-dots"></div>
-            </div>
-          </div>
-
-          <!-- Solución 2 -->
-          <div class="solutions-list" style="margin-top:1rem">
-            <div class="solution">
-              <div class="sol-num">2</div>
-              <div>
-                <div class="sol-title">Flujo de validación para operaciones</div>
-                <div class="sol-desc">La carga de negocio llega como ticket de validación al equipo de operaciones, quienes aprueban antes de que la lógica se aplique — con un tope máximo de una jornada laboral.</div>
-                <div class="case-img-block">
-                  <img src="GETNET/Validar promociones.png" alt="Validar promociones">
-                </div>
-              </div>
-            </div>
-
-            <!-- Solución 3 -->
-            <div class="solution">
-              <div class="sol-num">3</div>
-              <div>
-                <div class="sol-title">Motor de priorización automática</div>
-                <div class="sol-desc">Detrás de la interfaz se construyó la lógica de priorización según las reglas de negocio: qué promoción aplica según día, marca y procesador cuando hay superposición, sin intervención manual de IT.</div>
-                <div class="case-img-block">
-                  <img src="GETNET/Gestor de campanas.png" alt="Gestor de campañas">
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="case-section">
-          <div class="case-h3">Decisión clave</div>
-          <div class="insight-spotlight">
-            <div class="insight-label">📌 Diseñar para el usuario real, no para el técnico</div>
-            <div class="insight-text">La tentación era construir una herramienta para operaciones. Las entrevistas revelaron que el cuello de botella real estaba antes: negocio no tenía forma de expresar sus reglas sin pasar por dos equipos intermedios. Empezar el walkthrough desde negocio fue la decisión que desbloqueó todo el flujo.</div>
-          </div>
-        </div>
-
-        <!-- IMPACTO DE NEGOCIO -->
-        <div class="case-section">
-          <div class="case-h3">Impacto en el negocio</div>
-          <p class="case-p">La capability habilitó que negocio pueda cerrar y activar promociones en tiempo real — sin fricción operativa ni dependencia de IT. Esto desbloqueó el cierre de nuevas promociones que de otro modo no hubieran podido implementarse por restricciones del proceso anterior.</p>
-          <div class="insight-spotlight" style="margin-top:.75rem">
-            <div class="insight-label">🔗 Input directo para "Pago Inmediato"</div>
-            <div class="insight-text">El volumen de transacciones generado por los merchants a partir de las nuevas promociones activadas fue input directo para escalar y darle push a la feature de <strong>Pago Inmediato</strong> — conectando el impacto operativo con una iniciativa estratégica de producto de mayor escala.</div>
-          </div>
-        </div>
-
-        <!-- APRENDIZAJES -->
-        <div class="case-section">
-          <div class="case-h3">Aprendizajes</div>
-          <div class="learnings-grid">
-            <div class="learning">
-              <strong>El proceso más lento siempre tiene un dueño</strong>
-              Antes de diseñar la solución, el discovery reveló que el problema no era técnico — era de acceso. Negocio no tenía voz en el sistema. Encontrar ese cuello de botella humano fue más valioso que cualquier mejora técnica.
-            </div>
-            <div class="learning">
-              <strong>La eficiencia operativa tiene impacto estratégico</strong>
-              Reducir la fricción interna no es solo una mejora de procesos — en este caso habilitó una velocidad de go-to-market que se tradujo en nuevas promociones, más transacciones y un producto nuevo. El impacto de una herramienta interna puede ser mucho más grande que lo que aparece en el ticket.
-            </div>
-          </div>
-        </div>
-
+      <div class="case-tab" data-case="getnet" onclick="switchCase('getnet')">
+        <span class="tab-num">02</span> Capability de Carga de Promociones
       </div>
     </div>
+
+    <!-- ─── PANEL: mPOS ─── -->
+    <div class="case-panel active" id="panel-mpos">
+      <div class="case-card">
+
+        <div class="case-header">
+          <div class="case-badge">📱 Caso 01 · Fintech</div>
+          <div class="case-title">mPOS — Lector de Pagos</div>
+          <div class="case-subtitle">De NPS -10 a +40 pp: cómo re pensamos la arquitectura desde la raíz para impactar la <strong>tasa de aceptación</strong></div>
+          <div class="case-meta">
+            <div class="meta-pill">🎯 <span>Líder de equipo de producto · Triada: UX · IT</span></div>
+            <div class="meta-pill">🤝 <span>Fraude · Legales · Negocio · Data</span></div>
+            <div class="meta-pill">💳 <span>Pagos presenciales · B2C</span></div>
+          </div>
+        </div>
+
+        <div class="kpi-strip">
+          <div class="kpi-item">
+            <div class="kpi-val" style="color:var(--green)">-10 → +40pp</div>
+            <div class="kpi-label">NPS en 6 meses</div>
+            <div class="kpi-sub">2.º mejor del mercado</div>
+          </div>
+          <div class="kpi-item">
+            <div class="kpi-val" style="color:var(--yellow)">30% → 75%</div>
+            <div class="kpi-label">Tasa de aceptación</div>
+            <div class="kpi-sub">vs. OKR ajustado 80%</div>
+          </div>
+          <div class="kpi-item">
+            <div class="kpi-val" style="color:var(--green)">+5%</div>
+            <div class="kpi-label">Pagos en campañas</div>
+            <div class="kpi-sub">heavy users segmentados</div>
+          </div>
+        </div>
+
+        <div class="case-body-sections">
+
+          <!-- Toggle 1: Contexto & Problema (abierto por default) -->
+          <div class="section-toggle open" id="toggle-mpos-context">
+            <div class="section-toggle-header" onclick="toggleSection('mpos-context')">
+              <div class="section-toggle-title">
+                <span class="toggle-emoji">📋</span>
+                Contexto &amp; Problema
+                <span class="section-toggle-meta">— punto de partida</span>
+              </div>
+              <span class="section-toggle-chevron">▾</span>
+            </div>
+            <div class="section-toggle-body">
+              <div class="case-section">
+                <div class="case-h3">Contexto del producto</div>
+                <p class="case-p">mPOS es el lector de pagos físico. Se conecta vía Bluetooth al celular del merchant y acepta pagos con cualquier tarjeta mediante contactless, chip o banda magnética. El dinero de cada venta se acredita directamente en la cuenta del comerciante.</p>
+              </div>
+              <div class="case-section">
+                <div class="case-h3">El problema</div>
+                <p class="case-p">Al tomar el producto, el diagnóstico inicial reveló dos problemas críticos interrelacionados:</p>
+                <div class="problem-grid">
+                  <div class="problem-card">
+                    <div class="problem-icon">📉</div>
+                    <div class="problem-title">Tasa de aceptación: 30%</div>
+                    <div class="problem-desc">El 70% de los intentos de pago terminaban en rechazo. Los motivos no estaban bien catalogados ni entendidos.</div>
+                  </div>
+                  <div class="problem-card">
+                    <div class="problem-icon">😤</div>
+                    <div class="problem-title">NPS: -10</div>
+                    <div class="problem-desc">Top detractores: "Problemas de conectividad", "Pago rechazado", "Demora más de lo esperado".</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Toggle 2: Discovery -->
+          <div class="section-toggle" id="toggle-mpos-discovery">
+            <div class="section-toggle-header" onclick="toggleSection('mpos-discovery')">
+              <div class="section-toggle-title">
+                <span class="toggle-emoji">🔍</span>
+                Discovery: tres frentes en paralelo
+                <span class="section-toggle-meta">— cómo lo investigué</span>
+              </div>
+              <span class="section-toggle-chevron">▾</span>
+            </div>
+            <div class="section-toggle-body">
+              <div class="case-section">
+                <p class="case-p">El proceso no fue lineal. Trabajamos simultáneamente en tres frentes que se retroalimentaban. Los frentes A y B eran <strong>quick wins</strong> de impacto rápido mientras investigábamos la causa raíz (Frente C).</p>
+                <div class="discovery-tracks">
+                  <div class="track track-a">
+                    <div class="track-badge">A</div>
+                    <div>
+                      <div class="track-title">Conectividad y latencia — Análisis técnico con IT</div>
+                      <div class="track-desc"><ul>
+                        <li>Revisé logs BLE y analicé timeouts con el equipo de IT</li>
+                        <li>El timeout se activaba demasiado rápido — antes de completar la transacción</li>
+                        <li>El walkthrough no comunicaba la distancia óptima entre celular y lector</li>
+                      </ul></div>
+                      <div class="track-insight">→ Parte del problema era evitable con mejor comunicación al usuario en el onboarding.</div>
+                    </div>
+                  </div>
+                  <div class="track track-b">
+                    <div class="track-badge">B</div>
+                    <div>
+                      <div class="track-title">UX de pantallas de rechazo — Rediseño de mensajes</div>
+                      <div class="track-desc"><ul>
+                        <li>Analicé todas las pantallas de error post-rechazo</li>
+                        <li>No existía diferenciación entre rechazos definitivos y recuperables</li>
+                        <li>Los rechazos definitivos ofrecían CTA de reintento — multiplicando la frustración</li>
+                      </ul></div>
+                      <div class="track-insight">→ Los rechazos definitivos no tenían CTA de "no reintentar", multiplicando la frustración.</div>
+                    </div>
+                  </div>
+                  <div class="track track-c">
+                    <div class="track-badge">C</div>
+                    <div>
+                      <div class="track-title">Análisis de tasa de aceptación por MCC — El hallazgo central</div>
+                      <div class="track-desc"><ul>
+                        <li>Abrí la tasa de aceptación por establecimiento y MCC</li>
+                        <li>Los peores performers: motos, alquiler de salones, servicios de ticket alto</li>
+                        <li>Todos concentraban el mismo código: "Denegada 05" — un genérico que escondía múltiples reglas de fraude</li>
+                        <li>Convoqué una mesa técnica con Visa para decodificarlo</li>
+                      </ul></div>
+                      <div class="track-insight">→ Los establecimientos fraudulentos contaminaban la tasa de merchants legítimos del mismo agrupador.</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="insight-spotlight">
+                  <div class="insight-label">💡 Insight transformador</div>
+                  <div class="insight-text">El problema no era tecnológico ni de UX — era <strong>estructural y de riesgo</strong>. Los vectores de fraude detectados por Visa estaban penalizando a toda la red de merchants del mismo agrupador, incluyendo comerciantes completamente honestos. Resolver la tasa de aceptación requería rediseñar cómo se asignaban los establecimientos.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Toggle 3: Soluciones -->
+          <div class="section-toggle" id="toggle-mpos-solutions">
+            <div class="section-toggle-header" onclick="toggleSection('mpos-solutions')">
+              <div class="section-toggle-title">
+                <span class="toggle-emoji">⚙️</span>
+                Las soluciones
+                <span class="section-toggle-meta">— qué construimos</span>
+              </div>
+              <span class="section-toggle-chevron">▾</span>
+            </div>
+            <div class="section-toggle-body">
+              <div class="case-section">
+                <div class="solutions-list">
+                  <div class="solution">
+                    <div class="sol-num">1</div>
+                    <div>
+                      <div class="sol-title">Mejoras técnicas + rediseño del onboarding de conexión</div>
+                      <div class="sol-desc">Corregimos bugs BLE, optimizamos timeouts y rediseñamos el walkthrough de emparejamiento con indicaciones visuales claras sobre la distancia requerida. Agregamos mensajes de error de conectividad con instrucciones accionables.</div>
+                    </div>
+                  </div>
+                  <div class="solution">
+                    <div class="sol-num">2</div>
+                    <div>
+                      <div class="sol-title">Clasificación de rechazos con experiencias diferenciadas</div>
+                      <div class="sol-desc">
+                        <strong style="color:var(--text-primary)">Rechazos definitivos</strong> (fondos, fraude, tarjeta bloqueada): mensaje explícito de no reintentar, sin CTA de reintento.<br>
+                        <strong style="color:var(--text-primary)">Rechazos recuperables</strong> (error, timeout): CTA de reintento disponible, mensaje empático orientado a resolver.
+                      </div>
+                    </div>
+                  </div>
+                  <div class="solution">
+                    <div class="sol-num">3</div>
+                    <div>
+                      <div class="sol-title">Sistema de scoring de merchants (Anti-fraude)</div>
+                      <div class="sol-desc">Junto al equipo de Onboarding, diseñé un sistema de puntuación para clasificar a cada merchant y asignarle el establecimiento según su perfil de riesgo:</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="scoring-wrapper" style="margin-top:1.25rem">
+                  <div class="scoring-spectrum"></div>
+                  <div class="scoring-spectrum-labels">
+                    <span>Saludable</span><span>Indefinido</span><span>Peligroso</span>
+                  </div>
+                  <div class="fraud-grid">
+                    <div class="fraud-card good">
+                      <div class="fraud-icon">✅</div>
+                      <div class="fraud-label">Saludable</div>
+                      <div class="fraud-desc">Validaciones completas, bajo riesgo</div>
+                      <div class="fraud-divider"></div>
+                      <div class="fraud-result">Establecimiento con alta tasa de aceptación y reglas flexibles</div>
+                    </div>
+                    <div class="fraud-card mid">
+                      <div class="fraud-icon">⚠️</div>
+                      <div class="fraud-label">Indefinido</div>
+                      <div class="fraud-desc">Información incompleta o señales ambiguas</div>
+                      <div class="fraud-divider"></div>
+                      <div class="fraud-result">Establecimiento intermedio con monitoreo activo</div>
+                    </div>
+                    <div class="fraud-card bad">
+                      <div class="fraud-icon">🚨</div>
+                      <div class="fraud-label">Peligroso</div>
+                      <div class="fraud-desc">Señales de alerta en validación</div>
+                      <div class="fraud-divider"></div>
+                      <div class="fraud-result">Establecimiento con reglas de fraude más duras</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Toggle 4: Impacto & Aprendizajes -->
+          <div class="section-toggle" id="toggle-mpos-impact">
+            <div class="section-toggle-header" onclick="toggleSection('mpos-impact')">
+              <div class="section-toggle-title">
+                <span class="toggle-emoji">📈</span>
+                Decisión clave, Impacto &amp; Aprendizajes
+                <span class="section-toggle-meta">— resultado y reflexión</span>
+              </div>
+              <span class="section-toggle-chevron">▾</span>
+            </div>
+            <div class="section-toggle-body">
+              <div class="case-section">
+                <div class="case-h3">Decisión clave</div>
+                <div class="insight-spotlight">
+                  <div class="insight-label">📌 Renegociar el OKR</div>
+                  <div class="insight-text">El OKR original del 90% era matemáticamente inalcanzable sin comprometer el sistema antifraude. Justificar ese límite ante los stakeholders con datos — y renegociar a un objetivo más realista y sostenible — fue tan importante como las soluciones técnicas.</div>
+                </div>
+              </div>
+              <div class="case-section">
+                <div class="case-h3">Impacto en el negocio</div>
+                <div style="display:grid; grid-template-columns:1fr 1fr; gap:.75rem; margin-bottom:.75rem;">
+                  <div style="background:var(--surface2); border:1px solid rgba(52,211,153,.25); border-left:3px solid var(--green); border-radius:var(--radius-sm); padding:1rem 1.1rem;">
+                    <div style="font-size:1.4rem; font-weight:800; color:var(--green); line-height:1; margin-bottom:.3rem;">30% → 25%</div>
+                    <div style="font-size:.8rem; font-weight:600; color:var(--text-primary); margin-bottom:.15rem;">Churn en heavy users</div>
+                    <div style="font-size:.72rem; color:var(--text-muted);">Reducción de 5pp en el segmento de mayor valor</div>
+                  </div>
+                  <div style="background:var(--surface2); border:1px solid rgba(52,211,153,.25); border-left:3px solid var(--green); border-radius:var(--radius-sm); padding:1rem 1.1rem;">
+                    <div style="font-size:1.4rem; font-weight:800; color:var(--green); line-height:1; margin-bottom:.3rem;">↑ LTV</div>
+                    <div style="font-size:.8rem; font-weight:600; color:var(--text-primary); margin-bottom:.15rem;">Lifetime Value por usuario</div>
+                    <div style="font-size:.72rem; color:var(--text-muted);">Usuarios activos por más tiempo, con más transacciones — impacto directo en el P&L</div>
+                  </div>
+                </div>
+                <div class="insight-spotlight" style="margin-top:0">
+                  <div class="insight-label">📈 Conexión con el negocio</div>
+                  <div class="insight-text">El perfilado de merchants no solo mejoró la experiencia — redujo el churn de heavy users y alargó su LTV al generar mayor volumen de transacciones. Ese incremento tuvo impacto directo y medible en el P&L de la empresa.</div>
+                </div>
+              </div>
+              <div class="case-section" style="margin-bottom:0">
+                <div class="case-h3">Aprendizajes</div>
+                <div class="learnings-grid">
+                  <div class="learning">
+                    <strong>No resolver síntomas</strong>
+                    La UX de rechazo era un síntoma. El fraude sistémico era la causa raíz. Hubiera sido fácil quedarse en la superficie.
+                  </div>
+                  <div class="learning">
+                    <strong>Aliados externos como desbloqueadores</strong>
+                    La mesa con Visa fue el punto de inflexión. El equipo interno no podía obtener ese insight solo.
+                  </div>
+                  <div class="learning">
+                    <strong>Gestionar la incertidumbre</strong>
+                    Semanas trabajando en hipótesis sin certeza de la causa raíz. Mantener al equipo enfocado y a los stakeholders informados sin prometer resultados prematuros.
+                  </div>
+                  <div class="learning">
+                    <strong>Renegociar con datos</strong>
+                    Saber cuándo un OKR es una barrera para el negocio real — y tener el coraje y los datos para cambiarlo.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div><!-- /case-body-sections -->
+      </div><!-- /case-card -->
+    </div><!-- /panel-mpos -->
+
+
+    <!-- ─── PANEL: GETNET ─── -->
+    <div class="case-panel" id="panel-getnet">
+      <div class="case-card">
+
+        <div class="case-header">
+          <div class="case-badge">⚙️ Caso 02 · Fintech</div>
+          <div class="case-title">Capability de Carga de Promociones</div>
+          <div class="case-subtitle">De un proceso manual de 48hs a una herramienta self-service con lógica de priorización automática</div>
+          <div class="case-meta">
+            <div class="meta-pill">🎯 <span>Líder de equipo de producto · Triada: UX · IT</span></div>
+            <div class="meta-pill">🤝 <span>Operaciones · Negocio · Legales · Data</span></div>
+            <div class="meta-pill">🏗️ <span>B2B</span></div>
+          </div>
+        </div>
+
+        <div class="kpi-strip">
+          <div class="kpi-item">
+            <div class="kpi-val" style="color:var(--green)">-70%</div>
+            <div class="kpi-label">Carga operativa</div>
+            <div class="kpi-sub">en equipos involucrados</div>
+          </div>
+          <div class="kpi-item">
+            <div class="kpi-val" style="color:var(--green)">48hs → ½hs</div>
+            <div class="kpi-label">Tiempo de carga</div>
+            <div class="kpi-sub">+ 1 jornada máx. de validación</div>
+          </div>
+          <div class="kpi-item">
+            <div class="kpi-val" style="color:var(--green)">-90%</div>
+            <div class="kpi-label">Errores de carga manual</div>
+            <div class="kpi-sub">cashback, días, condiciones</div>
+          </div>
+        </div>
+
+        <div class="case-body-sections">
+
+          <!-- Toggle 1: Contexto & Problema (abierto por default) -->
+          <div class="section-toggle open" id="toggle-getnet-context">
+            <div class="section-toggle-header" onclick="toggleSection('getnet-context')">
+              <div class="section-toggle-title">
+                <span class="toggle-emoji">📋</span>
+                Contexto &amp; Problema
+                <span class="section-toggle-meta">— punto de partida</span>
+              </div>
+              <span class="section-toggle-chevron">▾</span>
+            </div>
+            <div class="section-toggle-body">
+              <div class="case-section">
+                <p class="case-p">La empresa cerraba contratos de promociones (cuotas sin interés, cashback, etc.) con distintas marcas y procesadores. El problema: muchas promociones se superponían y no existía una lógica sistematizada para priorizarlas. El flujo era completamente manual — negocio definía las reglas en un Excel, operaciones generaba un ticket y el equipo de IT las cargaba directamente en el código.</p>
+                <div class="insight-spotlight" style="margin-top:.75rem">
+                  <div class="insight-label">⚠️ El costo real del proceso</div>
+                  <div class="insight-text">Promociones que se cerraban el mismo día obligaban al equipo de IT a intervenir fuera de horario. Cualquier error en el Excel — porcentaje de cashback incorrecto, días de aplicación equivocados — se traducía directamente en fallas en el procesamiento.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Toggle 2: Discovery -->
+          <div class="section-toggle" id="toggle-getnet-discovery">
+            <div class="section-toggle-header" onclick="toggleSection('getnet-discovery')">
+              <div class="section-toggle-title">
+                <span class="toggle-emoji">🔍</span>
+                Discovery: dos frentes, una causa raíz
+                <span class="section-toggle-meta">— cómo lo investigué</span>
+              </div>
+              <span class="section-toggle-chevron">▾</span>
+            </div>
+            <div class="section-toggle-body">
+              <div class="case-section">
+                <p class="case-p">Lideré un proceso de discovery con research, benchmark y entrevistas a los dos equipos que vivían el problema: Operaciones y Negocio. Lo que encontré en cada uno cambió la dirección del diseño.</p>
+                <div class="discovery-tracks">
+                  <div class="track track-a">
+                    <div class="track-badge">A</div>
+                    <div>
+                      <div class="track-title">Mapeo del proceso con Operaciones</div>
+                      <div class="track-desc"><ul>
+                        <li>Entrevisté al equipo que traducía los Excel en tickets para IT</li>
+                        <li>Cada promoción: recibir Excel → interpretarlo → ticket → esperar a IT</li>
+                        <li>Las de último momento obligaban a intervenir fuera de horario</li>
+                        <li>Cualquier ambigüedad en el Excel = una vuelta más de consultas</li>
+                      </ul></div>
+                      <div class="track-insight">→ Operaciones era el cuello de botella visible — pero era un síntoma, no la causa.</div>
+                    </div>
+                  </div>
+                  <div class="track track-b">
+                    <div class="track-badge">B</div>
+                    <div>
+                      <div class="track-title">Entrevistas con Negocio: la voz que faltaba en el sistema</div>
+                      <div class="track-desc"><ul>
+                        <li>Entrevisté al equipo que cerraba contratos de promociones</li>
+                        <li>No tenían canal directo al sistema — todo pasaba por 2 equipos intermedios</li>
+                        <li>La priorización entre promociones superpuestas se definía de forma informal</li>
+                        <li>Resultado: inconsistencias frecuentes y dependencia total de IT para cualquier cambio</li>
+                      </ul></div>
+                      <div class="track-insight">→ El cuello de botella real era de acceso, no de capacidad. Negocio no tenía voz en el sistema.</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="insight-spotlight">
+                  <div class="insight-label">💡 Insight transformador</div>
+                  <div class="insight-text">El problema no era que Operaciones fuera lento — era que <strong>Negocio no tenía forma de expresar sus reglas sin pasar por dos equipos intermedios</strong>. Eso cambió el punto de partida del diseño: la solución tenía que empezar desde Negocio, no desde Operaciones.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Toggle 3: Soluciones -->
+          <div class="section-toggle" id="toggle-getnet-solutions">
+            <div class="section-toggle-header" onclick="toggleSection('getnet-solutions')">
+              <div class="section-toggle-title">
+                <span class="toggle-emoji">⚙️</span>
+                Solución
+                <span class="section-toggle-meta">— qué construimos</span>
+              </div>
+              <span class="section-toggle-chevron">▾</span>
+            </div>
+            <div class="section-toggle-body">
+              <div class="case-section">
+                <div class="solutions-list">
+                  <div class="solution">
+                    <div class="sol-num">1</div>
+                    <div>
+                      <div class="sol-title">Interfaz self-service para negocio</div>
+                      <div class="sol-desc">Desarrollé una capability de carga diseñada como walkthrough guiado para el equipo de negocio, eliminando la necesidad de intermediarios para definir y cargar una promoción.</div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="case-carousel-fullbleed" style="margin-top:1rem">
+                  <div class="carousel" id="getnet-carousel">
+                    <div class="carousel-track" id="getnet-track">
+                      <div class="carousel-slide">
+                        <img src="GETNET/paso%20uno.png" alt="Paso 1">
+                        <div class="carousel-caption">Paso 1 — inicio del flujo de carga</div>
+                      </div>
+                      <div class="carousel-slide">
+                        <img src="GETNET/paso%202.png" alt="Paso 2">
+                        <div class="carousel-caption">Paso 2</div>
+                      </div>
+                      <div class="carousel-slide">
+                        <img src="GETNET/paso%203.png" alt="Paso 3">
+                        <div class="carousel-caption">Paso 3</div>
+                      </div>
+                      <div class="carousel-slide">
+                        <img src="GETNET/paso%204.png" alt="Paso 4">
+                        <div class="carousel-caption">Paso 4</div>
+                      </div>
+                      <div class="carousel-slide">
+                        <img src="GETNET/Configuracion%20financiera%20(1).png" alt="Configuración financiera">
+                        <div class="carousel-caption">Configuración financiera — condiciones de la promo</div>
+                      </div>
+                    </div>
+                    <button class="carousel-btn prev" onclick="moveCarousel('getnet', -1)" aria-label="Anterior">‹</button>
+                    <button class="carousel-btn next" onclick="moveCarousel('getnet', 1)" aria-label="Siguiente">›</button>
+                    <div class="carousel-dots" id="getnet-dots"></div>
+                  </div>
+                </div>
+
+                <div class="solutions-list" style="margin-top:1rem">
+                  <div class="solution">
+                    <div class="sol-num">2</div>
+                    <div>
+                      <div class="sol-title">Flujo de validación para operaciones</div>
+                      <div class="sol-desc">La carga de negocio llega como ticket de validación al equipo de operaciones, quienes aprueban antes de que la lógica se aplique — con un tope máximo de una jornada laboral.</div>
+                      <div class="case-img-block">
+                        <img src="GETNET/Validar%20promociones.png" alt="Validar promociones">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="solution">
+                    <div class="sol-num">3</div>
+                    <div>
+                      <div class="sol-title">Motor de priorización automática</div>
+                      <div class="sol-desc">Detrás de la interfaz se construyó la lógica de priorización según las reglas de negocio: qué promoción aplica según día, marca y procesador cuando hay superposición, sin intervención manual de IT.</div>
+                      <div class="case-img-block">
+                        <img src="GETNET/Gestor%20de%20campanas.png" alt="Gestor de campañas">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Toggle 4: Impacto & Aprendizajes -->
+          <div class="section-toggle" id="toggle-getnet-impact">
+            <div class="section-toggle-header" onclick="toggleSection('getnet-impact')">
+              <div class="section-toggle-title">
+                <span class="toggle-emoji">📈</span>
+                Decisión clave, Impacto &amp; Aprendizajes
+                <span class="section-toggle-meta">— resultado y reflexión</span>
+              </div>
+              <span class="section-toggle-chevron">▾</span>
+            </div>
+            <div class="section-toggle-body">
+              <div class="case-section">
+                <div class="case-h3">Decisión clave</div>
+                <div class="insight-spotlight">
+                  <div class="insight-label">📌 Diseñar para el usuario real, no para el técnico</div>
+                  <div class="insight-text">La tentación era construir una herramienta para operaciones. Las entrevistas revelaron que el cuello de botella real estaba antes: negocio no tenía forma de expresar sus reglas sin pasar por dos equipos intermedios. Empezar el walkthrough desde negocio fue la decisión que desbloqueó todo el flujo.</div>
+                </div>
+              </div>
+              <div class="case-section">
+                <div class="case-h3">Impacto en el negocio</div>
+                <p class="case-p">La capability habilitó que negocio pueda cerrar y activar promociones en tiempo real — sin fricción operativa ni dependencia de IT. Esto desbloqueó el cierre de nuevas promociones que de otro modo no hubieran podido implementarse.</p>
+                <div class="insight-spotlight" style="margin-top:.75rem">
+                  <div class="insight-label">🔗 Input directo para "Pago Inmediato"</div>
+                  <div class="insight-text">El volumen de transacciones generado por los merchants a partir de las nuevas promociones activadas fue input directo para escalar y darle push a la feature de <strong>Pago Inmediato</strong> — conectando el impacto operativo con una iniciativa estratégica de mayor escala.</div>
+                </div>
+              </div>
+              <div class="case-section" style="margin-bottom:0">
+                <div class="case-h3">Aprendizajes</div>
+                <div class="learnings-grid">
+                  <div class="learning">
+                    <strong>El proceso más lento siempre tiene un dueño</strong>
+                    Antes de diseñar la solución, el discovery reveló que el problema no era técnico — era de acceso. Negocio no tenía voz en el sistema. Encontrar ese cuello de botella humano fue más valioso que cualquier mejora técnica.
+                  </div>
+                  <div class="learning">
+                    <strong>La eficiencia operativa tiene impacto estratégico</strong>
+                    Reducir la fricción interna no es solo una mejora de procesos — en este caso habilitó una velocidad de go-to-market que se tradujo en nuevas promociones, más transacciones y un producto nuevo.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div><!-- /case-body-sections -->
+      </div><!-- /case-card -->
+    </div><!-- /panel-getnet -->
 
   </div>
 </section>
@@ -1229,19 +1293,6 @@
         </div>
       </div>
 
-      <!-- Ejemplo de cómo agregar una publicación:
-
-      <div class="post-card">
-        <div class="post-tag">Producto</div>
-        <div class="post-title">Título de la publicación</div>
-        <div class="post-excerpt">Texto de introducción o extracto de la publicación. Puede ser una o dos oraciones que enganchen al lector.</div>
-        <div class="post-footer">
-          <span class="post-date">May 2026</span>
-        </div>
-      </div>
-
-      -->
-
     </div>
   </div>
 </section>
@@ -1252,18 +1303,16 @@
 </footer>
 
 <script>
+  /* ── Carousel ── */
   const carousels = {};
-
   function initCarousel(id) {
     const track = document.getElementById(id + '-track');
     const dotsContainer = document.getElementById(id + '-dots');
+    if (!track || !dotsContainer) return;
     const slides = track.querySelectorAll('.carousel-slide');
     const total = slides.length;
     let current = 0;
-
     carousels[id] = { current, total, track, dotsContainer };
-
-    // Crear dots
     for (let i = 0; i < total; i++) {
       const dot = document.createElement('div');
       dot.className = 'carousel-dot' + (i === 0 ? ' active' : '');
@@ -1271,7 +1320,6 @@
       dotsContainer.appendChild(dot);
     }
   }
-
   function goTo(id, index) {
     const c = carousels[id];
     c.current = (index + c.total) % c.total;
@@ -1280,9 +1328,37 @@
       d.classList.toggle('active', i === c.current);
     });
   }
-
   function moveCarousel(id, dir) {
+    if (!carousels[id]) return;
     goTo(id, carousels[id].current + dir);
+  }
+
+  /* ── Case tabs ── */
+  function switchCase(id) {
+    document.querySelectorAll('.case-tab').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.case-panel').forEach(p => p.classList.remove('active'));
+    document.querySelector(`[data-case="${id}"]`).classList.add('active');
+    document.getElementById(`panel-${id}`).classList.add('active');
+    // Init carousel if switching to getnet
+    if (id === 'getnet' && !carousels['getnet']) {
+      setTimeout(() => initCarousel('getnet'), 50);
+    }
+    // Smooth scroll to cases
+    document.getElementById('cases').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  /* ── Section toggles ── */
+  function toggleSection(id) {
+    const el = document.getElementById(`toggle-${id}`);
+    if (el) el.classList.toggle('open');
+  }
+
+  /* ── Bio toggle ── */
+  function toggleBio() {
+    const content = document.getElementById('bio-content');
+    const btn = document.getElementById('bio-btn');
+    content.classList.toggle('open');
+    btn.textContent = content.classList.contains('open') ? '↑ Leer menos' : '↓ Leer más sobre mí';
   }
 
   document.addEventListener('DOMContentLoaded', () => {
