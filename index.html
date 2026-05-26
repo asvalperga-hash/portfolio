@@ -101,7 +101,7 @@
     text-transform: uppercase; color: var(--accent);
     background: var(--accent-dim); border: 1px solid var(--border-accent);
     padding: .3rem .75rem; border-radius: 99px; margin-bottom: 1.25rem;
-    white-space: nowrap;
+    flex-wrap: wrap;
   }
   .hero-eyebrow::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--accent); animation: pulse 2s infinite; }
   @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.4} }
@@ -158,6 +158,9 @@
     background: var(--accent-dim); color: var(--accent-light);
     border: 1px solid var(--border-accent);
   }
+
+  /* ── About section ── */
+  #about { background: var(--surface); padding-top: 100px; }
 
   /* ── About avatar ── */
   .about-avatar {
@@ -571,6 +574,7 @@
   @media (max-width: 720px) {
     nav { padding: 0 1rem; }
     .nav-links { gap: 1.25rem; }
+    .nav-links a { font-size: .8rem; }
     section { padding: 4rem 1.25rem; }
     #about { padding-top: 80px; }
     .intro-grid { grid-template-columns: 1fr; gap: 2rem; text-align: center; }
@@ -579,7 +583,7 @@
     .hero-eyebrow { justify-content: center; }
     .hero-ctas { justify-content: center; }
     h1 { font-size: clamp(2rem, 6vw, 2.8rem); }
-    .intro-stats { gap: .75rem; }
+    .intro-stats { gap: .75rem; justify-content: center; }
     .intro-stats-divider { display: none; }
     .intro-tags { justify-content: center; }
     .pillars-row { grid-template-columns: 1fr 1fr; }
@@ -597,17 +601,25 @@
   }
   @media (max-width: 480px) {
     .nav-links { gap: .9rem; }
+    .nav-links a { font-size: .75rem; }
     section { padding: 3rem 1rem; }
     h1 { font-size: 2rem; }
+    .hero-desc { font-size: .92rem; }
+    .hero-eyebrow { font-size: .7rem; }
     .about-avatar, .about-avatar-fallback { width: 110px; height: 110px; }
-    .intro-stats { flex-direction: column; align-items: flex-start; gap: .5rem; }
+    .intro-stats { flex-direction: column; align-items: center; gap: .5rem; }
+    .stat-value { font-size: 1.35rem; }
     .pillars-row { grid-template-columns: 1fr 1fr; }
     .kpi-strip { grid-template-columns: 1fr; }
+    .kpi-item { border-right: none; border-bottom: 1px solid var(--border); }
+    .kpi-item:last-child { border-bottom: none; }
     .fraud-grid { grid-template-columns: 1fr; }
     .case-body-sections { padding: 1rem; }
     .case-header { padding: 1.25rem 1rem 1rem; }
     .case-title { font-size: 1.2rem; }
     .case-subtitle { font-size: .85rem; }
+    .section-toggle-header { padding: .85rem 1rem; }
+    .case-tab { padding: .65rem .85rem; font-size: .78rem; }
   }
 </style>
 </head>
@@ -624,7 +636,7 @@
 </nav>
 
 <!-- ═══ ABOUT / HERO ═══ -->
-<section id="about" style="background: var(--surface); padding-top: 100px;">
+<section id="about">
   <div class="container">
 
     <!-- Foto + identidad -->
