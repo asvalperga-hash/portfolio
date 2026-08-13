@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Sofia Valperga — Product Manager con 5 años liderando productos en payments, fintech y e-commerce en LatAm. Casos de producto: mPOS, Getnet. B2C y B2B.">
-<title>Sofia Valperga — PM Portfolio</title>
+<meta name="description" content="Sofia Valperga — Product Consultant with deep roots in payments, fintech and cross-border, and experience across e-commerce and other digital products. Product discovery, audits and fractional PM support.">
+<title>Product Consultant | Strategy, Discovery &amp; Growth for digital products</title>
 <style>
   /* ── Reset & base ── */
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -17,6 +17,7 @@
   }
   a { color: inherit; text-decoration: none; }
   img { max-width: 100%; }
+  button { font-family: inherit; }
 
   /* ── Tokens ── */
   :root {
@@ -63,6 +64,12 @@
     transition: color .2s;
   }
   .nav-links a:hover { color: var(--text-primary); }
+  .nav-cta {
+    font-size: .8rem !important; font-weight: 700 !important;
+    color: #fff !important;
+    background: linear-gradient(135deg, var(--accent) 0%, #a78bfa 100%);
+    padding: .5rem 1.1rem; border-radius: 99px;
+  }
 
   /* ── Sections ── */
   section { padding: 6rem 2rem; }
@@ -89,6 +96,7 @@
   }
 
   /* ── Hero ── */
+  #hero { padding-top: 130px; }
   .intro-grid {
     display: grid; grid-template-columns: 200px 1fr;
     gap: 3.5rem; align-items: center;
@@ -101,25 +109,26 @@
     text-transform: uppercase; color: var(--accent);
     background: var(--accent-dim); border: 1px solid var(--border-accent);
     padding: .3rem .75rem; border-radius: 99px; margin-bottom: 1.25rem;
-    flex-wrap: wrap;
   }
+  .hero-eyebrow span { min-width: 0; }
   .hero-eyebrow::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--accent); animation: pulse 2s infinite; }
   @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.4} }
   h1 {
-    font-size: clamp(2.2rem, 4.5vw, 3.2rem); font-weight: 800;
-    line-height: 1.1; color: var(--text-primary);
-    margin-bottom: 1rem;
+    font-size: clamp(2.1rem, 4.2vw, 3rem); font-weight: 800;
+    line-height: 1.18; color: var(--text-primary);
+    margin-bottom: 1.1rem;
   }
   h1 span { color: var(--accent-light); }
   .hero-desc {
     font-size: 1rem; color: var(--text-secondary);
-    line-height: 1.75; margin-bottom: 2rem;
+    line-height: 1.75; margin-bottom: 2rem; max-width: 620px;
   }
   .hero-ctas { display: flex; gap: 1rem; flex-wrap: wrap; }
   .btn {
     display: inline-flex; align-items: center; gap: .5rem;
     padding: .65rem 1.4rem; border-radius: var(--radius-sm);
     font-size: .9rem; font-weight: 600; transition: all .2s; cursor: pointer;
+    border: none;
   }
   .btn-primary {
     background: linear-gradient(135deg, var(--accent) 0%, #a78bfa 100%); color: #fff;
@@ -138,31 +147,29 @@
       linear-gradient(135deg, var(--accent) 0%, #a78bfa 100%) border-box;
     color: #fff; transform: translateY(-1px);
   }
+  .btn-block { width: 100%; justify-content: center; }
 
   /* ── Stats bar ── */
   .intro-stats {
-    display: flex; align-items: center; gap: 1rem; flex-wrap: wrap;
+    display: flex; flex-direction: column; gap: 1.5rem;
     background: var(--surface); border: 1px solid var(--border);
-    border-radius: var(--radius); padding: 1.1rem 1.5rem;
-    margin-bottom: 2rem;
+    border-radius: var(--radius); padding: 1.75rem 2rem;
   }
-  .intro-stats .stat-item { flex: 1; min-width: 80px; background: none; border: none; padding: 0; }
-  .intro-stats-divider { width: 1px; height: 36px; background: var(--border); flex-shrink: 0; }
-  .intro-tags { display: flex; flex-wrap: wrap; gap: .45rem; flex: 2; }
-  .stat-item { display: flex; flex-direction: column; align-items: center; justify-content: center; }
-  .stat-value { font-size: 1.6rem; font-weight: 800; color: var(--accent-light); line-height: 1; margin-bottom: .2rem; text-align: center; }
-  .stat-label { font-size: .75rem; color: var(--text-muted); text-align: center; }
+  .stats-row { display: flex; align-items: center; gap: 2rem; flex-wrap: wrap; }
+  .intro-stats .stat-item { flex: 1; min-width: 150px; background: none; border: none; padding: 0; }
+  .intro-stats-divider { width: 1px; height: 40px; background: var(--border); flex-shrink: 0; }
+  .intro-tags { display: flex; flex-wrap: wrap; gap: .6rem; padding-top: 1.5rem; border-top: 1px solid var(--border); }
+  .stat-item { display: flex; flex-direction: column; align-items: flex-start; justify-content: center; }
+  .stat-value { font-size: 1.7rem; font-weight: 800; color: var(--accent-light); line-height: 1.15; margin-bottom: .35rem; white-space: nowrap; }
+  .stat-label { font-size: .78rem; color: var(--text-muted); line-height: 1.4; }
   .tag {
-    font-size: .72rem; font-weight: 600; letter-spacing: .04em;
-    padding: .25rem .65rem; border-radius: 99px;
+    font-size: .74rem; font-weight: 600; letter-spacing: .04em;
+    padding: .3rem .75rem; border-radius: 99px;
     background: var(--accent-dim); color: var(--accent-light);
     border: 1px solid var(--border-accent);
   }
 
-  /* ── About section ── */
-  #about { background: var(--surface); padding-top: 100px; }
-
-  /* ── About avatar ── */
+  /* ── About avatar (hero) ── */
   .about-avatar {
     width: 200px; height: 200px; border-radius: 50%; flex-shrink: 0;
     border: 3px solid var(--border-accent);
@@ -178,65 +185,66 @@
     box-shadow: 0 0 0 6px var(--accent-dim), var(--shadow);
   }
 
-  /* ── Pillars row ── */
-  .pillars-row {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: .75rem;
-    margin-bottom: 2rem;
+  /* ── Problems ── */
+  #problems { background: var(--surface); }
+  .issues-list { display: flex; flex-direction: column; gap: .85rem; margin-top: 2.25rem; max-width: 780px; }
+  .issue-item {
+    background: var(--surface2); border: 1px solid var(--border); border-left: 3px solid var(--accent);
+    border-radius: var(--radius-sm); padding: 1.15rem 1.5rem;
+    font-size: .95rem; color: var(--text-secondary); line-height: 1.65;
+    transition: border-color .2s, background .2s;
   }
-  .pillar {
-    background: var(--surface2);
-    border: 1px solid var(--border);
-    border-left: 3px solid var(--accent);
-    border-radius: var(--radius-sm);
-    padding: 1.1rem 1.1rem;
-    transition: background .2s, border-color .2s;
-  }
-  .pillar:hover { background: var(--surface3); border-left-color: var(--accent-light); }
-  .pillar-icon { font-size: 1.4rem; margin-bottom: .5rem; }
-  .pillar-title { font-size: .95rem; font-weight: 700; color: var(--text-primary); }
+  .issue-item:hover { border-color: var(--border-accent); background: var(--surface3); }
+  .issue-item strong { color: var(--text-primary); }
 
-  /* ── Skills chips ── */
-  .skills-section { margin-bottom: 1.5rem; }
-  .skills-title { font-size: .8rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--text-muted); margin-bottom: .75rem; }
-  .skills-chips { display: flex; flex-wrap: wrap; gap: .55rem; }
-  .skill-chip {
-    font-size: .8rem; font-weight: 600;
-    padding: .45rem 1rem; border-radius: 99px;
-    background: var(--surface3); border: 1px solid var(--border);
-    color: var(--text-secondary);
-    transition: background .2s, border-color .2s, color .2s;
-    cursor: default;
+  /* ── Services ── */
+  .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 2.5rem; }
+  .service-card {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: var(--radius-lg); padding: 2rem 1.75rem;
+    display: flex; flex-direction: column;
+    transition: border-color .2s, transform .2s;
   }
-  .skill-chip:hover { background: var(--accent-dim); border-color: var(--border-accent); color: var(--accent-light); }
+  .service-card:hover { border-color: var(--border-accent); transform: translateY(-3px); }
+  .service-name { font-size: 1.15rem; font-weight: 800; color: var(--text-primary); margin-bottom: .5rem; }
+  .service-hook { font-size: .88rem; color: var(--accent-light); font-weight: 600; margin-bottom: 1.15rem; line-height: 1.5; }
+  .service-for { font-size: .84rem; color: var(--text-secondary); line-height: 1.65; margin-bottom: 1.15rem; }
+  .service-includes { list-style: none; display: flex; flex-direction: column; gap: .55rem; margin-bottom: 1.35rem; flex: 1; }
+  .service-includes li { font-size: .79rem; color: var(--text-muted); line-height: 1.55; padding-left: 1rem; position: relative; }
+  .service-includes li::before { content: "—"; position: absolute; left: 0; color: var(--accent); }
+  .service-footer { border-top: 1px solid var(--border); padding-top: 1.15rem; margin-top: auto; }
+  .service-duration { font-size: .7rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: .07em; margin-bottom: .4rem; }
+  .service-price { font-size: 1.3rem; font-weight: 800; color: var(--text-primary); margin-bottom: 1.1rem; }
+  .service-price span { font-size: .68rem; font-weight: 600; color: var(--text-muted); text-transform: none; }
 
-  /* ── Bio toggle ── */
-  .bio-toggle-btn {
-    display: inline-flex; align-items: center; gap: .45rem;
-    font-size: .82rem; font-weight: 600; cursor: pointer;
-    color: var(--accent-light);
+  /* ── Process (How I Work) ── */
+  #how-it-works { background: var(--surface); }
+  .process-anchor { font-size: 1.05rem; color: var(--text-secondary); max-width: 700px; line-height: 1.75; margin-top: -.5rem; margin-bottom: .5rem; }
+  .process-anchor em { color: var(--accent-light); font-style: normal; font-weight: 600; }
+  .process-steps { display: grid; grid-template-columns: repeat(5, 1fr); gap: 1.35rem; margin-top: 2.5rem; }
+  .step-num {
+    width: 38px; height: 38px; border-radius: 50%;
     background: var(--accent-dim); border: 1px solid var(--border-accent);
-    padding: .4rem 1rem; border-radius: 99px;
-    transition: background .2s;
-    margin-top: .25rem;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 800; color: var(--accent-light); font-size: .82rem;
+    margin-bottom: .9rem;
   }
-  .bio-toggle-btn:hover { background: rgba(108,99,255,.22); }
-  .bio-toggle-content {
-    display: none; margin-top: 1.25rem;
-    padding: 1.5rem;
-    background: var(--surface2); border: 1px solid var(--border);
-    border-radius: var(--radius);
-    animation: fadeIn .25s ease;
+  .step-title { font-size: .92rem; font-weight: 700; color: var(--text-primary); margin-bottom: .4rem; }
+  .step-desc { font-size: .8rem; color: var(--text-muted); line-height: 1.55; }
+
+  /* ── Why Me ── */
+  .why-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 2.5rem; }
+  .why-card {
+    background: var(--surface2); border: 1px solid var(--border); border-left: 3px solid var(--accent);
+    border-radius: var(--radius-sm); padding: 1.25rem 1.4rem;
+    transition: border-color .2s;
   }
-  .bio-toggle-content.open { display: block; }
-  .bio-toggle-content p { color: var(--text-secondary); line-height: 1.8; margin-bottom: .9rem; font-size: .97rem; }
-  .bio-toggle-content p:last-child { margin-bottom: 0; }
-  .bio-toggle-content p strong { color: var(--text-primary); }
-  @keyframes fadeIn { from { opacity: 0; transform: translateY(-6px); } to { opacity: 1; transform: none; } }
+  .why-card:hover { border-color: var(--border-accent); }
+  .why-title { font-size: .95rem; font-weight: 700; color: var(--text-primary); margin-bottom: .4rem; }
+  .why-desc { font-size: .83rem; color: var(--text-secondary); line-height: 1.6; }
 
   /* ── Case tabs ── */
-  #cases { background: #0F1117; }
+  #work { background: #0F1117; }
   .cases-intro { margin-bottom: 2.5rem; }
   .case-tabs {
     display: flex; gap: 0;
@@ -323,8 +331,17 @@
   .kpi-label { font-size: .75rem; color: var(--text-muted); margin-top: .3rem; }
   .kpi-sub { font-size: .7rem; color: var(--text-muted); margin-top: .15rem; font-style: italic; }
 
+  /* ── TL;DR ── */
+  .tldr-box {
+    margin: 1.75rem 2.5rem 0;
+    background: var(--surface2); border: 1px solid var(--border); border-left: 3px solid var(--accent);
+    border-radius: var(--radius-sm); padding: 1.25rem 1.5rem;
+  }
+  .tldr-label { font-size: .7rem; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; color: var(--accent); margin-bottom: .55rem; }
+  .tldr-text { font-size: .9rem; color: var(--text-secondary); line-height: 1.75; }
+
   /* ── Section toggles (collapsible) ── */
-  .case-body-sections { padding: 1.5rem 2rem; }
+  .case-body-sections { padding: 1.5rem 2rem 2rem; }
   .section-toggle {
     border: 1px solid var(--border);
     border-radius: var(--radius-sm);
@@ -381,7 +398,7 @@
   .case-p { font-size: .92rem; color: var(--text-secondary); line-height: 1.75; margin-bottom: .5rem; }
   .case-p strong { color: var(--text-primary); }
 
-  /* ── Problem grid ── */
+  /* ── Problem grid (inside case studies) ── */
   .problem-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 1rem; }
   .problem-card {
     background: var(--surface2); border: 1px solid var(--border);
@@ -509,42 +526,6 @@
   .learning:hover { border-color: var(--border-accent); color: var(--text-secondary); }
   .learning strong { color: var(--accent-light); display: block; margin-bottom: .25rem; font-size: .8rem; }
 
-  /* ── Inside ── */
-  #inside { background: var(--surface); }
-  .inside-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.25rem; margin-top: 2.5rem; }
-  .post-card {
-    background: var(--surface2); border: 1px solid var(--border);
-    border-radius: var(--radius); padding: 1.75rem;
-    display: flex; flex-direction: column; gap: .75rem;
-    transition: border-color .2s, background .2s; cursor: default;
-  }
-  .post-card:hover { border-color: var(--border-accent); background: var(--surface3); }
-  .post-tag {
-    display: inline-flex; align-items: center;
-    font-size: .72rem; font-weight: 700; letter-spacing: .09em;
-    text-transform: uppercase; color: var(--accent);
-    background: var(--accent-dim); border: 1px solid var(--border-accent);
-    padding: .2rem .65rem; border-radius: 99px; width: fit-content;
-  }
-  .post-title { font-size: 1.05rem; font-weight: 700; color: var(--text-primary); line-height: 1.35; }
-  .post-excerpt { font-size: .875rem; color: var(--text-secondary); line-height: 1.7; flex: 1; }
-  .post-footer {
-    display: flex; align-items: center; justify-content: space-between;
-    padding-top: .75rem; border-top: 1px solid var(--border);
-    font-size: .75rem; color: var(--text-muted);
-  }
-  .post-date { font-variant-numeric: tabular-nums; }
-  .post-excerpt p { margin-bottom: .9rem; }
-  .post-excerpt p:last-child { margin-bottom: 0; }
-
-  /* ── Footer ── */
-  footer {
-    background: #0A0C12; border-top: 1px solid var(--border);
-    padding: 2rem; text-align: center;
-    font-size: .78rem; color: var(--text-muted);
-  }
-  footer span { color: var(--accent); }
-
   /* ── Carousel ── */
   .case-carousel-fullbleed { margin: 1rem -1.25rem 0; overflow: hidden; }
   .case-carousel-fullbleed .carousel { border-radius: 0; border-left: none; border-right: none; }
@@ -570,32 +551,72 @@
   .carousel-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--border); cursor: pointer; transition: background .2s, transform .2s; }
   .carousel-dot.active { background: var(--accent); transform: scale(1.3); }
 
+  /* ── About (short bio section) ── */
+  #about { background: var(--surface); }
+  .about-block { max-width: 720px; background: var(--surface2); border: 1px solid var(--border); border-radius: var(--radius); padding: 2rem 2.25rem; margin-top: 2rem; }
+  .about-block p { color: var(--text-secondary); font-size: 1rem; line-height: 1.9; }
+
+  /* ── Final CTA + Contact ── */
+  #contact-cta { text-align: left; }
+  .cta-final-title { font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 800; color: var(--text-primary); margin-bottom: .6rem; line-height: 1.3; max-width: 700px; }
+  .cta-final-sub { font-size: 1.05rem; color: var(--text-secondary); margin-bottom: 2.5rem; }
+  .contact-wrap { display: grid; grid-template-columns: 1.2fr 1fr; gap: 3rem; align-items: start; }
+  .contact-form { display: flex; flex-direction: column; gap: 1.1rem; }
+  .form-group label { display: block; font-size: .75rem; font-weight: 700; color: var(--text-muted); margin-bottom: .45rem; text-transform: uppercase; letter-spacing: .06em; }
+  .form-group input, .form-group textarea {
+    width: 100%; background: var(--surface2); border: 1px solid var(--border);
+    border-radius: var(--radius-sm); padding: .8rem .95rem; color: var(--text-primary);
+    font-family: inherit; font-size: .92rem; transition: border-color .2s;
+  }
+  .form-group input:focus, .form-group textarea:focus { outline: none; border-color: var(--accent); }
+  .form-group textarea { resize: vertical; min-height: 120px; }
+  .contact-alt { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.85rem; }
+  .contact-alt-title { font-size: .78rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: .06em; margin-bottom: 1rem; }
+  .contact-alt-link { display: flex; align-items: center; gap: .55rem; font-size: .92rem; color: var(--accent-light); margin-bottom: .85rem; font-weight: 600; }
+  .contact-alt-link:last-child { margin-bottom: 0; }
+  .contact-note { font-size: .75rem; color: var(--text-muted); margin-top: 1.25rem; line-height: 1.6; }
+
+  /* ── Footer ── */
+  footer {
+    background: #0A0C12; border-top: 1px solid var(--border);
+    padding: 2rem; text-align: center;
+    font-size: .78rem; color: var(--text-muted);
+  }
+  footer span { color: var(--accent); }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(-6px); } to { opacity: 1; transform: none; } }
+
   /* ── Responsive ── */
+  @media (max-width: 900px) {
+    .services-grid { grid-template-columns: 1fr; }
+    .process-steps { grid-template-columns: 1fr 1fr; }
+    .contact-wrap { grid-template-columns: 1fr; }
+  }
   @media (max-width: 720px) {
     nav { padding: 0 1rem; }
     .nav-links { gap: 1.25rem; }
     .nav-links a { font-size: .8rem; }
     section { padding: 4rem 1.25rem; }
-    #about { padding-top: 80px; }
+    #hero { padding-top: 100px; }
     .intro-grid { grid-template-columns: 1fr; gap: 2rem; text-align: center; }
     .intro-photo-col { align-items: center; }
     .about-avatar, .about-avatar-fallback { width: 140px; height: 140px; }
     .hero-eyebrow { justify-content: center; }
     .hero-ctas { justify-content: center; }
+    .hero-desc { margin-left: auto; margin-right: auto; }
     h1 { font-size: clamp(2rem, 6vw, 2.8rem); }
     .intro-stats { gap: .75rem; justify-content: center; }
     .intro-stats-divider { display: none; }
     .intro-tags { justify-content: center; }
-    .pillars-row { grid-template-columns: 1fr 1fr; }
     .kpi-strip { grid-template-columns: 1fr 1fr; }
     .kpi-item { border-right: none; border-bottom: 1px solid var(--border); }
     .kpi-item:last-child { border-bottom: none; }
-    .problem-grid, .learnings-grid { grid-template-columns: 1fr; }
+    .problem-grid, .learnings-grid, .why-grid { grid-template-columns: 1fr; }
     .fraud-grid { grid-template-columns: 1fr; }
+    .process-steps { grid-template-columns: 1fr; }
     .case-body-sections { padding: 1.25rem; }
     .case-header { padding: 1.75rem 1.25rem 1.25rem; }
+    .tldr-box { margin: 1.5rem 1.25rem 0; }
     .case-carousel-fullbleed { margin: 1rem -1.25rem 0; }
-    .inside-grid { grid-template-columns: 1fr; }
     .case-tabs { gap: 0; }
     .case-tab { padding: .75rem 1rem; font-size: .82rem; }
   }
@@ -609,13 +630,13 @@
     .about-avatar, .about-avatar-fallback { width: 110px; height: 110px; }
     .intro-stats { flex-direction: column; align-items: center; gap: .5rem; }
     .stat-value { font-size: 1.35rem; }
-    .pillars-row { grid-template-columns: 1fr 1fr; }
     .kpi-strip { grid-template-columns: 1fr; }
     .kpi-item { border-right: none; border-bottom: 1px solid var(--border); }
     .kpi-item:last-child { border-bottom: none; }
     .fraud-grid { grid-template-columns: 1fr; }
     .case-body-sections { padding: 1rem; }
     .case-header { padding: 1.25rem 1rem 1rem; }
+    .tldr-box { margin: 1.25rem 1rem 0; }
     .case-title { font-size: 1.2rem; }
     .case-subtitle { font-size: .85rem; }
     .section-toggle-header { padding: .85rem 1rem; }
@@ -627,19 +648,19 @@
 
 <!-- ═══ NAV ═══ -->
 <nav>
-  <div class="nav-logo">Sofia Valperga · PM Portfolio</div>
+  <a href="#" class="nav-logo">Sofia Valperga · Product Consultant</a>
   <div class="nav-links">
-    <a href="#about">Sobre mí</a>
-    <a href="#cases">Casos</a>
-    <a href="#inside">Inside</a>
+    <a href="#services">Services</a>
+    <a href="#work">Work</a>
+    <a href="#about">About</a>
+    <a href="#contact" class="nav-cta">Let's talk</a>
   </div>
 </nav>
 
-<!-- ═══ ABOUT / HERO ═══ -->
-<section id="about">
+<!-- ═══ HERO ═══ -->
+<section id="hero">
   <div class="container">
 
-    <!-- Foto + identidad -->
     <div class="intro-grid">
       <div class="intro-photo-col">
         <img src="foto_sofia_400x400.jpg" alt="Sofia Valperga" class="about-avatar"
@@ -647,109 +668,213 @@
         <div class="about-avatar-fallback" style="display:none">SV</div>
       </div>
       <div>
-        <div class="hero-eyebrow">Product Manager · Payments · Fintech · B2B · LatAm</div>
-        <h1>Sofia<br><span>Valperga</span></h1>
+        <div class="hero-eyebrow"><span>Product Consultant · Payments, Fintech &amp; E-commerce</span></div>
+        <h1>Product strategy for digital businesses that can't afford to build <span>the wrong thing.</span></h1>
         <p class="hero-desc">
-          5 años liderando equipos de alto impacto en productos digitales en
-          <strong style="color:var(--text-primary)">payments y <span style="white-space:nowrap">e-commerce</span></strong>.
-          Combino liderazgo, pensamiento estratégico y ejecución para transformar problemas en soluciones.
+          I help product and business teams turn ambiguous product problems into validated strategies and prioritized roadmaps — with deep roots in payments, fintech and cross-border, and experience across e-commerce and other digital products. Backed by a track record of measurable business impact, not just frameworks.
         </p>
         <div class="hero-ctas">
-          <a href="#cases" class="btn btn-primary">Ver casos</a>
-          <a href="https://www.linkedin.com/in/sofiavalperga/" target="_blank" class="btn btn-ghost">LinkedIn</a>
-          <a href="CV_Sofia_Valperga.pdf" target="_blank" class="btn btn-ghost">CV PDF</a>
+          <a href="#contact" class="btn btn-primary">Let's talk</a>
+          <a href="#work" class="btn btn-ghost">See my work</a>
         </div>
       </div>
     </div>
 
-    <!-- Stats + tags -->
     <div class="intro-stats">
-      <div class="stat-item">
-        <div class="stat-value">+5</div>
-        <div class="stat-label">años en producto</div>
+      <div class="stats-row">
+        <div class="stat-item">
+          <div class="stat-value">6+</div>
+          <div class="stat-label">years in payments &amp; fintech product</div>
+        </div>
+        <div class="intro-stats-divider"></div>
+        <div class="stat-item">
+          <div class="stat-value">-10 to +40pp</div>
+          <div class="stat-label">NPS turnaround, real case</div>
+        </div>
+        <div class="intro-stats-divider"></div>
+        <div class="stat-item">
+          <div class="stat-value">30% to 75%</div>
+          <div class="stat-label">acceptance rate turnaround</div>
+        </div>
       </div>
-      <div class="intro-stats-divider"></div>
-      <div class="stat-item">
-        <div class="stat-value">+50pp</div>
-        <div class="stat-label">NPS mejorado</div>
-      </div>
-      <div class="intro-stats-divider"></div>
-      <div class="stat-item">
-        <div class="stat-value">B2C+B2B</div>
-        <div class="stat-label">productos liderados</div>
-      </div>
-      <div class="intro-stats-divider"></div>
       <div class="intro-tags">
         <span class="tag">Payments</span>
-        <span class="tag">POS / Readers</span>
-        <span class="tag">E-commerce</span>
         <span class="tag">Fintech</span>
+        <span class="tag">E-commerce</span>
+        <span class="tag">Cross-border</span>
+        <span class="tag">Fraud &amp; Risk</span>
         <span class="tag">Data-driven</span>
-        <span class="tag">User Centric</span>
       </div>
-    </div>
-
-    <!-- Pillars: siempre visibles, scanneable -->
-    <div class="pillars-row">
-      <div class="pillar">
-        <div class="pillar-icon">🎯</div>
-        <div class="pillar-title">Estrategia de producto</div>
-      </div>
-      <div class="pillar">
-        <div class="pillar-icon">📊</div>
-        <div class="pillar-title">Priorización con foco</div>
-      </div>
-      <div class="pillar">
-        <div class="pillar-icon">⚡</div>
-        <div class="pillar-title">Ejecución ágil</div>
-      </div>
-      <div class="pillar">
-        <div class="pillar-icon">💡</div>
-        <div class="pillar-title">Problem-first</div>
-      </div>
-    </div>
-
-    <!-- Skills chips -->
-    <div class="skills-section">
-      <div class="skills-title">Competencias clave</div>
-      <div class="skills-chips">
-        <span class="skill-chip">Liderazgo de equipos</span>
-        <span class="skill-chip">Resolución de problemas</span>
-        <span class="skill-chip">Desarrollo de productos</span>
-        <span class="skill-chip">Análisis estratégico de datos</span>
-      </div>
-    </div>
-
-    <!-- Bio: colapsable -->
-    <button class="bio-toggle-btn" id="bio-btn" onclick="toggleBio()">
-      ↓ Leer más sobre mí
-    </button>
-    <div class="bio-toggle-content" id="bio-content">
-      <p>Hace 5 años lidero el desarrollo de productos digitales con diseño centrado en el usuario, para <strong>payments y e-commerce</strong>. Empodero y construyo equipos de alto rendimiento, conectando estrategia con ejecución en contextos complejos.</p>
-      <p>Con experiencia en la industria financiera, diseñé soluciones de cobros y pagos. Impulsé el lanzamiento y escalado de productos end-to-end — lectores de tarjetas (POS), integración de cobros con <strong>PIX</strong> y soluciones de pago inmediato — siempre con foco en impacto de negocio.</p>
-      <p>Logrando confluir lo que amo hacer con lo que sé hacer.</p>
     </div>
 
   </div>
 </section>
 
-<!-- ═══ CASES ═══ -->
-<section id="cases">
+<!-- ═══ PROBLEMS ═══ -->
+<section id="problems">
+  <div class="container">
+    <div class="section-label">The Problem</div>
+    <h2 class="section-title">You have a product problem. I help make it clear.</h2>
+    <div class="divider"></div>
+
+    <div class="issues-list">
+      <div class="issue-item"><strong>Your conversion, acceptance rate or retention numbers are down</strong> — and nobody agrees on why.</div>
+      <div class="issue-item">You're <strong>expanding cross-border</strong> and your product decisions aren't keeping up with the complexity.</div>
+      <div class="issue-item">You have a promising product idea — in fintech, e-commerce or another digital business — but <strong>you're not sure what the MVP should actually include.</strong></div>
+      <div class="issue-item">Your roadmap keeps growing, but <strong>priorities aren't clear.</strong></div>
+      <div class="issue-item">You need <strong>senior product expertise</strong> — without hiring a full-time PM yet.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ SERVICES ═══ -->
+<section id="services">
+  <div class="container">
+    <div class="section-label">Services</div>
+    <h2 class="section-title">Three ways to get unstuck</h2>
+    <div class="divider"></div>
+    <p class="section-sub">Pick what matches where you are — from a focused two-week sprint to an ongoing partnership.</p>
+
+    <div class="services-grid">
+
+      <div class="service-card">
+        <div class="service-name">Product Discovery Sprint</div>
+        <div class="service-hook">From idea to a validated product direction.</div>
+        <div class="service-for">For founders and teams — in payments, fintech, e-commerce or any digital product — with an idea, problem or opportunity who need to know what's worth building before investing in development.</div>
+        <ul class="service-includes">
+          <li>Problem definition &amp; user hypotheses</li>
+          <li>Competitive / regulatory landscape scan</li>
+          <li>Research plan + interviews where relevant</li>
+          <li>MVP definition &amp; feature prioritization</li>
+          <li>Initial roadmap + next steps</li>
+        </ul>
+        <div class="service-footer">
+          <a href="#contact" class="btn btn-primary btn-block">Discuss your project</a>
+        </div>
+      </div>
+
+      <div class="service-card">
+        <div class="service-name">Product Audit</div>
+        <div class="service-hook">Find what's silently killing your conversion, activation or retention.</div>
+        <div class="service-for">For existing digital products — payments, fintech, e-commerce and beyond — with a metric that's stuck or dropping, and no clear diagnosis yet.</div>
+        <ul class="service-includes">
+          <li>Product &amp; UX diagnosis</li>
+          <li>Funnel / conversion / acceptance-rate analysis</li>
+          <li>Review of roadmap &amp; prioritization logic</li>
+          <li>Root-cause mapping, not just symptoms</li>
+          <li>Prioritized opportunity map + 90-day roadmap</li>
+        </ul>
+        <div class="service-footer">
+          <a href="#contact" class="btn btn-primary btn-block">Discuss your project</a>
+        </div>
+      </div>
+
+      <div class="service-card">
+        <div class="service-name">Fractional Product Manager</div>
+        <div class="service-hook">Senior product expertise, without a full-time hire.</div>
+        <div class="service-for">For early-stage digital product companies — payments, fintech, e-commerce and adjacent spaces — that need senior product judgment but aren't ready for a full-time PM.</div>
+        <ul class="service-includes">
+          <li>Product strategy &amp; discovery</li>
+          <li>Prioritization &amp; roadmapping</li>
+          <li>Product analytics / KPI definition</li>
+          <li>Product–engineering alignment</li>
+          <li>Ongoing product decisions</li>
+        </ul>
+        <div class="service-footer">
+          <a href="#contact" class="btn btn-primary btn-block">Discuss your project</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══ HOW I WORK ═══ -->
+<section id="how-it-works">
+  <div class="container">
+    <div class="section-label">Process</div>
+    <h2 class="section-title">How I work</h2>
+    <div class="divider"></div>
+    <p class="process-anchor"><em>I don't start with features. I start with the problem</em> — the loudest symptom is rarely the real one.</p>
+
+    <div class="process-steps">
+      <div class="process-step">
+        <div class="step-num">01</div>
+        <div class="step-title">Understand</div>
+        <div class="step-desc">Understand the business, the users, and the real problem — not just the requested feature.</div>
+      </div>
+      <div class="process-step">
+        <div class="step-num">02</div>
+        <div class="step-title">Discover</div>
+        <div class="step-desc">Research, analyze data, and separate symptoms from root causes.</div>
+      </div>
+      <div class="process-step">
+        <div class="step-num">03</div>
+        <div class="step-title">Prioritize</div>
+        <div class="step-desc">Turn insights into clear, defensible product decisions.</div>
+      </div>
+      <div class="process-step">
+        <div class="step-num">04</div>
+        <div class="step-title">Define</div>
+        <div class="step-desc">Translate strategy into MVPs, roadmaps and actionable plans.</div>
+      </div>
+      <div class="process-step">
+        <div class="step-num">05</div>
+        <div class="step-title">Execute</div>
+        <div class="step-desc">Work alongside your team to turn decisions into outcomes.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ WHY ME ═══ -->
+<section id="why-me">
+  <div class="container">
+    <div class="section-label">Why Me</div>
+    <h2 class="section-title">Product experience across payments, fintech and beyond</h2>
+    <div class="divider"></div>
+
+    <div class="why-grid">
+      <div class="why-card">
+        <div class="why-title">Product experience</div>
+        <div class="why-desc">6+ years building and scaling digital payment products across LatAm: card readers (mPOS), PIX integration, and cross-border billing.</div>
+      </div>
+      <div class="why-card">
+        <div class="why-title">Strategy + execution</div>
+        <div class="why-desc">I move from ambiguous business problems — a stuck acceptance rate, an undefined MVP — to concrete product decisions and measurable outcomes.</div>
+      </div>
+      <div class="why-card">
+        <div class="why-title">Data-driven</div>
+        <div class="why-desc">Comfortable digging into acceptance-rate data by merchant category, SQL, and product analytics to find what's actually happening, not just what the dashboard shows.</div>
+      </div>
+      <div class="why-card">
+        <div class="why-title">Cross-functional</div>
+        <div class="why-desc">Experience aligning Product, Engineering, Risk/Fraud, Legal, Operations and Business — the exact mix payments products require.</div>
+      </div>
+      <div class="why-card">
+        <div class="why-title">Complex, regulated environments</div>
+        <div class="why-desc">Product decisions inside large-scale payment ecosystems: fraud rules, card network policies, and cross-border compliance requirements.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ SELECTED WORK ═══ -->
+<section id="work">
   <div class="container">
 
     <div class="cases-intro">
-      <div class="section-label">Casos de producto</div>
-      <h2 class="section-title">Problem Solving</h2>
+      <div class="section-label">Selected Work</div>
+      <h2 class="section-title">Two problems, two turnarounds</h2>
       <div class="divider"></div>
     </div>
 
-    <!-- Tabs de casos -->
     <div class="case-tabs">
       <div class="case-tab active" data-case="mpos" onclick="switchCase('mpos')">
-        <span class="tab-num">01</span> mPOS — Lector de Pagos
+        <span class="tab-num">01</span> mPOS Card Reader
       </div>
       <div class="case-tab" data-case="getnet" onclick="switchCase('getnet')">
-        <span class="tab-num">02</span> Capability de Carga de Promociones
+        <span class="tab-num">02</span> Promotions Engine (B2B)
       </div>
     </div>
 
@@ -758,64 +883,69 @@
       <div class="case-card">
 
         <div class="case-header">
-          <div class="case-badge">📱 Caso 01 · Fintech</div>
-          <div class="case-title">Un producto que prometía simplicidad y entregaba fricción</div>
-          <div class="case-subtitle">De NPS -10 a +40 pp: cómo re pensamos la arquitectura desde la raíz para impactar la <strong>tasa de aceptación</strong></div>
+          <div class="case-badge">💳 Case 01 · Fintech</div>
+          <div class="case-title">A product that promised simplicity and delivered friction</div>
+          <div class="case-subtitle">From NPS -10 to +40pp: rethinking the architecture from the root to fix <strong>acceptance rate</strong></div>
           <div class="case-meta">
-            <div class="meta-pill">🎯 <span>Líder de equipo de producto · Triada: UX · IT</span></div>
-            <div class="meta-pill">🤝 <span>Fraude · Legales · Negocio · Data</span></div>
-            <div class="meta-pill">💳 <span>Pagos presenciales · B2C</span></div>
+            <div class="meta-pill">🎯 <span>Product team lead · Triad: UX · Engineering</span></div>
+            <div class="meta-pill">🤝 <span>Fraud &amp; Risk · Legal · Business · Data</span></div>
+            <div class="meta-pill">💳 <span>In-person payments · B2C</span></div>
           </div>
         </div>
 
         <div class="kpi-strip">
           <div class="kpi-item">
-            <div class="kpi-val" style="color:var(--green)">-10 → +40pp</div>
-            <div class="kpi-label">NPS en 6 meses</div>
-            <div class="kpi-sub">2.º mejor del mercado</div>
+            <div class="kpi-val" style="color:var(--green)">-10 to +40pp</div>
+            <div class="kpi-label">NPS in 6 months</div>
+            <div class="kpi-sub">2nd best in market</div>
           </div>
           <div class="kpi-item">
-            <div class="kpi-val" style="color:var(--yellow)">30% → 75%</div>
-            <div class="kpi-label">Tasa de aceptación</div>
-            <div class="kpi-sub">vs. OKR ajustado 80%</div>
+            <div class="kpi-val" style="color:var(--yellow)">30% to 75%</div>
+            <div class="kpi-label">Acceptance rate</div>
+            <div class="kpi-sub">vs. adjusted 80% OKR</div>
           </div>
           <div class="kpi-item">
             <div class="kpi-val" style="color:var(--green)">+5%</div>
-            <div class="kpi-label">Pagos en campañas</div>
-            <div class="kpi-sub">heavy users segmentados</div>
+            <div class="kpi-label">Payments in campaigns</div>
+            <div class="kpi-sub">segmented heavy users</div>
           </div>
+        </div>
+
+        <div class="tldr-box">
+          <div class="tldr-label">TL;DR</div>
+          <div class="tldr-text">A physical card reader (mPOS) had a 30% payment acceptance rate and an NPS of -10. The root cause wasn't UX or a technical bug — it was a fraud-prevention rule silently penalizing legitimate merchants grouped with fraudulent ones. I redesigned the merchant risk model and the decline-screen UX, renegotiated an unrealistic OKR using data, and took acceptance rate to 75% and NPS to +40pp in 6 months.</div>
         </div>
 
         <div class="case-body-sections">
 
-          <!-- Toggle 1: Contexto & Problema (abierto por default) -->
+          <!-- Toggle 1: Context & Problem -->
           <div class="section-toggle open" id="toggle-mpos-context">
             <div class="section-toggle-header" onclick="toggleSection('mpos-context')">
               <div class="section-toggle-title">
                 <span class="toggle-emoji">📋</span>
-                Contexto &amp; Problema
-                <span class="section-toggle-meta">— punto de partida</span>
+                Context &amp; Problem
+                <span class="section-toggle-meta">— starting point</span>
               </div>
               <span class="section-toggle-chevron">▾</span>
             </div>
             <div class="section-toggle-body">
               <div class="case-section">
-                <div class="case-h3">Contexto del producto</div>
-                <p class="case-p">mPOS es el lector de pagos físico. Se conecta vía Bluetooth al celular del merchant y acepta pagos con cualquier tarjeta mediante contactless, chip o banda magnética. El dinero de cada venta se acredita directamente en la cuenta del comerciante.</p>
+                <div class="case-h3">Product context</div>
+                <p class="case-p">mPOS is the physical card reader. It connects via Bluetooth to the merchant's phone and accepts any card via contactless, chip or magstripe. Funds from every sale settle directly to the merchant's account.</p>
               </div>
               <div class="case-section">
-                <div class="case-h3">El problema</div>
-                <p class="case-p">Al tomar el producto, el diagnóstico inicial reveló dos problemas críticos interrelacionados:</p>
+                <div class="case-h3">The problem</div>
+                <p class="case-p">Taking over the product, the initial diagnosis revealed two critical, interrelated problems:</p>
                 <div class="problem-grid">
                   <div class="problem-card">
                     <div class="problem-icon">📉</div>
-                    <div class="problem-title">Tasa de aceptación: 30%</div>
-                    <div class="problem-desc">El 70% de los intentos de pago terminaban en rechazo. Los motivos no estaban bien catalogados ni entendidos.</div>
+                    <div class="problem-title">Acceptance rate: 30%</div>
+                    <div class="problem-desc">70% of payment attempts ended in decline. The reasons weren't well categorized or understood.</div>
                   </div>
                   <div class="problem-card">
                     <div class="problem-icon">😤</div>
                     <div class="problem-title">NPS: -10</div>
-                    <div class="problem-desc">Top detractores: "Problemas de conectividad", "Pago rechazado", "Demora más de lo esperado".</div>
+                    <div class="problem-desc">Top detractors: "Connectivity issues," "Payment declined," "Took longer than expected."</div>
                   </div>
                 </div>
               </div>
@@ -827,68 +957,68 @@
             <div class="section-toggle-header" onclick="toggleSection('mpos-discovery')">
               <div class="section-toggle-title">
                 <span class="toggle-emoji">🔍</span>
-                Discovery: tres frentes en paralelo
-                <span class="section-toggle-meta">— cómo lo investigué</span>
+                Discovery: three parallel tracks
+                <span class="section-toggle-meta">— how I investigated it</span>
               </div>
               <span class="section-toggle-chevron">▾</span>
             </div>
             <div class="section-toggle-body">
               <div class="case-section">
-                <p class="case-p">El proceso no fue lineal. Trabajamos simultáneamente en tres frentes que se retroalimentaban. Los frentes A y B eran <strong>quick wins</strong> de impacto rápido mientras investigábamos la causa raíz (Frente C).</p>
+                <p class="case-p">The process wasn't linear. We worked simultaneously across three tracks that fed into each other. Tracks A and B were <strong>quick wins</strong> for fast impact while we investigated the root cause (Track C).</p>
                 <div class="discovery-tracks">
                   <div class="track track-a">
                     <div class="track-badge">A</div>
                     <div>
-                      <div class="track-title">Conectividad y latencia — Análisis técnico con IT</div>
+                      <div class="track-title">Connectivity &amp; latency — technical analysis with Engineering</div>
                       <div class="track-desc"><ul>
-                        <li>Revisé logs BLE y analicé timeouts con el equipo de IT</li>
-                        <li>El timeout se activaba demasiado rápido — antes de completar la transacción</li>
-                        <li>El walkthrough no comunicaba la distancia óptima entre celular y lector</li>
+                        <li>Reviewed BLE logs and analyzed timeouts with the Engineering team</li>
+                        <li>The timeout was triggering too fast — before the transaction completed</li>
+                        <li>The pairing walkthrough didn't communicate the optimal distance between phone and reader</li>
                       </ul></div>
-                      <div class="track-insight">→ Parte del problema era evitable con mejor comunicación al usuario en el onboarding.</div>
+                      <div class="track-insight">→ Part of the problem was avoidable with better onboarding guidance.</div>
                     </div>
                   </div>
                   <div class="track track-b">
                     <div class="track-badge">B</div>
                     <div>
-                      <div class="track-title">UX de pantallas de rechazo — Rediseño de mensajes</div>
+                      <div class="track-title">Decline-screen UX — redesigning the messaging</div>
                       <div class="track-desc"><ul>
-                        <li>Analicé todas las pantallas de error post-rechazo</li>
-                        <li>No existía diferenciación entre rechazos definitivos y recuperables</li>
-                        <li>Los rechazos definitivos ofrecían CTA de reintento — multiplicando la frustración</li>
+                        <li>Reviewed every post-decline error screen</li>
+                        <li>No distinction existed between final and recoverable declines</li>
+                        <li>Final declines still showed a retry CTA — multiplying frustration</li>
                       </ul></div>
-                      <div class="track-insight">→ Los rechazos definitivos no tenían CTA de "no reintentar", multiplicando la frustración.</div>
+                      <div class="track-insight">→ Final declines had no "don't retry" messaging, multiplying user frustration.</div>
                     </div>
                   </div>
                   <div class="track track-c">
                     <div class="track-badge">C</div>
                     <div>
-                      <div class="track-title">Análisis de tasa de aceptación por MCC — El hallazgo central</div>
+                      <div class="track-title">Acceptance rate by MCC — the central finding</div>
                       <div class="track-desc"><ul>
-                        <li>Abrí la tasa de aceptación por establecimiento y MCC</li>
-                        <li>Los peores performers: motos, alquiler de salones, servicios de ticket alto</li>
-                        <li>Todos concentraban el mismo código: "Denegada 05" — un genérico que escondía múltiples reglas de fraude</li>
-                        <li>Convoqué una mesa técnica con Visa para decodificarlo</li>
+                        <li>Broke down acceptance rate by merchant and MCC code</li>
+                        <li>Worst performers: motorcycle couriers, event-space rentals, high-ticket services</li>
+                        <li>All shared the same code: a generic "Decline 05" masking multiple fraud rules</li>
+                        <li>Convened a technical session with Visa to decode it</li>
                       </ul></div>
-                      <div class="track-insight">→ Los establecimientos fraudulentos contaminaban la tasa de merchants legítimos del mismo agrupador.</div>
+                      <div class="track-insight">→ Fraudulent merchants were contaminating the acceptance rate of legitimate merchants in the same category.</div>
                     </div>
                   </div>
                 </div>
                 <div class="insight-spotlight">
-                  <div class="insight-label">💡 Insight transformador</div>
-                  <div class="insight-text">El problema no era tecnológico ni de UX — era <strong>estructural y de riesgo</strong>. Los vectores de fraude detectados por Visa estaban penalizando a toda la red de merchants del mismo agrupador, incluyendo comerciantes completamente honestos. Resolver la tasa de aceptación requería rediseñar cómo se asignaban los establecimientos.</div>
+                  <div class="insight-label">💡 Turning-point insight</div>
+                  <div class="insight-text">The problem wasn't technical or UX — it was <strong>structural and risk-based</strong>. Fraud vectors flagged by Visa were penalizing an entire merchant category, including completely legitimate businesses. Fixing acceptance rate required redesigning how merchants were categorized.</div>
                 </div>
               </div>
             </div>
           </div>
 
-          <!-- Toggle 3: Soluciones -->
+          <!-- Toggle 3: Solutions -->
           <div class="section-toggle" id="toggle-mpos-solutions">
             <div class="section-toggle-header" onclick="toggleSection('mpos-solutions')">
               <div class="section-toggle-title">
                 <span class="toggle-emoji">⚙️</span>
-                Las soluciones
-                <span class="section-toggle-meta">— qué construimos</span>
+                Solutions
+                <span class="section-toggle-meta">— what we built</span>
               </div>
               <span class="section-toggle-chevron">▾</span>
             </div>
@@ -898,54 +1028,54 @@
                   <div class="solution">
                     <div class="sol-num">1</div>
                     <div>
-                      <div class="sol-title">Mejoras técnicas + rediseño del onboarding de conexión</div>
-                      <div class="sol-desc">Corregimos bugs BLE, optimizamos timeouts y rediseñamos el walkthrough de emparejamiento con indicaciones visuales claras sobre la distancia requerida. Agregamos mensajes de error de conectividad con instrucciones accionables.</div>
+                      <div class="sol-title">Technical fixes + redesigned connection onboarding</div>
+                      <div class="sol-desc">Fixed BLE bugs, optimized timeouts, and redesigned the pairing walkthrough with clear visual guidance on the required distance. Added connectivity error messages with actionable next steps.</div>
                     </div>
                   </div>
                   <div class="solution">
                     <div class="sol-num">2</div>
                     <div>
-                      <div class="sol-title">Clasificación de rechazos con experiencias diferenciadas</div>
+                      <div class="sol-title">Differentiated decline experiences by type</div>
                       <div class="sol-desc">
-                        <strong style="color:var(--text-primary)">Rechazos definitivos</strong> (fondos, fraude, tarjeta bloqueada): mensaje explícito de no reintentar, sin CTA de reintento.<br>
-                        <strong style="color:var(--text-primary)">Rechazos recuperables</strong> (error, timeout): CTA de reintento disponible, mensaje empático orientado a resolver.
+                        <strong style="color:var(--text-primary)">Final declines</strong> (funds, fraud, blocked card): explicit no-retry messaging, no retry CTA.<br>
+                        <strong style="color:var(--text-primary)">Recoverable declines</strong> (error, timeout): retry CTA available, empathetic resolution-oriented messaging.
                       </div>
                     </div>
                   </div>
                   <div class="solution">
                     <div class="sol-num">3</div>
                     <div>
-                      <div class="sol-title">Sistema de scoring de merchants (Anti-fraude)</div>
-                      <div class="sol-desc">Junto al equipo de Onboarding, diseñé un sistema de puntuación para clasificar a cada merchant y asignarle el establecimiento según su perfil de riesgo:</div>
+                      <div class="sol-title">Merchant risk-scoring system (anti-fraud)</div>
+                      <div class="sol-desc">Together with the Onboarding team, designed a scoring system to classify each merchant and assign them to a risk-based category:</div>
                     </div>
                   </div>
                 </div>
                 <div class="scoring-wrapper" style="margin-top:1.25rem">
                   <div class="scoring-spectrum"></div>
                   <div class="scoring-spectrum-labels">
-                    <span>Saludable</span><span>Indefinido</span><span>Peligroso</span>
+                    <span>Healthy</span><span>Undefined</span><span>High-risk</span>
                   </div>
                   <div class="fraud-grid">
                     <div class="fraud-card good">
                       <div class="fraud-icon">✅</div>
-                      <div class="fraud-label">Saludable</div>
-                      <div class="fraud-desc">Validaciones completas, bajo riesgo</div>
+                      <div class="fraud-label">Healthy</div>
+                      <div class="fraud-desc">Full validations, low risk</div>
                       <div class="fraud-divider"></div>
-                      <div class="fraud-result">Establecimiento con alta tasa de aceptación y reglas flexibles</div>
+                      <div class="fraud-result">Merchant with a high acceptance rate and flexible rules</div>
                     </div>
                     <div class="fraud-card mid">
                       <div class="fraud-icon">⚠️</div>
-                      <div class="fraud-label">Indefinido</div>
-                      <div class="fraud-desc">Información incompleta o señales ambiguas</div>
+                      <div class="fraud-label">Undefined</div>
+                      <div class="fraud-desc">Incomplete info or ambiguous signals</div>
                       <div class="fraud-divider"></div>
-                      <div class="fraud-result">Establecimiento intermedio con monitoreo activo</div>
+                      <div class="fraud-result">Intermediate category with active monitoring</div>
                     </div>
                     <div class="fraud-card bad">
                       <div class="fraud-icon">🚨</div>
-                      <div class="fraud-label">Peligroso</div>
-                      <div class="fraud-desc">Señales de alerta en validación</div>
+                      <div class="fraud-label">High-risk</div>
+                      <div class="fraud-desc">Warning signals during validation</div>
                       <div class="fraud-divider"></div>
-                      <div class="fraud-result">Establecimiento con reglas de fraude más duras</div>
+                      <div class="fraud-result">Merchant under stricter fraud rules</div>
                     </div>
                   </div>
                 </div>
@@ -953,61 +1083,61 @@
             </div>
           </div>
 
-          <!-- Toggle 4: Impacto & Aprendizajes -->
+          <!-- Toggle 4: Key decision, Impact & Learnings -->
           <div class="section-toggle" id="toggle-mpos-impact">
             <div class="section-toggle-header" onclick="toggleSection('mpos-impact')">
               <div class="section-toggle-title">
                 <span class="toggle-emoji">📈</span>
-                Decisión clave, Impacto &amp; Aprendizajes
-                <span class="section-toggle-meta">— resultado y reflexión</span>
+                Key decision, Impact &amp; Learnings
+                <span class="section-toggle-meta">— outcome and reflection</span>
               </div>
               <span class="section-toggle-chevron">▾</span>
             </div>
             <div class="section-toggle-body">
               <div class="case-section">
-                <div class="case-h3">Decisión clave</div>
+                <div class="case-h3">Key decision</div>
                 <div class="insight-spotlight">
-                  <div class="insight-label">📌 Renegociar el OKR</div>
-                  <div class="insight-text">El OKR original del 90% era matemáticamente inalcanzable sin comprometer el sistema antifraude. Justificar ese límite ante los stakeholders con datos — y renegociar a un objetivo más realista y sostenible — fue tan importante como las soluciones técnicas.</div>
+                  <div class="insight-label">📌 Renegotiate the OKR</div>
+                  <div class="insight-text">The original 90% OKR was mathematically unreachable without compromising the anti-fraud system. Justifying that ceiling to stakeholders with data — and renegotiating to a realistic, sustainable target — was as important as the technical fixes.</div>
                 </div>
               </div>
               <div class="case-section">
-                <div class="case-h3">Impacto en el negocio</div>
+                <div class="case-h3">Business impact</div>
                 <div style="display:grid; grid-template-columns:1fr 1fr; gap:.75rem; margin-bottom:.75rem;">
                   <div style="background:var(--surface2); border:1px solid rgba(52,211,153,.25); border-left:3px solid var(--green); border-radius:var(--radius-sm); padding:1rem 1.1rem;">
-                    <div style="font-size:1.4rem; font-weight:800; color:var(--green); line-height:1; margin-bottom:.3rem;">30% → 25%</div>
-                    <div style="font-size:.8rem; font-weight:600; color:var(--text-primary); margin-bottom:.15rem;">Churn en heavy users</div>
-                    <div style="font-size:.72rem; color:var(--text-muted);">Reducción de 5pp en el segmento de mayor valor</div>
+                    <div style="font-size:1.4rem; font-weight:800; color:var(--green); line-height:1; margin-bottom:.3rem;">30% to 25%</div>
+                    <div style="font-size:.8rem; font-weight:600; color:var(--text-primary); margin-bottom:.15rem;">Heavy-user churn</div>
+                    <div style="font-size:.72rem; color:var(--text-muted);">5pp reduction in the highest-value segment</div>
                   </div>
                   <div style="background:var(--surface2); border:1px solid rgba(52,211,153,.25); border-left:3px solid var(--green); border-radius:var(--radius-sm); padding:1rem 1.1rem;">
                     <div style="font-size:1.4rem; font-weight:800; color:var(--green); line-height:1; margin-bottom:.3rem;">↑ LTV</div>
-                    <div style="font-size:.8rem; font-weight:600; color:var(--text-primary); margin-bottom:.15rem;">Lifetime Value por usuario</div>
-                    <div style="font-size:.72rem; color:var(--text-muted);">Usuarios activos por más tiempo, con más transacciones — impacto directo en el P&L</div>
+                    <div style="font-size:.8rem; font-weight:600; color:var(--text-primary); margin-bottom:.15rem;">Lifetime value per user</div>
+                    <div style="font-size:.72rem; color:var(--text-muted);">Longer active users, more transactions — direct P&amp;L impact</div>
                   </div>
                 </div>
                 <div class="insight-spotlight" style="margin-top:0">
-                  <div class="insight-label">📈 Conexión con el negocio</div>
-                  <div class="insight-text">El perfilado de merchants no solo mejoró la experiencia — redujo el churn de heavy users y alargó su LTV al generar mayor volumen de transacciones. Ese incremento tuvo impacto directo y medible en el P&L de la empresa.</div>
+                  <div class="insight-label">📈 Connection to the business</div>
+                  <div class="insight-text">Merchant profiling didn't just improve the experience — it reduced heavy-user churn and extended LTV by driving more transaction volume. That increase had a direct, measurable impact on the company's P&amp;L.</div>
                 </div>
               </div>
               <div class="case-section" style="margin-bottom:0">
-                <div class="case-h3">Aprendizajes</div>
+                <div class="case-h3">Learnings</div>
                 <div class="learnings-grid">
                   <div class="learning">
-                    <strong>No resolver síntomas</strong>
-                    La UX de rechazo era un síntoma. El fraude sistémico era la causa raíz. Hubiera sido fácil quedarse en la superficie.
+                    <strong>Don't stop at symptoms</strong>
+                    The decline UX was a symptom. Systemic fraud was the root cause. It would have been easy to stay on the surface.
                   </div>
                   <div class="learning">
-                    <strong>Aliados externos como desbloqueadores</strong>
-                    La mesa con Visa fue el punto de inflexión. El equipo interno no podía obtener ese insight solo.
+                    <strong>External allies can be unlocks</strong>
+                    The session with Visa was the turning point. The internal team couldn't have reached that insight alone.
                   </div>
                   <div class="learning">
-                    <strong>Gestionar la incertidumbre</strong>
-                    Semanas trabajando en hipótesis sin certeza de la causa raíz. Mantener al equipo enfocado y a los stakeholders informados sin prometer resultados prematuros.
+                    <strong>Managing uncertainty</strong>
+                    Weeks spent testing hypotheses without certainty on the root cause — keeping the team focused and stakeholders informed without over-promising.
                   </div>
                   <div class="learning">
-                    <strong>Renegociar con datos</strong>
-                    Saber cuándo un OKR es una barrera para el negocio real — y tener el coraje y los datos para cambiarlo.
+                    <strong>Renegotiate with data</strong>
+                    Knowing when an OKR is a barrier to the real business — and having the data and the nerve to change it.
                   </div>
                 </div>
               </div>
@@ -1024,12 +1154,12 @@
       <div class="case-card">
 
         <div class="case-header">
-          <div class="case-badge">⚙️ Caso 02 · Fintech</div>
-          <div class="case-title">Cambiar una regla de negocio era más difícil que pensarla</div>
-          <div class="case-subtitle">De un proceso manual de 48hs a una herramienta self-service con lógica de priorización automática</div>
+          <div class="case-badge">⚙️ Case 02 · Fintech · B2B</div>
+          <div class="case-title">Changing one business rule was harder than deciding it</div>
+          <div class="case-subtitle">From a 48-hour manual process to a self-service tool with <strong>automatic prioritization logic</strong></div>
           <div class="case-meta">
-            <div class="meta-pill">🎯 <span>Líder de equipo de producto · Triada: UX · IT</span></div>
-            <div class="meta-pill">🤝 <span>Operaciones · Negocio · Legales · Data</span></div>
+            <div class="meta-pill">🎯 <span>Product team lead · Triad: UX · Engineering</span></div>
+            <div class="meta-pill">🤝 <span>Operations · Business · Legal · Data</span></div>
             <div class="meta-pill">🏗️ <span>B2B</span></div>
           </div>
         </div>
@@ -1037,39 +1167,44 @@
         <div class="kpi-strip">
           <div class="kpi-item">
             <div class="kpi-val" style="color:var(--green)">-70%</div>
-            <div class="kpi-label">Carga operativa</div>
-            <div class="kpi-sub">en equipos involucrados</div>
+            <div class="kpi-label">Operational load</div>
+            <div class="kpi-sub">across involved teams</div>
           </div>
           <div class="kpi-item">
-            <div class="kpi-val" style="color:var(--green)">48hs → ½hs</div>
-            <div class="kpi-label">Tiempo de carga</div>
-            <div class="kpi-sub">+ 1 jornada máx. de validación</div>
+            <div class="kpi-val" style="color:var(--green)">48hrs to 30min</div>
+            <div class="kpi-label">Load time</div>
+            <div class="kpi-sub">+ max 1 business day for validation</div>
           </div>
           <div class="kpi-item">
             <div class="kpi-val" style="color:var(--green)">-90%</div>
-            <div class="kpi-label">Errores de carga manual</div>
-            <div class="kpi-sub">cashback, días, condiciones</div>
+            <div class="kpi-label">Manual loading errors</div>
+            <div class="kpi-sub">cashback, dates, conditions</div>
           </div>
+        </div>
+
+        <div class="tldr-box">
+          <div class="tldr-label">TL;DR</div>
+          <div class="tldr-text">Promotion terms were negotiated with brands and processors, but loaded manually — Business defined rules in a spreadsheet, Operations turned them into tickets, Engineering hard-coded them into production. The real bottleneck wasn't Operations' capacity: Business had no direct way to express its own rules. I built a guided, self-service tool with an automatic prioritization engine, cutting load time from 48 hours to 30 minutes and manual errors by 90%.</div>
         </div>
 
         <div class="case-body-sections">
 
-          <!-- Toggle 1: Contexto & Problema (abierto por default) -->
+          <!-- Toggle 1: Context & Problem -->
           <div class="section-toggle open" id="toggle-getnet-context">
             <div class="section-toggle-header" onclick="toggleSection('getnet-context')">
               <div class="section-toggle-title">
                 <span class="toggle-emoji">📋</span>
-                Contexto &amp; Problema
-                <span class="section-toggle-meta">— punto de partida</span>
+                Context &amp; Problem
+                <span class="section-toggle-meta">— starting point</span>
               </div>
               <span class="section-toggle-chevron">▾</span>
             </div>
             <div class="section-toggle-body">
               <div class="case-section">
-                <p class="case-p">La empresa cerraba contratos de promociones (cuotas sin interés, cashback, etc.) con distintas marcas y procesadores. El problema: muchas promociones se superponían y no existía una lógica sistematizada para priorizarlas. El flujo era completamente manual — negocio definía las reglas en un Excel, operaciones generaba un ticket y el equipo de IT las cargaba directamente en el código.</p>
+                <p class="case-p">The company closed promotion agreements (interest-free installments, cashback, etc.) with different brands and processors. The problem: many promotions overlapped, with no systematic logic to prioritize them. The flow was fully manual — Business defined the rules in a spreadsheet, Operations generated a ticket, and Engineering loaded them directly into code.</p>
                 <div class="insight-spotlight" style="margin-top:.75rem">
-                  <div class="insight-label">⚠️ El costo real del proceso</div>
-                  <div class="insight-text">Promociones que se cerraban el mismo día obligaban al equipo de IT a intervenir fuera de horario. Cualquier error en el Excel — porcentaje de cashback incorrecto, días de aplicación equivocados — se traducía directamente en fallas en el procesamiento.</div>
+                  <div class="insight-label">⚠️ The real cost of the process</div>
+                  <div class="insight-text">Promotions closing same-day forced Engineering to step in after hours. Any spreadsheet error — wrong cashback %, wrong dates — went straight into production issues.</div>
                 </div>
               </div>
             </div>
@@ -1080,57 +1215,57 @@
             <div class="section-toggle-header" onclick="toggleSection('getnet-discovery')">
               <div class="section-toggle-title">
                 <span class="toggle-emoji">🔍</span>
-                Discovery: dos frentes, una causa raíz
-                <span class="section-toggle-meta">— cómo lo investigué</span>
+                Discovery: two tracks, one root cause
+                <span class="section-toggle-meta">— how I investigated it</span>
               </div>
               <span class="section-toggle-chevron">▾</span>
             </div>
             <div class="section-toggle-body">
               <div class="case-section">
-                <p class="case-p">Lideré un proceso de discovery con research, benchmark y entrevistas a los dos equipos que vivían el problema: Operaciones y Negocio. Lo que encontré en cada uno cambió la dirección del diseño.</p>
+                <p class="case-p">I led a discovery process with research, benchmarking, and interviews across the two teams living the problem: Operations and Business. What I found in each one changed the direction of the design.</p>
                 <div class="discovery-tracks">
                   <div class="track track-a">
                     <div class="track-badge">A</div>
                     <div>
-                      <div class="track-title">Mapeo del proceso con Operaciones</div>
+                      <div class="track-title">Mapping the process with Operations</div>
                       <div class="track-desc"><ul>
-                        <li>Entrevisté al equipo que traducía los Excel en tickets para IT</li>
-                        <li>Cada promoción: recibir Excel → interpretarlo → ticket → esperar a IT</li>
-                        <li>Las de último momento obligaban a intervenir fuera de horario</li>
-                        <li>Cualquier ambigüedad en el Excel = una vuelta más de consultas</li>
+                        <li>Interviewed the team translating spreadsheets into tickets for Engineering</li>
+                        <li>Every promotion: receive spreadsheet → interpret it → ticket → wait for Engineering</li>
+                        <li>Last-minute promotions forced after-hours work</li>
+                        <li>Any ambiguity in the spreadsheet meant another round of back-and-forth</li>
                       </ul></div>
-                      <div class="track-insight">→ Operaciones era el cuello de botella visible — pero era un síntoma, no la causa.</div>
+                      <div class="track-insight">→ Operations was the visible bottleneck — but it was a symptom, not the cause.</div>
                     </div>
                   </div>
                   <div class="track track-b">
                     <div class="track-badge">B</div>
                     <div>
-                      <div class="track-title">Entrevistas con Negocio: la voz que faltaba en el sistema</div>
+                      <div class="track-title">Interviews with Business: the missing voice in the system</div>
                       <div class="track-desc"><ul>
-                        <li>Entrevisté al equipo que cerraba contratos de promociones</li>
-                        <li>No tenían canal directo al sistema — todo pasaba por 2 equipos intermedios</li>
-                        <li>La priorización entre promociones superpuestas se definía de forma informal</li>
-                        <li>Resultado: inconsistencias frecuentes y dependencia total de IT para cualquier cambio</li>
+                        <li>Interviewed the team closing promotion deals</li>
+                        <li>They had no direct channel into the system — everything routed through two intermediary teams</li>
+                        <li>Prioritization between overlapping promotions was decided informally</li>
+                        <li>Result: frequent inconsistencies and full dependence on Engineering for any change</li>
                       </ul></div>
-                      <div class="track-insight">→ El cuello de botella real era de acceso, no de capacidad. Negocio no tenía voz en el sistema.</div>
+                      <div class="track-insight">→ The real bottleneck was access, not capacity. Business had no voice in the system.</div>
                     </div>
                   </div>
                 </div>
                 <div class="insight-spotlight">
-                  <div class="insight-label">💡 Insight transformador</div>
-                  <div class="insight-text">El problema no era que Operaciones fuera lento — era que <strong>Negocio no tenía forma de expresar sus reglas sin pasar por dos equipos intermedios</strong>. Eso cambió el punto de partida del diseño: la solución tenía que empezar desde Negocio, no desde Operaciones.</div>
+                  <div class="insight-label">💡 Turning-point insight</div>
+                  <div class="insight-text">The problem wasn't that Operations was slow — it was that <strong>Business had no way to express its rules without going through two intermediary teams</strong>. That reframed the whole design: the solution had to start from Business, not from Operations.</div>
                 </div>
               </div>
             </div>
           </div>
 
-          <!-- Toggle 3: Soluciones -->
+          <!-- Toggle 3: Solutions -->
           <div class="section-toggle" id="toggle-getnet-solutions">
             <div class="section-toggle-header" onclick="toggleSection('getnet-solutions')">
               <div class="section-toggle-title">
                 <span class="toggle-emoji">⚙️</span>
-                Solución
-                <span class="section-toggle-meta">— qué construimos</span>
+                Solution
+                <span class="section-toggle-meta">— what we built</span>
               </div>
               <span class="section-toggle-chevron">▾</span>
             </div>
@@ -1140,8 +1275,8 @@
                   <div class="solution">
                     <div class="sol-num">1</div>
                     <div>
-                      <div class="sol-title">Interfaz self-service para negocio</div>
-                      <div class="sol-desc">Desarrollé una capability de carga diseñada como walkthrough guiado para el equipo de negocio, eliminando la necesidad de intermediarios para definir y cargar una promoción.</div>
+                      <div class="sol-title">Self-service interface for Business</div>
+                      <div class="sol-desc">Built a loading capability designed as a guided walkthrough for the Business team, removing the need for intermediaries to define and load a promotion.</div>
                     </div>
                   </div>
                 </div>
@@ -1150,28 +1285,28 @@
                   <div class="carousel" id="getnet-carousel">
                     <div class="carousel-track" id="getnet-track">
                       <div class="carousel-slide">
-                        <img src="GETNET/paso%20uno.png" alt="Paso 1">
-                        <div class="carousel-caption">Paso 1 — inicio del flujo de carga</div>
+                        <img src="GETNET/paso%20uno.png" alt="Step 1">
+                        <div class="carousel-caption">Step 1 — start of the loading flow</div>
                       </div>
                       <div class="carousel-slide">
-                        <img src="GETNET/paso%202.png" alt="Paso 2">
-                        <div class="carousel-caption">Paso 2</div>
+                        <img src="GETNET/paso%202.png" alt="Step 2">
+                        <div class="carousel-caption">Step 2</div>
                       </div>
                       <div class="carousel-slide">
-                        <img src="GETNET/paso%203.png" alt="Paso 3">
-                        <div class="carousel-caption">Paso 3</div>
+                        <img src="GETNET/paso%203.png" alt="Step 3">
+                        <div class="carousel-caption">Step 3</div>
                       </div>
                       <div class="carousel-slide">
-                        <img src="GETNET/paso%204.png" alt="Paso 4">
-                        <div class="carousel-caption">Paso 4</div>
+                        <img src="GETNET/paso%204.png" alt="Step 4">
+                        <div class="carousel-caption">Step 4</div>
                       </div>
                       <div class="carousel-slide">
-                        <img src="GETNET/Configuracion%20financiera%20(1).png" alt="Configuración financiera">
-                        <div class="carousel-caption">Configuración financiera — condiciones de la promo</div>
+                        <img src="GETNET/Configuracion%20financiera%20(1).png" alt="Financial configuration">
+                        <div class="carousel-caption">Financial configuration — promotion terms</div>
                       </div>
                     </div>
-                    <button class="carousel-btn prev" onclick="moveCarousel('getnet', -1)" aria-label="Anterior">‹</button>
-                    <button class="carousel-btn next" onclick="moveCarousel('getnet', 1)" aria-label="Siguiente">›</button>
+                    <button class="carousel-btn prev" onclick="moveCarousel('getnet', -1)" aria-label="Previous">‹</button>
+                    <button class="carousel-btn next" onclick="moveCarousel('getnet', 1)" aria-label="Next">›</button>
                     <div class="carousel-dots" id="getnet-dots"></div>
                   </div>
                 </div>
@@ -1180,20 +1315,20 @@
                   <div class="solution">
                     <div class="sol-num">2</div>
                     <div>
-                      <div class="sol-title">Flujo de validación para operaciones</div>
-                      <div class="sol-desc">La carga de negocio llega como ticket de validación al equipo de operaciones, quienes aprueban antes de que la lógica se aplique — con un tope máximo de una jornada laboral.</div>
+                      <div class="sol-title">Validation flow for Operations</div>
+                      <div class="sol-desc">Business's input arrives as a validation ticket to the Operations team, who approve it before the logic goes live — capped at a maximum of one business day.</div>
                       <div class="case-img-block">
-                        <img src="GETNET/Validar%20promociones.png" alt="Validar promociones">
+                        <img src="GETNET/Validar%20promociones.png" alt="Validate promotions">
                       </div>
                     </div>
                   </div>
                   <div class="solution">
                     <div class="sol-num">3</div>
                     <div>
-                      <div class="sol-title">Motor de priorización automática</div>
-                      <div class="sol-desc">Detrás de la interfaz se construyó la lógica de priorización según las reglas de negocio: qué promoción aplica según día, marca y procesador cuando hay superposición, sin intervención manual de IT.</div>
+                      <div class="sol-title">Automatic prioritization engine</div>
+                      <div class="sol-desc">Behind the interface, we built the prioritization logic based on business rules: which promotion applies by day, brand and processor when there's overlap — with no manual Engineering intervention.</div>
                       <div class="case-img-block">
-                        <img src="GETNET/Gestor%20de%20campanas.png" alt="Gestor de campañas">
+                        <img src="GETNET/Gestor%20de%20campanas.png" alt="Campaign manager">
                       </div>
                     </div>
                   </div>
@@ -1202,42 +1337,42 @@
             </div>
           </div>
 
-          <!-- Toggle 4: Impacto & Aprendizajes -->
+          <!-- Toggle 4: Key decision, Impact & Learnings -->
           <div class="section-toggle" id="toggle-getnet-impact">
             <div class="section-toggle-header" onclick="toggleSection('getnet-impact')">
               <div class="section-toggle-title">
                 <span class="toggle-emoji">📈</span>
-                Decisión clave, Impacto &amp; Aprendizajes
-                <span class="section-toggle-meta">— resultado y reflexión</span>
+                Key decision, Impact &amp; Learnings
+                <span class="section-toggle-meta">— outcome and reflection</span>
               </div>
               <span class="section-toggle-chevron">▾</span>
             </div>
             <div class="section-toggle-body">
               <div class="case-section">
-                <div class="case-h3">Decisión clave</div>
+                <div class="case-h3">Key decision</div>
                 <div class="insight-spotlight">
-                  <div class="insight-label">📌 Diseñar para el usuario real, no para el técnico</div>
-                  <div class="insight-text">La tentación era construir una herramienta para operaciones. Las entrevistas revelaron que el cuello de botella real estaba antes: negocio no tenía forma de expresar sus reglas sin pasar por dos equipos intermedios. Empezar el walkthrough desde negocio fue la decisión que desbloqueó todo el flujo.</div>
+                  <div class="insight-label">📌 Design for the real user, not the technical one</div>
+                  <div class="insight-text">The instinct was to build a tool for Operations. Interviews revealed the real bottleneck was upstream: Business had no way to express its rules without two intermediary teams. Starting the workflow from Business was the decision that unlocked the whole flow.</div>
                 </div>
               </div>
               <div class="case-section">
-                <div class="case-h3">Impacto en el negocio</div>
-                <p class="case-p">La capability habilitó que negocio pueda cerrar y activar promociones en tiempo real — sin fricción operativa ni dependencia de IT. Esto desbloqueó el cierre de nuevas promociones que de otro modo no hubieran podido implementarse.</p>
+                <div class="case-h3">Business impact</div>
+                <p class="case-p">The tool let Business close and activate promotions in real time — with no operational friction or dependency on Engineering. This unblocked new promotions that otherwise couldn't have been implemented.</p>
                 <div class="insight-spotlight" style="margin-top:.75rem">
-                  <div class="insight-label">🔗 Input directo para "Pago Inmediato"</div>
-                  <div class="insight-text">El volumen de transacciones generado por los merchants a partir de las nuevas promociones activadas fue input directo para escalar y darle push a la feature de <strong>Pago Inmediato</strong> — conectando el impacto operativo con una iniciativa estratégica de mayor escala.</div>
+                  <div class="insight-label">🔗 Direct input for a real-time payments initiative</div>
+                  <div class="insight-text">The transaction volume generated by merchants from the newly activated promotions became direct input to scale and push a related real-time payments feature ("Pago Inmediato") — connecting operational impact to a larger strategic initiative.</div>
                 </div>
               </div>
               <div class="case-section" style="margin-bottom:0">
-                <div class="case-h3">Aprendizajes</div>
+                <div class="case-h3">Learnings</div>
                 <div class="learnings-grid">
                   <div class="learning">
-                    <strong>El proceso más lento siempre tiene un dueño</strong>
-                    Antes de diseñar la solución, el discovery reveló que el problema no era técnico — era de acceso. Negocio no tenía voz en el sistema. Encontrar ese cuello de botella humano fue más valioso que cualquier mejora técnica.
+                    <strong>The slowest process always has an owner</strong>
+                    Before designing the solution, discovery revealed the problem wasn't technical — it was access. Business had no voice in the system. Finding that human bottleneck was more valuable than any technical fix.
                   </div>
                   <div class="learning">
-                    <strong>La eficiencia operativa tiene impacto estratégico</strong>
-                    Reducir la fricción interna no es solo una mejora de procesos — en este caso habilitó una velocidad de go-to-market que se tradujo en nuevas promociones, más transacciones y un producto nuevo.
+                    <strong>Operational efficiency has strategic impact</strong>
+                    Reducing internal friction isn't just a process improvement — in this case it enabled a go-to-market speed that translated into new promotions, more transactions, and a new product line.
                   </div>
                 </div>
               </div>
@@ -1251,67 +1386,61 @@
   </div>
 </section>
 
-
-<!-- ═══ INSIDE ═══ -->
-<section id="inside">
+<!-- ═══ ABOUT ═══ -->
+<section id="about">
   <div class="container">
-    <div class="section-label">Inside</div>
-    <h2 class="section-title">Lo que pienso mientras hago</h2>
+    <div class="section-label">About</div>
+    <h2 class="section-title">A bit about me</h2>
     <div class="divider"></div>
-    <p class="section-sub">Reflexiones, aprendizajes y perspectivas del día a día en producto.</p>
+    <div class="about-block">
+      <p>I move between ambiguity and execution — I like the moment before a product exists, when the real problem isn't defined yet. Six years in payments and fintech taught me that the loudest symptom (a bad UX screen, a slow process) is rarely the real problem. I work best with teams that want someone to ask the uncomfortable question before building the wrong thing.</p>
+    </div>
+  </div>
+</section>
 
-    <div class="inside-grid">
+<!-- ═══ CONTACT / FINAL CTA ═══ -->
+<section id="contact">
+  <div class="container">
+    <div id="contact-cta">
+      <div class="section-label">Get in Touch</div>
+      <div class="cta-final-title">Have a product problem you're trying to solve?</div>
+      <div class="cta-final-sub">Let's turn it into a clear product direction.</div>
+    </div>
 
-      <div class="post-card">
-        <div class="post-tag">Producto</div>
-        <div class="post-title">Mi roadmap voló por los aires a los 32 🤯</div>
-        <div class="post-excerpt">
-          <p>La pandemia fue lo mejor que me pasó.</p>
-          <p>Era 2020, y los chinos hacían sopa de murciélago, el mundo se detenía en una enfermedad mortífera, y LATAM Airlines no tuvo mejor idea que irse de Argentina. Yo me quedaba sin trabajo.</p>
-          <p>En ese caos, una amiga me dijo: "tenés re buen perfil para ser Business Analyst". Ni idea qué es eso respondí, entonces describió algo que se me metió al cuerpo y me cambió la vida: bajar problemas complejos a una manera simple y transformarlos en soluciones.</p>
-          <p>Cuando las personas en general ven caos, yo veo la oportunidad de ordenar para que las cosas pasen. Sí, soy de Virgo.</p>
-          <p>Entre scrum, SQL y design thinking, descubrí que me gusta trabajar donde el problema no está definido. Donde hay ambigüedad. Donde puedo hacer preguntas incómodas que cuestionen lo obvio para alguien más.</p>
-          <p>Un mundo maravilloso donde todo se tiene que descubrir.</p>
-          <p>Arranqué como BA — o quizás era traductora, de necesidades de negocio a soluciones técnicas. Al poco tiempo supe que quería decidir qué valía la pena construir y por qué.</p>
-          <p>2 años después salimos campeones, y yo me animé de nuevo: vi un aviso, le escribí al Head de Producto de NX. Logramos dar vuelta el NPS de Toque: de -10pp a 40pp. Pusimos foco en entender al usuario con fricciones reales y la decisión consciente de dejar de hacer cosas que no movían la aguja. Integré medios de pago internacionales: PIX, conectando experiencia local con expansión regional.</p>
-          <p>Llegué a Getnet de la mano de dos ex líderes. Acompañé el go-to-market de soluciones de pago y diseñé una herramienta para promociones que redujo la carga operativa. Menos esfuerzo interno, más velocidad para el negocio.</p>
-          <p>El 2025 me llevó a MELI, donde defino la facturación B2B pensando en el accountability del usuario, uniendo experiencia, compliance y escalabilidad operativa para la expansión internacional (CBT).</p>
-          <p>Podría haber dicho que no — muchas veces — a la incertidumbre de cambiar de carrera a los 30. Pero sigo decidiendo salir al mundo e ir por lo que creo. Eso no es un acto heroico de una sola vez. Es una práctica constante. Es animarme a no tener todas las respuestas y quedarme en la incomodidad el tiempo suficiente para aprender a decidir mejor.</p>
-          <p>Vivo todos los días la decisión de seguir incomodándome.</p>
+    <div class="contact-wrap">
+      <form class="contact-form" onsubmit="sendContact(event)">
+        <div class="form-group">
+          <label for="c-name">Name</label>
+          <input type="text" id="c-name" required>
         </div>
-        <div class="post-footer">
-          <span class="post-date">Marzo 2026</span>
+        <div class="form-group">
+          <label for="c-email">Email</label>
+          <input type="email" id="c-email" required>
         </div>
+        <div class="form-group">
+          <label for="c-company">Company</label>
+          <input type="text" id="c-company">
+        </div>
+        <div class="form-group">
+          <label for="c-message">Tell me briefly about your product challenge</label>
+          <textarea id="c-message" required></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary btn-block">Start a conversation</button>
+      </form>
+
+      <div class="contact-alt">
+        <div class="contact-alt-title">Or reach out directly</div>
+        <a href="https://www.linkedin.com/in/sofiavalperga/" target="_blank" class="contact-alt-link">→ LinkedIn</a>
+        <a href="mailto:REPLACE-WITH-YOUR-EMAIL@example.com" class="contact-alt-link">→ Email</a>
+        <div class="contact-note">This form opens your email client with the message pre-filled — nothing is sent automatically. Replace the placeholder email in the code with your real address before sharing this page.</div>
       </div>
-
-      <div class="post-card">
-        <div style="display:flex; gap:.5rem; flex-wrap:wrap;">
-          <div class="post-tag">Producto</div>
-          <div class="post-tag">Reflexión</div>
-        </div>
-        <div class="post-title">💡 ¿El futuro de las fintechs está en el crédito?</div>
-        <div class="post-excerpt">
-          <p>Durante años, la competencia fue por quién prestaba más rápido o tenía la mejor UX.</p>
-          <p>Pero el diferencial que se viene está en la <strong>hiperpersonalización del cobro</strong>: entender cuándo, cómo y cuánto cobrar según el contexto real del usuario.</p>
-          <p>No todos cobramos el mismo día, y una notificación de deuda el primer lunes de cada mes a las 8 AM, a cada persona le implica una experiencia diferente.</p>
-          <p>¿Y qué pasa con esta notificación? Es que el cobro es parte de la experiencia.</p>
-          <p>Y la experiencia es lo que define si un usuario se queda o se va.</p>
-          <p>Las fintechs que entiendan esto no solo van a mejorar el churn sino que van a construir relaciones sostenibles, con una fuerte fidelización.</p>
-          <p>Porque en un mundo lleno de productos financieros, el verdadero valor está en empatizar con cada usuario, entendiendo que pertenecen a diferentes clusters, y cada uno necesita su propia experiencia.</p>
-          <p>Hoy la revolución es: <em>Buy Now, Pay Later</em>.<br>Lo que se viene va a ser: <em>Charge Smart, Stay Longer</em>.</p>
-        </div>
-        <div class="post-footer">
-          <span class="post-date">Abril 2026</span>
-        </div>
-      </div>
-
     </div>
   </div>
 </section>
 
 <!-- ═══ FOOTER ═══ -->
 <footer>
-  <span>Sofia Valperga</span> · Product Manager · 2026
+  <span>Sofia Valperga</span> · Product Consultant · 2026
 </footer>
 
 <script>
@@ -1351,12 +1480,10 @@
     document.querySelectorAll('.case-panel').forEach(p => p.classList.remove('active'));
     document.querySelector(`[data-case="${id}"]`).classList.add('active');
     document.getElementById(`panel-${id}`).classList.add('active');
-    // Init carousel if switching to getnet
     if (id === 'getnet' && !carousels['getnet']) {
       setTimeout(() => initCarousel('getnet'), 50);
     }
-    // Smooth scroll to cases
-    document.getElementById('cases').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    document.getElementById('work').scrollIntoView({ behavior: 'smooth', block: 'start' });
   }
 
   /* ── Section toggles ── */
@@ -1365,12 +1492,16 @@
     if (el) el.classList.toggle('open');
   }
 
-  /* ── Bio toggle ── */
-  function toggleBio() {
-    const content = document.getElementById('bio-content');
-    const btn = document.getElementById('bio-btn');
-    content.classList.toggle('open');
-    btn.textContent = content.classList.contains('open') ? '↑ Leer menos' : '↓ Leer más sobre mí';
+  /* ── Contact form → mailto ── */
+  function sendContact(e) {
+    e.preventDefault();
+    const name = document.getElementById('c-name').value;
+    const email = document.getElementById('c-email').value;
+    const company = document.getElementById('c-company').value;
+    const message = document.getElementById('c-message').value;
+    const subject = encodeURIComponent('Product consulting inquiry from ' + name);
+    const body = encodeURIComponent('Name: ' + name + '\nEmail: ' + email + '\nCompany: ' + company + '\n\n' + message);
+    window.location.href = 'mailto:REPLACE-WITH-YOUR-EMAIL@example.com?subject=' + subject + '&body=' + body;
   }
 
   document.addEventListener('DOMContentLoaded', () => {
